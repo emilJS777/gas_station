@@ -10,11 +10,13 @@ def create_device(key: str, name: str, description: str, client_id: int) -> Devi
     return device
 
 
-def update_device(device_id: int, key: str, name: str, description: str) -> Device:
+def update_device(device_id: int, key: str, name: str, description: str, parent_key: str) -> Device:
     device: Device = Device.query.filter_by(id=device_id).first()
     device.key = key
     device.name = name
     device.description = description
+    device.parent_key = parent_key
+
     device.last_update = datetime.utcnow()
     device.update_db()
     return device

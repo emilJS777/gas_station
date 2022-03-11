@@ -11,5 +11,7 @@ from .role import role_routes
 from .role_permission import role_permission_routes
 from .user_role import user_role_routes
 from .permission import permission_routes
-from .device import device_routes
 
+from .device import device_routes
+from .device_info import device_info_routes
+from .device_set import device_set_routes
