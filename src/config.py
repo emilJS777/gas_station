@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from datetime import datetime
 import logging
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
@@ -22,6 +23,11 @@ app.config["JWT_SECRET_KEY"] = "H^&67KCsn@77G"
 app.config["JWT_ACCESS_EXP"] = 60
 app.config["JWT_REFRESH_EXP"] = 3000
 jwt = JWTManager(app)
+
+# Set CORS options on app configuration
+app.config['CORS_RESOURCES'] = {r"/*": {"origins": "*"}}
+app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, supports_credentials=True)
 
 # LOGGING
 logging.basicConfig(level=logging.INFO)

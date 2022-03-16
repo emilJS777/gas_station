@@ -9,8 +9,11 @@ from src.client import client_middleware
 @permission_middleware.check_permission("device_edit")
 def create_device() -> dict:
     req: dict = request.get_json()
-    res: dict = device_service.create_device(key=req['key'], name=req['name'],
-                                             description=req['description'], client_id=req['client_id'])
+    res: dict = device_service.create_device(
+        key=req['key'],
+        name=req['name'],
+        description=req['description'],
+        client_id=req['client_id'])
     return res
 
 
@@ -18,9 +21,13 @@ def create_device() -> dict:
 @permission_middleware.check_permission("device_edit")
 def update_device(device_id: int) -> dict:
     req: dict = request.get_json()
-    res: dict = device_service.update_device(device_id=device_id, key=req['key'],
-                                             name=req['name'], description=req['description'],
-                                             parent_key=req['parent_key'])
+    res: dict = device_service.update_device(
+        device_id=device_id,
+        key=req['key'],
+        name=req['name'],
+        description=req['description'],
+        parent_key=req['parent_key']
+    )
     return res
 
 
