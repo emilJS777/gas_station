@@ -1,19 +1,20 @@
 from src import logger
-from src.permission import permission_service_db
-from src.role import role_service_db
-from src.user import user_service_db
-from src.role_permission import role_permission_service_db
-from src.user_role import user_role_service_db
+from src.Permission import permission_service_db
+from src.Role import role_service_db
+from src.User import user_service_db
+from src.RolePermission import role_permission_service_db
+from src.UserRole import user_role_service_db
 
 from typing import List
 
 
 class Initializer:
-    permissions: List = [{'name': 'client_get', 'title': 'get clients'}, {'name': 'client_edit', 'title': 'redactor client'},
-                         {'name': 'user_get', 'title': 'get user'}, {'name': 'user_edit', 'title': 'redactor user'},
-                         {'name': 'firm_get', 'title': 'get firm'}, {'name': 'firm_edit', 'title': 'redactor firm'},
-                         {'name': 'role_get', 'title': 'get roles'}, {'name': 'role_edit', 'title': 'redactor role'},
-                         {'name': 'device_get', 'title': 'get devices'}, {'name': 'device_edit', 'title': 'redactor device'}]
+    permissions: List = [{'name': 'client_get', 'title': 'get clients'}, {'name': 'client_edit', 'title': 'redactor Client'},
+                         {'name': 'user_get', 'title': 'get User'}, {'name': 'user_edit', 'title': 'redactor User'},
+                         {'name': 'firm_get', 'title': 'get Firm'}, {'name': 'firm_edit', 'title': 'redactor Firm'},
+                         {'name': 'role_get', 'title': 'get roles'}, {'name': 'role_edit', 'title': 'redactor Role'},
+                         {'name': 'device_get', 'title': 'get devices'}, {'name': 'device_edit', 'title': 'redactor Device'},
+                         {'name': 'cash_box_get', 'title': 'cash boxes get'}, {'name': 'cash_box_edit', 'title': 'cash boxes edit'}]
     role: str = "admin"
 
     def __init__(self):
@@ -31,7 +32,7 @@ class Initializer:
     def init_role(self):
         if not role_service_db.get_role_by_name(name=self.role):
             role_service_db.create_role(name=self.role)
-            logger.info(f"role by name {self.role} created")
+            logger.info(f"Role by name {self.role} created")
 
     def init_role_permission(self):
         role_db: role_service_db.Role = role_service_db.get_role_by_name(name=self.role)
@@ -41,7 +42,7 @@ class Initializer:
 
             if not role_permission_service_db.get_by_role_id_permission_id(role_id=role_db.id, permission_id=permission_db.id):
                 role_permission_service_db.create_bind(role_id=role_db.id, permission_id=permission_db.id)
-                logger.info(f"role {role_db.name} and permission {permission_db.name} bind")
+                logger.info(f"Role {role_db.name} and permission {permission_db.name} bind")
 
     def init_user(self):
         if not user_service_db.get_first_by_creator_id(creator_id=None):
@@ -54,32 +55,32 @@ class Initializer:
 
 
 # class Initializer:
-#     permissions = [{'name': 'client_get', 'title': 'get clients'}, {'name': 'client_edit', 'title': 'redactor client'},
-#                    {'name': 'user_get', 'title': 'get user'}, {'name': 'user_edit', 'title': 'redactor user'},
-#                    {'name': 'firm_get', 'title': 'get firm'}, {'name': 'firm_edit', 'title': 'redactor firm'},
+#     permissions = [{'name': 'client_get', 'title': 'get clients'}, {'name': 'client_edit', 'title': 'redactor Client'},
+#                    {'name': 'user_get', 'title': 'get User'}, {'name': 'user_edit', 'title': 'redactor User'},
+#                    {'name': 'firm_get', 'title': 'get Firm'}, {'name': 'firm_edit', 'title': 'redactor Firm'},
 #                    {'name': 'role_edit'}]
 #
 #     first_role = ["admin"]
 #
 #     def __init__(self):
 #         user_ticket = self.first_ticket_initializer()
-#         for permission in self.permissions:
-#             init_permission = self.permission_initializer(permission=permission)
-#             self.ticket_permission_initializer(ticket=user_ticket, permission=init_permission)
+#         for Permission in self.permissions:
+#             init_permission = self.permission_initializer(Permission=Permission)
+#             self.ticket_permission_initializer(ticket=user_ticket, Permission=init_permission)
 #
 #     # PERMISSIONS INITIALIZER
 #     @staticmethod
-#     def permission_initializer(permission):
-#         permission_from_db = permission_service_db.get_by_name(permission_name=permission['name'])
+#     def permission_initializer(Permission):
+#         permission_from_db = permission_service_db.get_by_name(permission_name=Permission['name'])
 #
 #         if not permission_from_db:
-#             return permission_service_db.create(permission_name=permission['name'],
-#                                                 permission_title=permission['title'])
+#             return permission_service_db.create(permission_name=Permission['name'],
+#                                                 permission_title=Permission['title'])
 #
-#         if not permission_from_db.title == permission['title']:
+#         if not permission_from_db.title == Permission['title']:
 #             return permission_service_db.update(permission_id=permission_from_db.id,
 #                                                 permission_name=permission_from_db.name,
-#                                                 permission_title=permission['title'])
+#                                                 permission_title=Permission['title'])
 #         return permission_from_db
 #
 #     # FIRST TICKET INITIALIZER
@@ -96,15 +97,15 @@ class Initializer:
 #
 #     # TICKET AND PERMISSION INITIALIZER
 #     @staticmethod
-#     def ticket_permission_initializer(ticket, permission):
-#         if not user_permission_service_db.get_by_user_id_permission_id(user_id=ticket.id, permission_id=permission.id):
-#             user_permission_service_db.create_bind(user_id=ticket.id, permission_id=permission.id)
-#             logger.info(f"user or ticket by id {ticket.id} and permission by name {permission.name} bind!")
+#     def ticket_permission_initializer(ticket, Permission):
+#         if not user_permission_service_db.get_by_user_id_permission_id(user_id=ticket.id, permission_id=Permission.id):
+#             user_permission_service_db.create_bind(user_id=ticket.id, permission_id=Permission.id)
+#             logger.info(f"User or ticket by id {ticket.id} and Permission by name {Permission.name} bind!")
 
 
 # v.0.1
 # class Initializer:
-#     role = {"name": "super_admin"}
+#     Role = {"name": "super_admin"}
 #     permissions = ["create_client", "get_client_by_id", "get_clients", "update_client", "delete_client",
 #                    "get_user_ids_by_client_id", "bind_client_user", "unbind_client_user",
 #                    "create_firm", "get_firm_by_id", "get_firms", "update_firm", "delete_firm",
@@ -118,52 +119,52 @@ class Initializer:
 #
 #     def __init__(self):
 #         # CHECK OR CREATE FIRST ROLE
-#         role = self.init_first_role(role_name=self.role["name"])
+#         Role = self.init_first_role(role_name=self.Role["name"])
 #
 #         # CHECK OR CREATE PERMISSIONS AND CHECK OR BIND ROLE PERMISSION
 #         for permission_name in self.permissions:
-#             permission = self.init_permission(permission_name=permission_name)
-#             self.init_role_permission(role_id=role.id, permission_id=permission.id)
+#             Permission = self.init_permission(permission_name=permission_name)
+#             self.init_role_permission(role_id=Role.id, permission_id=Permission.id)
 #
 #         # CHECK OR CREATE FIRST ADMIN
-#         user = self.init_first_admin()
+#         User = self.init_first_admin()
 #
 #         # CHECK OR CREATE BIND USER ROLE
-#         self.init_user_role(user_id=user.id, role_id=role.id)
+#         self.init_user_role(user_id=User.id, role_id=Role.id)
 #
 #     @staticmethod
 #     def init_first_admin():
 #         # CHECK OR CREATE FIRST ADMIN
-#         user = user_service_db.create_ticket(creator_id=None)
-#         logger.info(f"first ticket {Fore.BLUE + user.ticket + Fore.RESET} created")
-#         return user
+#         User = user_service_db.create_ticket(creator_id=None)
+#         logger.info(f"first ticket {Fore.BLUE + User.ticket + Fore.RESET} created")
+#         return User
 #
 #     @staticmethod
 #     def init_first_role(role_name):
 #         # CHECK OR CREATE FIRST ROLE
-#         role = role_service_db.get_by_name(name=role_name) or \
+#         Role = role_service_db.get_by_name(name=role_name) or \
 #                role_service_db.create(name=role_name, creator_id=None)
-#         logger.info(f"first role {role.name} created")
-#         return role
+#         logger.info(f"first Role {Role.name} created")
+#         return Role
 #
 #     @staticmethod
 #     def init_user_role(user_id, role_id):
 #         # CHECK OR CREATE USER ROLE BIND
-#         user_role = user_role_service_db.get_by_user_id_role_id(user_id=user_id, role_id=role_id) or \
+#         UserRole = user_role_service_db.get_by_user_id_role_id(user_id=user_id, role_id=role_id) or \
 #                     user_role_service_db.create_bind(user_id=user_id, role_id=role_id)
-#         return user_role
+#         return UserRole
 #
 #     @staticmethod
 #     def init_permission(permission_name):
 #         # CHECK OR CREATE PERMISSION
-#         permission = permission_service_db.get_by_name(permission_name=permission_name) or \
+#         Permission = permission_service_db.get_by_name(permission_name=permission_name) or \
 #                      permission_service_db.create(permission_name=permission_name)
-#         logger.info(f"permission {permission.name} created")
-#         return permission
+#         logger.info(f"Permission {Permission.name} created")
+#         return Permission
 #
 #     @staticmethod
 #     def init_role_permission(role_id, permission_id):
 #         # CHECK OR CREATE ROLE PERMISSION BIND
-#         role_permission = role_permission_service_db.get_by_role_id_permission_id(role_id=role_id, permission_id=permission_id) or \
+#         RolePermission = role_permission_service_db.get_by_role_id_permission_id(role_id=role_id, permission_id=permission_id) or \
 #                           role_permission_service_db.create_bind(role_id=role_id, permission_id=permission_id)
-#         return role_permission
+#         return RolePermission
