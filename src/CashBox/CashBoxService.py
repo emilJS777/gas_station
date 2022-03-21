@@ -5,24 +5,28 @@ from typing import List
 
 
 # CREATE
-def create(client_id: int) -> dict:
+def create(client_id: int, name: str, description: str) -> dict:
     client = client_service_db.get_by_id(client_id)
     if not client:
         return response(False, {'msg': 'client not found'}, 404)
 
     CashBoxServiceDb.create(
-        client_id=client.id
+        client_id=client.id,
+        name=name,
+        description=description
     )
     return response(True, {'msg': 'cash box successfully created'}, 200)
 
 
 # UPDATE
-def update(cash_box_id: int) -> dict:
+def update(cash_box_id: int, name: str, description: str) -> dict:
     if not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box and/or firm not found'}, 404)
 
     CashBoxServiceDb.update(
-        cash_box_id=cash_box_id
+        cash_box_id=cash_box_id,
+        name=name,
+        description=description
     )
     return response(True, {'msg': 'cash box successfully updated!'}, 200)
 
@@ -42,7 +46,10 @@ def get_by_id(cash_box_id: int) -> dict:
     if not cash_box:
         return response(False, {'msg': 'cash box not found'}, 404)
 
-    return response(True, {'id': cash_box.id, 'client_id': cash_box.client_id}, 200)
+    return response(True, {'id': cash_box.id,
+                           'name': cash_box.name,
+                           'description': cash_box.description,
+                           'client_id': cash_box.client_id}, 200)
 
 
 # GET ALL IDS

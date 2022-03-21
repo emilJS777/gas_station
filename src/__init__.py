@@ -15,3 +15,5 @@ from .DeviceInfo import device_info_routes
 from .DeviceSet import device_set_routes
 
 from .CashBox import CashBoxRoutes
+from .DeviceStation import DeviceStationRoutes
+from .DeviceStationData import DeviceStationDataRoutes

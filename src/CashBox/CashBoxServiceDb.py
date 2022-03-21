@@ -4,15 +4,19 @@ from flask import g
 
 
 # CREATE
-def create(client_id: int) -> CashBox:
+def create(client_id: int, name: str, description: str) -> CashBox:
     cash_box: CashBox = CashBox(client_id=client_id)
+    cash_box.name = name
+    cash_box.description = description
     cash_box.save_db()
     return cash_box
 
 
 # UPDATE
-def update(cash_box_id: int) -> CashBox:
+def update(cash_box_id: int, name: str, description: str) -> CashBox:
     cash_box: CashBox = CashBox.query.filter_by(id=cash_box_id).first()
+    cash_box.name = name
+    cash_box.description = description
     cash_box.update_db()
     return cash_box
 

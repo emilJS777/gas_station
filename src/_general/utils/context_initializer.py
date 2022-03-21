@@ -14,7 +14,8 @@ class Initializer:
                          {'name': 'firm_get', 'title': 'get Firm'}, {'name': 'firm_edit', 'title': 'redactor Firm'},
                          {'name': 'role_get', 'title': 'get roles'}, {'name': 'role_edit', 'title': 'redactor Role'},
                          {'name': 'device_get', 'title': 'get devices'}, {'name': 'device_edit', 'title': 'redactor Device'},
-                         {'name': 'cash_box_get', 'title': 'cash boxes get'}, {'name': 'cash_box_edit', 'title': 'cash boxes edit'}]
+                         {'name': 'cash_box_get', 'title': 'cash boxes get'}, {'name': 'cash_box_edit', 'title': 'cash boxes edit'},
+                         {'name': 'device_station_get', 'title': 'devices stations get'}, {'name': 'device_station_edit', 'title': 'edit devices stations'}]
     role: str = "admin"
 
     def __init__(self):

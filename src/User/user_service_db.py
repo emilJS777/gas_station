@@ -51,10 +51,7 @@ def get_by_name(name):
 
 
 def get_by_id(user_id):
-    # GET USER BY ID \ for firm_id or client_id or super admin
-    if g.firm_id:
-        user = User.query.filter_by(id=user_id, firm_id=g.firm_id).first()
-    elif g.client_id:
+    if g.client_id:
         user = User.query.filter_by(id=user_id, client_id=g.client_id).first()
     else:
         user = User.query.filter_by(id=user_id).first()

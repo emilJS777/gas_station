@@ -1,4 +1,4 @@
-from src.Firm import firm_service_db
+# from src.Firm import firm_service_db
 from . import client_service_db
 from src._response import response
 from flask import g
@@ -54,10 +54,6 @@ def client_delete(client_id):
     # GET CLIENT BY ID AND VERIFY DIES EXIST. IF NO RETURN NOT FOUND
     if not client_service_db.get_by_id_creator_id(client_id=client_id, creator_id=g.user_id):
         return response(False, {"msg": "Client by this id not found"}, 404)
-
-    # GET ALL FIRMS BY THIS CLIENT ID AND REMOVE ALL
-    for firm_id in firm_service_db.get_all_ids_by_client_id(client_id=client_id):
-        firm_service_db.delete(firm_id=firm_id, client_id=client_id)
 
     # REMOVE THIS CLIENT FROM DB
     client_service_db.delete(client_id=client_id, creator_id=g.user_id)
