@@ -38,7 +38,9 @@ def delete(device_id: int) -> DeviceStation:
 
 # GET BY ID
 def get_by_id(device_id: int) -> DeviceStation:
-    if g.client_id:
+    if g.cash_box_id:
+        device: DeviceStation = DeviceStation.query.filter_by(id=device_id, cash_box_id=g.cash_box_id).first()
+    elif g.client_id:
         device: DeviceStation = DeviceStation.query.filter_by(id=device_id, client_id=g.client_id).first()
     else:
         device: DeviceStation = DeviceStation.query.filter_by(id=device_id).first()
@@ -60,7 +62,9 @@ def get_by_key_exclude_id(device_id: int, key: str) -> DeviceStation:
 
 # GET ALL IDS
 def get_all_ids() -> List[int]:
-    if g.client_id:
+    if g.cash_box_id:
+        devices: List[DeviceStation] = DeviceStation.query.filter_by(cash_box_id=g.cash_box_id).all()
+    elif g.client_id:
         devices: List[DeviceStation] = DeviceStation.query.filter_by(client_id=g.client_id).all()
     else:
         devices: List[DeviceStation] = DeviceStation.query.all()

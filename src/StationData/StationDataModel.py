@@ -13,11 +13,12 @@ class StationData(db.Model):
     price = db.Column(db.Numeric(8, 2), nullable=True)
 
     cash_box_id = db.Column(db.Integer, nullable=False)
+    cashier_id = db.Column(db.Integer, nullable=False)
     client_id = db.Column(db.Integer, nullable=False)
 
     # CONSTRUCTOR
     def __init__(self, station_key: str, weight: float, pressure: float, temperature: float, price: float,
-                 client_id: int, cash_box_id: int):
+                 client_id: int, cash_box_id: int, cashier_id: int):
         self.station_key = station_key
 
         self.weight = weight
@@ -27,6 +28,7 @@ class StationData(db.Model):
 
         self.client_id = client_id
         self.cash_box_id = cash_box_id
+        self.cashier_id = cashier_id
 
     # SAVE DB SELF
     def save_db(self):

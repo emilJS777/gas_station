@@ -3,6 +3,7 @@ from flask import request
 from src.Auth import auth_middleware
 from src.Permission import permission_middleware
 from src.Client import client_middleware
+from src.CashBox import CashBoxMiddleware
 
 
 # CREATE
@@ -19,8 +20,9 @@ def create_station_data() -> dict:
 
 # GET BY ID
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("station_get")
+# @permission_middleware.check_permission("station_get")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 def station_data_get_by_id(device_station_data_id: int) -> dict:
     res: dict = StationDataService.get_by_id(device_station_data_id)
     return res
@@ -28,8 +30,9 @@ def station_data_get_by_id(device_station_data_id: int) -> dict:
 
 # GET ALL IDS
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("station_get")
+# @permission_middleware.check_permission("station_get")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 def station_data_get_all_ids() -> dict:
     res: dict = StationDataService.get_all_ids()
     return res

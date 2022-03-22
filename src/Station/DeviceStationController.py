@@ -5,6 +5,7 @@ from src.Auth import auth_middleware
 from src.Permission import permission_middleware
 from flask_expects_json import expects_json
 from src.Client import client_middleware
+from src.CashBox import CashBoxMiddleware
 
 
 # CREATE
@@ -52,8 +53,9 @@ def delete_device_station(device_id: int) -> dict:
 
 # GET BY ID
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("device_station_get")
+# @permission_middleware.check_permission("device_station_get")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 def device_station_get_by_id(device_id: int) -> dict:
     res: dict = DeviceStationService.get_by_id(device_id)
     return res
@@ -61,8 +63,9 @@ def device_station_get_by_id(device_id: int) -> dict:
 
 # GET ALL IDS
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("device_station_get")
+# @permission_middleware.check_permission("device_station_get")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 def device_station_get_all_ids() -> dict:
     res: dict = DeviceStationService.get_all_ids()
     return res

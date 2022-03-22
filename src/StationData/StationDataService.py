@@ -1,4 +1,5 @@
 from . import StationDataRepository
+from src.CashBoxUser import CashBoxUserRepository
 from src.Station import DeviceStationRepository
 from src._response import response
 from typing import List
@@ -10,6 +11,10 @@ def create(station_key: str, weight: float, pressure: float, temperature: float,
     if not station:
         return response(False, {'msg': 'device by this key not found'}, 404)
 
+    cashier_id: int = CashBoxUserRepository.get_by_cash_box_id(
+        cash_box_id=station.cash_box_id
+    ).user_id
+
     StationDataRepository.create(
         station_key=station_key,
         weight=weight,
@@ -17,7 +22,8 @@ def create(station_key: str, weight: float, pressure: float, temperature: float,
         temperature=temperature,
         price=price,
         client_id=station.client_id,
-        cash_box_id=station.cash_box_id
+        cash_box_id=station.cash_box_id,
+        cashier_id=cashier_id
     )
     return response(True, {'msg': 'station data successfully created'}, 200)
 
@@ -38,7 +44,8 @@ def get_by_id(station_data_id: int) -> dict:
                            'price': station_data.price,
                            'creation_date': station_data.creation_date,
                            'client_id': station_data.client_id,
-                           'cash_box_id': station_data.cash_box_id}, 200)
+                           'cash_box_id': station_data.cash_box_id,
+                           'cashier_id': station_data.cashier_id}, 200)
 
 
 # GET ALL IDS

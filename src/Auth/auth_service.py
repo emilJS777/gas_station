@@ -4,6 +4,7 @@ from flask_bcrypt import check_password_hash
 from flask import request
 from src._response import response
 from flask_jwt_extended import get_jwt_identity
+from src.CashBoxUser import CashBoxUserRepository
 
 
 def login(user_name, password):
@@ -13,6 +14,10 @@ def login(user_name, password):
     user = user_service_db.get_by_name(name=user_name)
     if not user or not check_password_hash(user.password_hash, password):
         return response(False, {'msg': 'invalid User name and/or password'}, 401)
+
+    # ID USER IS CASHIER SET DATA
+    if user.cash_box_id:
+        CashBoxUserRepository.update(cash_box_id=user.cash_box_id, user_id=user.id)
 
     # UPDATE AUTH PAIR TOKENS AND RETURN
     new_auth = auth_service_db.update_pair_tokens(user_id=user.id)

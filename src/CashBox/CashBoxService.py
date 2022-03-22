@@ -1,4 +1,5 @@
 from . import CashBoxServiceDb
+from src.CashBoxUser import CashBoxUserRepository
 from src.Client import client_service_db
 from src._response import response
 from typing import List
@@ -10,11 +11,17 @@ def create(client_id: int, name: str, description: str) -> dict:
     if not client:
         return response(False, {'msg': 'client not found'}, 404)
 
-    CashBoxServiceDb.create(
+    cash_box: CashBoxServiceDb.CashBox = CashBoxServiceDb.create(
         client_id=client.id,
         name=name,
         description=description
     )
+
+    CashBoxUserRepository.create(
+        cash_box_id=cash_box.id,
+        client_id=client.id
+    )
+
     return response(True, {'msg': 'cash box successfully created'}, 200)
 
 
@@ -37,6 +44,7 @@ def delete(cash_box_id: int) -> dict:
         return response(False, {'msg': 'cash box not found'}, 404)
 
     CashBoxServiceDb.delete(cash_box_id)
+    CashBoxUserRepository.delete(cash_box_id)
     return response(True, {'msg': 'cash box successfully deleted'}, 200)
 
 
