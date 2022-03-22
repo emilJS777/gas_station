@@ -5,7 +5,6 @@ from datetime import datetime
 class DeviceStationData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     device_station_key = db.Column(db.String(120), nullable=False)
-
     creation_date = db.Column(db.DateTime, default=datetime.utcnow())
 
     weight = db.Column(db.Numeric(8, 2), nullable=True)

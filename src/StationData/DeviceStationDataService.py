@@ -1,5 +1,5 @@
 from . import DeviceStationDataRepository
-from src.DeviceStation import DeviceStationRepository
+from src.Station import DeviceStationRepository
 from src._response import response
 from typing import List
 

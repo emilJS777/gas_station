@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes" />
+    <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationRepository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationRoutes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationValidator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataRepository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataRoutes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +50,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -49,17 +64,17 @@
   </component>
   <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="gas_station" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
