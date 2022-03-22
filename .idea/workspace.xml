@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
+      <change afterPath="$PROJECT_DIR$/.idea/gas_station.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StationData/StationDataRepository.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StationData/StationDataService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationRoutes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStation/DeviceStationValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationValidator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataRoutes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceStationData/DeviceStationDataService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/DeviceStationDataService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/099cad911c17_changes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/27e7230c452c_asdasd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/31c52868528a_asdasd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/6ab47979d5a0_sadsd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/a157b2f6fe6e_asda.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/a8a893203d81_asdasd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RolePermission/role_permission_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RolePermission/role_permission_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationData/DeviceStationDataController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationData/DeviceStationDataModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationData/DeviceStationDataRepository.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationData/DeviceStationDataRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataRoutes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StationData/DeviceStationDataService.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/user_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/user_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_service_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +74,15 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -75,6 +103,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -93,6 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646316446767</updated>
+      <workItem from="1647938109082" duration="9684000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1647005471695</created>
@@ -129,8 +159,18 @@
       <option name="project" value="LOCAL" />
       <updated>1647869663661</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="changes">
+      <created>1647937269844</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1647937269844</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -146,5 +186,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changes" />
     <option name="LAST_COMMIT_MESSAGE" value="changes" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/gas_station$app.coverage" NAME="app Coverage Results" MODIFIED="1647944051646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

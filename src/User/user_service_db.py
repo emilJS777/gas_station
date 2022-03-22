@@ -18,11 +18,12 @@ def create(ticket, name, password, first_name, last_name):
     return new_user
 
 
-def create_ticket(creator_id):
+def create_ticket(creator_id: int = None, cash_box_id: int = None):
     # CREATE NEW USER AND TICKET
-    user = User(ticket=generate_ticket_code(), creator_id=creator_id)
+    user = User(ticket=generate_ticket_code())
     user.client_id = g.client_id
-    user.firm_id = g.firm_id
+    user.cash_box_id = cash_box_id
+    user.creator_id = creator_id
     user.save_db()
     return user
 
@@ -98,9 +99,7 @@ def get_all() -> List[dict]:
     arr: List[dict] = []
     # GET ALL USER BY CLIENT ID
     # ITERATE OVER ONE AT A TIME AND INSERT THE USER OBJECT INTO THE ARRAY
-    if g.firm_id:
-        users: List[User] = User.query.filter_by(firm_id=g.firm_id).all()
-    elif g.client_id:
+    if g.client_id:
         users: List[User] = User.query.filter_by(client_id=g.client_id).all()
     else:
         users: List[User] = User.query.filter_by(creator_id=g.user_id).all()

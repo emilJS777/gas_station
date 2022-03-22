@@ -4,6 +4,7 @@ from src.Role import role_service_db
 from src.User import user_service_db
 from src.RolePermission import role_permission_service_db
 from src.UserRole import user_role_service_db
+from flask import g
 
 from typing import List
 
@@ -15,7 +16,7 @@ class Initializer:
                          {'name': 'role_get', 'title': 'get roles'}, {'name': 'role_edit', 'title': 'redactor Role'},
                          {'name': 'device_get', 'title': 'get devices'}, {'name': 'device_edit', 'title': 'redactor Device'},
                          {'name': 'cash_box_get', 'title': 'cash boxes get'}, {'name': 'cash_box_edit', 'title': 'cash boxes edit'},
-                         {'name': 'device_station_get', 'title': 'devices stations get'}, {'name': 'device_station_edit', 'title': 'edit devices stations'}]
+                         {'name': 'station_get', 'title': 'stations get'}, {'name': 'station_edit', 'title': 'edit stations'}]
     role: str = "admin"
 
     def __init__(self):
@@ -47,7 +48,7 @@ class Initializer:
 
     def init_user(self):
         if not user_service_db.get_first_by_creator_id(creator_id=None):
-            user: user_service_db.User = user_service_db.create_ticket(creator_id=None)
+            user: user_service_db.User = user_service_db.create_ticket()
             logger.info(f"first admin ticket {user.ticket}")
 
             user_role_service_db.create_bind(user_id=user.id, role_id=role_service_db.get_role_by_name(name=self.role).id)

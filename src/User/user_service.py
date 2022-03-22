@@ -1,4 +1,5 @@
 from src.ClientUser import client_user_service_db
+from src.CashBox import CashBoxServiceDb
 from . import user_service_db
 from src._response import response
 from flask import g
@@ -21,9 +22,13 @@ def create_user(ticket, user_name, password, first_name, last_name):
 
 
 # CREATE USER TICKET
-def create_user_ticket(creator_id, client_id, firm_id):
+def create_user_ticket(creator_id, client_id, cash_box_id: int):
+    # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
+    if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
+        return response(False, {'msg': 'cash box not found'}, 404)
+
     # CREATE USER AND VERIFY IF CREATOR TIED TO CLIENT means to bind the new User too
-    user = user_service_db.create_ticket(creator_id=creator_id)
+    user = user_service_db.create_ticket(creator_id=creator_id, cash_box_id=cash_box_id)
 
     # IF CLIENT ID EXIST BIND NEW USER AND CLIENT ID
     if client_id:

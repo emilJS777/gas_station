@@ -2,9 +2,9 @@ from src import db
 from datetime import datetime
 
 
-class DeviceStationData(db.Model):
+class StationData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    device_station_key = db.Column(db.String(120), nullable=False)
+    station_key = db.Column(db.String(120), nullable=False)
     creation_date = db.Column(db.DateTime, default=datetime.utcnow())
 
     weight = db.Column(db.Numeric(8, 2), nullable=True)
@@ -16,9 +16,9 @@ class DeviceStationData(db.Model):
     client_id = db.Column(db.Integer, nullable=False)
 
     # CONSTRUCTOR
-    def __init__(self, device_station_key: str, weight: float, pressure: float, temperature: float, price: float,
+    def __init__(self, station_key: str, weight: float, pressure: float, temperature: float, price: float,
                  client_id: int, cash_box_id: int):
-        self.device_station_key = device_station_key
+        self.station_key = station_key
 
         self.weight = weight
         self.pressure = pressure

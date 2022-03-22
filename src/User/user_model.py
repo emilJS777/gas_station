@@ -14,12 +14,11 @@ class User(db.Model):
     # NOT REQUIRE FIELDS
     creator_id = db.Column(db.Integer)
     client_id = db.Column(db.Integer)
-    firm_id = db.Column(db.Integer)
+    cash_box_id = db.Column(db.Integer)
 
     # CONSTRUCTOR
-    def __init__(self, ticket, creator_id):
+    def __init__(self, ticket):
         self.ticket = ticket
-        self.creator_id = creator_id
 
     # SAVE DB SELF
     def save_db(self):

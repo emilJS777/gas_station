@@ -21,7 +21,7 @@ def create_user():
 @permission_middleware.check_permission("user_edit")
 @client_middleware.check_client(required=False)
 def create_user_ticket():
-    res = user_service.create_user_ticket(creator_id=g.user_id, client_id=g.client_id, firm_id=g.firm_id)
+    res = user_service.create_user_ticket(creator_id=g.user_id, client_id=g.client_id, cash_box_id=request.args.get('cash_box_id'))
     return res
 
 
