@@ -2,7 +2,7 @@ from src import db
 from datetime import datetime
 
 
-class DeviceStation(db.Model):
+class Station(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     key = db.Column(db.String(120), nullable=False)
     name = db.Column(db.String(30), nullable=False)

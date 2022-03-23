@@ -34,3 +34,9 @@ def get_by_cash_box_id(cash_box_id: int) -> CashBoxUser:
         cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id).first()
 
     return cas_box_user
+
+
+# GET BY CASH BOX ID EXCLUDE CLIENT
+def get_by_cash_box_id_exclude_client(cash_box_id: int) -> CashBoxUser:
+    cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id).first()
+    return cas_box_user

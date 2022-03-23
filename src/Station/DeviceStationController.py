@@ -10,7 +10,7 @@ from src.CashBox import CashBoxMiddleware
 
 # CREATE
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("device_station_edit")
+@permission_middleware.check_permission("station_edit")
 @client_middleware.check_client(required=False)
 @expects_json(DeviceStationValidator.device_create_schema)
 def create_device_station() -> dict:
@@ -27,7 +27,7 @@ def create_device_station() -> dict:
 
 # UPDATE
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("device_station_edit")
+@permission_middleware.check_permission("station_edit")
 @client_middleware.check_client(required=False)
 @expects_json(DeviceStationValidator.device_update_schema)
 def update_device_station(device_id: int) -> dict:
@@ -44,7 +44,7 @@ def update_device_station(device_id: int) -> dict:
 
 # DELETE
 @auth_middleware.check_authorize
-@permission_middleware.check_permission("device_station_edit")
+@permission_middleware.check_permission("station_edit")
 @client_middleware.check_client(required=False)
 def delete_device_station(device_id: int) -> dict:
     res: dict = DeviceStationService.delete(device_id)

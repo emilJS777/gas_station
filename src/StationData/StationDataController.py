@@ -10,10 +10,10 @@ from src.CashBox import CashBoxMiddleware
 def create_station_data() -> dict:
     res: dict = StationDataService.create(
         station_key=request.args['station_key'],
-        weight=float(request.args['weight']),
-        pressure=float(request.args['pressure']),
-        price=float(request.args['price']),
-        temperature=float(request.args['temperature'])
+        weight=float(request.args.get('weight')),
+        pressure=float(request.args.get('pressure')),
+        price=float(request.args.get('price')),
+        temperature=float(request.args.get('temperature'))
     )
     return res
 
@@ -37,3 +37,12 @@ def station_data_get_all_ids() -> dict:
     res: dict = StationDataService.get_all_ids()
     return res
 
+
+# GET ALL IDS BY CASH BOX ID
+@auth_middleware.check_authorize
+@client_middleware.check_client(required=False)
+def get_all_ids_by_cash_box_id(cash_box_id: int) -> dict:
+    res: dict = StationDataService.get_all_ids_by_cash_box_id(
+        cash_box_id=cash_box_id
+    )
+    return res

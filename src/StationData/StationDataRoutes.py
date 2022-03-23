@@ -16,3 +16,8 @@ app.add_url_rule("/api/station_data/<int:device_station_data_id>",
 app.add_url_rule("/api/station_data",
                  view_func=StationDataController.station_data_get_all_ids,
                  methods=["GET"])
+
+# GET ALL IDS BY CASH BOX ID
+app.add_url_rule("/api/station_data_by_cash_box_id/<int:cash_box_id>",
+                 view_func=StationDataController.get_all_ids_by_cash_box_id,
+                 methods=["GET"])
