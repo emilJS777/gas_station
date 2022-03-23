@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Station/DeviceStationController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Station/DeviceStationModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Station/DeviceStationRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataRoutes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataService.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +93,8 @@
       <option name="presentableId" value="Default" />
       <updated>1646316446767</updated>
       <workItem from="1647938109082" duration="19538000" />
-      <workItem from="1648018334409" duration="5291000" />
+      <workItem from="1648018334409" duration="6583000" />
+      <workItem from="1648027684011" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1647005471695</created>
@@ -159,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647959877651</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="changes">
+      <created>1648024926749</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1648024926749</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
