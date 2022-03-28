@@ -6,3 +6,6 @@ app.add_url_rule("/api/login", view_func=auth_controller.login, methods=["POST"]
 
 # REFRESH TOKEN ROUTE
 app.add_url_rule("/api/refresh", view_func=auth_controller.refresh_token, methods=["PUT"])
+
+# GET PROFILE
+app.add_url_rule("/api/profile", view_func=auth_controller.get_profile, methods=["GET"])

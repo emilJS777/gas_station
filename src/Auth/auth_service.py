@@ -1,10 +1,13 @@
 from src.User import user_service_db
+from src.UserRole import user_role_service_db
+from src.Role import role_service_db
 from . import auth_service_db
 from flask_bcrypt import check_password_hash
-from flask import request
+from flask import request, g
 from src._response import response
 from flask_jwt_extended import get_jwt_identity
 from src.CashBoxUser import CashBoxUserRepository
+from typing import List
 
 
 def login(user_name, password):
@@ -36,3 +39,16 @@ def refresh_token():
 
     # IF DO NOT MATCH RETURN WITHOUT SUCCESS
     return response(False, {'msg': 'invalid refresh token'}, 401)
+
+
+def get_profile() -> dict:
+    user: user_service_db.User = user_service_db.get_by_id(user_id=g.user_id)
+
+    role_ids: List[int] = user_role_service_db.get_role_ids_by_user_id(user_id=g.user_id)
+    roles: List[dict] = []
+
+    for role_id in role_ids:
+        role = role_service_db.get_role_by_id(role_id)
+        roles.append({'name': role.name})
+
+    return response(True, {'name': user.name, 'first_name': user.first_name, 'last_name': user.last_name, 'roles': roles}, 200)
