@@ -15,8 +15,8 @@ def create_device() -> dict:
         key=req['key'],
         name=req['name'],
         description=req['description'],
-        client_id=req['client_id'],
-        cash_box_id=req['cash_box_id'])
+        error_after_minutes=req['error_after_minutes'],
+        client_id=req['client_id'])
     return res
 
 
@@ -30,8 +30,8 @@ def update_device(device_id: int) -> dict:
         key=req['key'],
         name=req['name'],
         description=req['description'],
-        parent_key=req['parent_key'],
-        cash_box_id=req['cash_box_id']
+        error_after_minutes=req['error_after_minutes'],
+        parent_key=req['parent_key']
     )
     return res
 

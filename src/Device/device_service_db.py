@@ -4,20 +4,26 @@ from typing import List
 from datetime import datetime
 
 
-def create_device(key: str, name: str, description: str, client_id: int, cash_box_id: int) -> Device:
-    device: Device = Device(key=key, name=name, client_id=client_id, description=description, cash_box_id=cash_box_id)
+def create_device(key: str, name: str, description: str, error_after_minutes: int, client_id: int) -> Device:
+    device: Device = Device(
+        key=key,
+        name=name,
+        error_after_minutes=error_after_minutes,
+        client_id=client_id,
+        description=description
+    )
     device.save_db()
     return device
 
 
-def update_device(device_id: int, key: str, name: str, description: str, parent_key: str, cash_box_id: int) -> Device:
+def update_device(device_id: int, key: str, name: str, description: str, error_after_minutes: int, parent_key: str) -> Device:
     device: Device = Device.query.filter_by(id=device_id).first()
     device.key = key
     device.name = name
+    device.error_after_minutes = error_after_minutes
     device.description = description
     device.parent_key = parent_key
     device.last_update = datetime.utcnow()
-    device.cash_box_id = cash_box_id
     device.update_db()
     return device
 

@@ -8,18 +8,18 @@ class Device(db.Model):
     name = db.Column(db.String(30), nullable=False)
     description = db.Column(db.String(120), nullable=True)
     parent_key = db.Column(db.String(120))
+    error_after_minutes = db.Column(db.Integer, default=10)
     last_update = db.Column(db.DateTime, default=datetime.utcnow())
 
     client_id = db.Column(db.Integer, nullable=False)
-    cash_box_id = db.Column(db.Integer, nullable=False)
 
     # CONSTRUCTOR
-    def __init__(self, key: str, name: str, description: str, client_id: int, cash_box_id: int):
+    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, client_id: int):
         self.key = key
         self.name = name
         self.description = description
+        self.error_after_minutes = error_after_minutes
         self.client_id = client_id
-        self.cash_box_id = cash_box_id
 
     # SAVE DB SELF
     def save_db(self):
