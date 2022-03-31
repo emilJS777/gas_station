@@ -61,3 +61,4 @@ def get_device_ids():
         devices_ids.append(device.id)
 
     return devices_ids
+

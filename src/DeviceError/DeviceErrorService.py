@@ -1,6 +1,14 @@
 from datetime import datetime, timedelta
 from typing import List
 from . import DeviceErrorServiceDb
+from src.Device import device_service_db
+from src._response import response
+
+
+# GET ALL DEVICE ERROR LIST
+def get_all() -> dict:
+    devices_error_list: List[dict] = DeviceErrorServiceDb.get_all()
+    return response(True, devices_error_list, 200)
 
 
 def check_device_null_error(req_params):
@@ -28,8 +36,11 @@ def check_device_null_error(req_params):
 
         # IF NOT DEVICE ERROR CONFIRMED AND DEVICE ERROR CREATION DATE < THIS DATE + CREATED
         # MINUTES UPDATE THIS ERROR CONFIRMED TRUE
-        if not device_error.confirmed and datetime.utcnow() > device_error.creation_date + timedelta(minutes=2):
+        if not device_error.confirmed and datetime.utcnow() > device_error.creation_date + \
+                timedelta(minutes=device_service_db.get_device_by_key(req_params.get("device_key")).error_after_minutes):
+
             DeviceErrorServiceDb.update(
                 device_key=req_params.get("device_key"),
-                confirmed=True
+                error_type=0,
+                confirmed=True,
             )

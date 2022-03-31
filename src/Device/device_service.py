@@ -11,7 +11,7 @@ from typing import List
 def create_device(key: str, name: str, description: str, error_after_minutes: int, client_id: int) -> dict:
     # GET CLIENT AND CASH BOX IF NOT FOUND RETURN NOT FOUND
     if not client_service_db.get_by_id(client_id=client_id):
-        return response(False, {'msg': 'client and/or cash box not found'}, 404)
+        return response(False, {'msg': 'client not found'}, 404)
 
     if device_service_db.get_device_by_key(key=key):
         return response(False, {'msg': 'Device by this key exist'}, 409)
@@ -77,4 +77,5 @@ def get_device_by_id(device_id: int) -> dict:
 
     return response(True, {'id': device.id, 'key': device.key, 'name': device.name,
                            'description': device.description, 'client_id': device.client_id,
-                           'parent_key': device.parent_key, 'last_update': device.last_update}, 200)
+                           'parent_key': device.parent_key, 'last_update': device.last_update,
+                           'error_after_minutes': device.error_after_minutes}, 200)

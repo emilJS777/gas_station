@@ -1,10 +1,10 @@
 from . import device_info_service_db
 from src._response import response
+from threading import Thread
 
 
 # UPDATE
 def update(device_info_body: dict) -> dict:
-    print(type(device_info_body))
     if not device_info_service_db.get_device_info_by_key(device_key=device_info_body['device_key']):
         return response(False, {'msg': 'Device info not found'}, 404)
 

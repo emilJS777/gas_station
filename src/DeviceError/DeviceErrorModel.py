@@ -6,13 +6,15 @@ class DeviceError(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     device_key = db.Column(db.String(120), unique=True)
     creation_date = db.Column(db.DateTime, default=datetime.utcnow())
+    last_update_info = db.Column(db.DateTime, nullable=True)
     error_type = db.Column(db.Integer, nullable=False)
     confirmed = db.Column(db.Boolean, default=False)
 
     # CONSTRUCTOR
-    def __init__(self, device_key: str, error_type: int):
+    def __init__(self, device_key: str, error_type: int, confirmed: bool):
         self.device_key = device_key
         self.error_type = error_type
+        self.confirmed = confirmed
 
     # SAVE DB SELF
     def save_db(self):
