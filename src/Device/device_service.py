@@ -8,7 +8,7 @@ from typing import List
 
 
 # CREATE DEVICE
-def create_device(key: str, name: str, description: str, error_after_minutes: int, client_id: int) -> dict:
+def create_device(key: str, name: str, description: str, error_after_minutes: int, parent_key: str, client_id: int) -> dict:
     # GET CLIENT AND CASH BOX IF NOT FOUND RETURN NOT FOUND
     if not client_service_db.get_by_id(client_id=client_id):
         return response(False, {'msg': 'client not found'}, 404)
@@ -22,6 +22,7 @@ def create_device(key: str, name: str, description: str, error_after_minutes: in
         name=name,
         description=description,
         error_after_minutes=error_after_minutes,
+        parent_key=parent_key,
         client_id=client_id
     )
     device_info_service_db.create(device_key=device.key)

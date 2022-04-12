@@ -16,6 +16,7 @@ def create_device() -> dict:
         name=req['name'],
         description=req['description'],
         error_after_minutes=req['error_after_minutes'],
+        parent_key=req['parent_key'],
         client_id=req['client_id'])
     return res
 

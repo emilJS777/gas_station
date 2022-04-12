@@ -14,11 +14,12 @@ class Device(db.Model):
     client_id = db.Column(db.Integer, nullable=False)
 
     # CONSTRUCTOR
-    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, client_id: int):
+    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, parent_key: str, client_id: int):
         self.key = key
         self.name = name
         self.description = description
         self.error_after_minutes = error_after_minutes
+        self.parent_key = parent_key
         self.client_id = client_id
 
     # SAVE DB SELF
