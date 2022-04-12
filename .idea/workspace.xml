@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
-      <change afterPath="$PROJECT_DIR$/src/DeviceError/DeviceErrorRoutes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Device/device_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device/device_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Device/device_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device/device_service_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceError/DeviceErrorController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceError/DeviceErrorController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceError/DeviceErrorModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceError/DeviceErrorModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceError/DeviceErrorService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceError/DeviceErrorService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceError/DeviceErrorServiceDb.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceError/DeviceErrorServiceDb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceInfo/device_info_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceInfo/device_info_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +108,11 @@
       <workItem from="1648476064309" duration="626000" />
       <workItem from="1648550001720" duration="19988000" />
       <workItem from="1648622587817" duration="33805000" />
-      <workItem from="1648708570801" duration="26051000" />
+      <workItem from="1648708570801" duration="26486000" />
+      <workItem from="1648817086825" duration="189000" />
+      <workItem from="1648822564733" duration="9000" />
+      <workItem from="1649416895959" duration="73000" />
+      <workItem from="1649759737567" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1647005471695</created>
@@ -219,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648630776344</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="changes">
+      <created>1648736215536</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1648736215536</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
