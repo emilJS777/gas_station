@@ -3,7 +3,7 @@ from . import device_info_controller
 
 
 # UPDATE DEVICE INFO
-app.add_url_rule("/api/SetData",
+app.add_url_rule("/SetData",
                  view_func=device_info_controller.update_device_info,
                  methods=["GET"])
 

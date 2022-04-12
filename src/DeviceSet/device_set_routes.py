@@ -6,4 +6,4 @@ from . import device_set_controller
 app.add_url_rule("/api/device_set", view_func=device_set_controller.update_device_set, methods=["GET"])
 
 # GET DEVICE SET
-app.add_url_rule("/api/GetSettings/<string:device_key>", view_func=device_set_controller.get_device_set, methods=["GET"])
+app.add_url_rule("/GetSettings/<string:device_key>", view_func=device_set_controller.get_device_set, methods=["GET"])
