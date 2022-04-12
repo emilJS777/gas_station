@@ -22,6 +22,7 @@ class DeviceInfo(db.Model):
     press_pastaci = db.Column(db.Numeric(8, 2))
     press_gorcakic = db.Column(db.Numeric(8, 2))
     today = db.Column(db.Numeric(8, 2))
+    yesterday = db.Column(db.Numeric(8, 2))
     monthly = db.Column(db.Numeric(8, 2))
 
     # CONSTRUCTOR

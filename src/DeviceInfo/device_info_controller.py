@@ -4,8 +4,9 @@ from src.DeviceError import DeviceErrorService
 
 
 def update_device_info() -> dict:
-    res = device_info_service.update(device_info_body=request.args)
-    DeviceErrorService.check_device_null_error(request.args)
+    res = device_info_service.update(device_key=request.args["id"], device_info_body=request.args["data"])
+    # print(request.args['flowauto'])
+    DeviceErrorService.check_device_null_error(request.args["id"], request.args["data"])
     return res
 
 

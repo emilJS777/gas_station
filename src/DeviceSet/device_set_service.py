@@ -15,14 +15,17 @@ def get_device_set(device_key: str) -> dict:
     if not device_set:
         return response(False, {'msg': 'Device set not found'}, 404)
 
-    return response(True, {'device_key': device_set.device_key,
-                           'last_update': device_set.last_update,
+    return response(True, {'id': device_set.device_key,
+                           'date': device_set.last_update,
 
-                           'flow_hanac_set': device_set.flow_hanac_set,
-                           'press_gorcakic_set': device_set.press_gorcakic_set,
-                           'k_gorcakic_set': device_set.k_gorcakic_set,
-                           'dp_gorcakic_set': device_set.dp_gorcakic_set,
-                           'flow_max_set': device_set.flow_max_set,
-                           'flow_proc_set': device_set.flow_proc_set}, 200)
+                           'flowhanac': device_set.flow_hanac_set,
+                           'pressgorcakic': device_set.press_gorcakic_set,
+                           'kgorcakic': device_set.k_gorcakic_set,
+                           'dpgorcakic': device_set.dp_gorcakic_set,
+                           'flowmax': device_set.flow_max_set,
+                           'flowproc': device_set.flow_proc_set,
+                           'onoff': device_set.onoff,
+                           'flowAutoOnOff': device_set.flow_auto_on_off,
+                           'masterFlowAuto': device_set.master_flow_auto}, 200)
 
 

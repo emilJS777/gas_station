@@ -7,12 +7,17 @@ class DeviceSet(db.Model):
     device_key = db.Column(db.String(120), nullable=False)
     last_update = db.Column(db.DateTime, default=datetime.utcnow())
 
+    flow_auto_set = db.Column(db.Numeric(8, 2))
     flow_hanac_set = db.Column(db.Numeric(8, 2))
     press_gorcakic_set = db.Column(db.Numeric(8, 2))
     k_gorcakic_set = db.Column(db.Numeric(8, 2))
     dp_gorcakic_set = db.Column(db.Numeric(8, 2))
     flow_max_set = db.Column(db.Numeric(8, 2))
     flow_proc_set = db.Column(db.Numeric(8, 2))
+
+    onoff = db.Column(db.Boolean)
+    flow_auto_on_off = db.Column(db.Numeric(8, 2))
+    master_flow_auto = db.Column(db.Numeric(8, 2))
 
     # CONSTRUCTOR
     def __init__(self, device_key: str):
