@@ -11,27 +11,27 @@ class DeviceInfo(db.Model):
     device_key = db.Column(db.String(120), nullable=False)
     last_update = db.Column(db.DateTime, default=datetime.utcnow())
 
-    # flow_auto = db.Column(db.Numeric(8, 1))
-    # dp_pastaci = db.Column(db.Numeric(8, 1))
-    # dp_drac = db.Column(db.Numeric(8, 1))
-    # dp_gorcakic = db.Column(db.Numeric(8, 4))
-    #
-    # flow_past = db.Column(db.Numeric(8, 1))
-    # flow_sarqac = db.Column(db.Numeric(8, 1))
-    # flow_hanac = db.Column(db.Numeric(8, 2))
-    # signal = db.Column(db.Numeric(8, 0))
-    #
-    # k_gorcakic = db.Column(db.Numeric(8, 4))
-    # self_on_off = db.Column(db.Numeric(8, 0))
-    # flow_max = db.Column(db.Numeric(8, 1))
-    # flow_proc = db.Column(db.Integer)
-    # onoff = db.Column(db.Numeric(10, 0))
-    #
-    # press_pastaci = db.Column(db.Numeric(8, 1))
-    # press_gorcakic = db.Column(db.Numeric(8, 4))
-    # today = db.Column(db.Numeric(8, 2))
-    # yesterday = db.Column(db.Numeric(8, 2))
-    # monthly = db.Column(db.Numeric(8, 4))
+    flow_auto = db.Column(db.Numeric(8, 1))
+    dp_pastaci = db.Column(db.Numeric(8, 1))
+    dp_drac = db.Column(db.Numeric(8, 1))
+    dp_gorcakic = db.Column(db.Numeric(8, 4))
+
+    flow_past = db.Column(db.Numeric(8, 1))
+    flow_sarqac = db.Column(db.Numeric(8, 1))
+    flow_hanac = db.Column(db.Numeric(8, 2))
+    signal = db.Column(db.Numeric(8, 0))
+
+    k_gorcakic = db.Column(db.Numeric(8, 4))
+    self_on_off = db.Column(db.Numeric(8, 0))
+    flow_max = db.Column(db.Numeric(8, 1))
+    flow_proc = db.Column(db.Integer)
+    onoff = db.Column(db.Numeric(10, 0))
+
+    press_pastaci = db.Column(db.Numeric(8, 1))
+    press_gorcakic = db.Column(db.Numeric(8, 4))
+    today = db.Column(db.Numeric(8, 2))
+    yesterday = db.Column(db.Numeric(8, 2))
+    monthly = db.Column(db.Numeric(8, 4))
 
     # CONSTRUCTOR
     def __init__(self, device_key: str):
