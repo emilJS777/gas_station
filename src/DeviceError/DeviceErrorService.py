@@ -22,8 +22,8 @@ def check_device_null_error(device_key, req_params):
             error = False
 
             # IF ERROR EXIST BY THIS DEVICE KEY, DELETE HIM FROM DB
-            if DeviceErrorServiceDb.get_by_key(req_params.get(device_key)):
-                DeviceErrorServiceDb.delete(req_params.get(device_key))
+            if DeviceErrorServiceDb.get_by_key(device_key):
+                DeviceErrorServiceDb.delete(device_key)
 
             # EXIT FROM THIS CYCLE
             break

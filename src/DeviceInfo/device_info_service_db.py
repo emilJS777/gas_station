@@ -20,11 +20,13 @@ def update(device_key, device_info_body) -> DeviceInfo:
     device_info.flow_sarqac = device_info_body['flowsarqac']
     device_info.flow_hanac = device_info_body['flowhanac']
     device_info.k_gorcakic = device_info_body['kgorcakic']
+    device_info.signal = device_info_body['signal']
 
     device_info.self_on_off = device_info_body['selfonoff']
     device_info.flow_max = device_info_body['flowmax']
     device_info.flow_proc = device_info_body['flowproc']
     device_info.press_pastaci = device_info_body['presspastaci']
+    device_info.onoff = device_info_body['onoff']
 
     device_info.press_gorcakic = device_info_body['pressgorcakic']
     device_info.today = device_info_body['today']

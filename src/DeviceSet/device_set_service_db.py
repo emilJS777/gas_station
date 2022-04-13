@@ -10,7 +10,7 @@ def create(device_key: str) -> DeviceSet:
 
 def update(device_set_body: dict) -> dict:
     device_set: DeviceSet = DeviceSet.query.filter_by(device_key=device_set_body['device_key']).first()
-
+    print(device_set_body['press_gorcakic_set'])
     device_set.flow_auto_set = device_set_body['flow_auto_set']
     device_set.flow_hanac_set = device_set_body['flow_hanac_set']
     device_set.press_gorcakic_set = device_set_body['press_gorcakic_set']

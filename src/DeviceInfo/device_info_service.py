@@ -36,6 +36,9 @@ def get_device_info(device_key: str) -> dict:
                            'press_pastaci': device_info.press_pastaci,
                            'pressgorcakic': device_info.press_gorcakic,
                            'today': device_info.today,
+                           'yesterday': device_info.yesterday,
+                           'signal': device_info.signal,
+                           'onoff': device_info.onoff
                            # 'monthly': device_info.monthly
                            }, 200)
 #
