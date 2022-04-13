@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
-      <change afterPath="$PROJECT_DIR$/migrations/versions/0363f12e979d_asd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/2536a9caae8d_asfsgf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/2c20a9e8028c_df1121.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/3ce6382afdff_fsdf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/4dcf3123ff05_asdasdv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/50dd540e0a5b_asdasd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/634aca47dd33_asdsvdsfs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/6cbbe562d1ee_df.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/979504c7175e_fsdg.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/b35060a19a28_fdsg.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/b53534a68ad7_df112.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/cc22036d5769_df1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/e07157472367_df1121.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/versions/ec124ac969ff_asf32e.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceError/DeviceErrorService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceError/DeviceErrorService.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DeviceInfo/device_info_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceInfo/device_info_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceInfo/device_info_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceInfo/device_info_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceInfo/device_info_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceInfo/device_info_service_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DeviceSet/device_set_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceSet/device_set_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeviceSet/device_set_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceSet/device_set_service_db.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +125,7 @@
       <workItem from="1648817086825" duration="189000" />
       <workItem from="1648822564733" duration="9000" />
       <workItem from="1649416895959" duration="73000" />
-      <workItem from="1649759737567" duration="24746000" />
+      <workItem from="1649759737567" duration="24809000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1647005471695</created>
@@ -293,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649775293594</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="changes">
+      <created>1649849382723</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649849382723</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
