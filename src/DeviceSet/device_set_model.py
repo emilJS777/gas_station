@@ -16,17 +16,17 @@ class DeviceSet(db.Model):
     device_key = db.Column(db.String(120), nullable=False)
     last_update = db.Column(db.DateTime, default=datetime.utcnow())
 
-    flow_auto_set = db.Column(db.Numeric(8, 0))
-    flow_hanac_set = db.Column(db.Numeric(8, 0))
-    press_gorcakic_set = db.Column(db.Numeric(8, 4))
-    k_gorcakic_set = db.Column(db.Numeric(8, 2))
-    dp_gorcakic_set = db.Column(db.Numeric(8, 4))
-    flow_max_set = db.Column(db.Numeric(8, 1))
-    flow_proc_set = db.Column(db.Numeric(8, 0))
-
-    onoff = db.Column(db.Boolean)
-    flow_auto_on_off = db.Column(db.Numeric(8, 4))
-    master_flow_auto = db.Column(db.Numeric(8, 4))
+    # flow_auto_set = db.Column(db.Numeric(8, 0))
+    # flow_hanac_set = db.Column(db.Numeric(8, 0))
+    # press_gorcakic_set = db.Column(db.Numeric(8, 4))
+    # k_gorcakic_set = db.Column(db.Numeric(8, 2))
+    # dp_gorcakic_set = db.Column(db.Numeric(8, 4))
+    # flow_max_set = db.Column(db.Numeric(8, 1))
+    # flow_proc_set = db.Column(db.Numeric(8, 0))
+    #
+    # onoff = db.Column(db.Boolean)
+    # flow_auto_on_off = db.Column(db.Numeric(8, 4))
+    # master_flow_auto = db.Column(db.Numeric(8, 4))
 
     # CONSTRUCTOR
     def __init__(self, device_key: str):
