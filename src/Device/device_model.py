@@ -14,7 +14,7 @@ class Device(db.Model):
     client_id = db.Column(db.Integer, nullable=False)
 
     # CONSTRUCTOR
-    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, parent_key: str, client_id: int):
+    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int):
         self.key = key
         self.name = name
         self.description = description

@@ -4,7 +4,7 @@ from typing import List
 from datetime import datetime
 
 
-def create_device(key: str, name: str, description: str, error_after_minutes: int, parent_key: str, client_id: int) -> Device:
+def create_device(key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int) -> Device:
     device: Device = Device(
         key=key,
         name=name,
