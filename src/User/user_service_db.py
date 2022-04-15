@@ -21,7 +21,7 @@ def create(ticket, name, password, first_name, last_name):
 def create_ticket(creator_id: int = None, cash_box_id: int = None):
     # CREATE NEW USER AND TICKET
     user = User(ticket=generate_ticket_code())
-    # user.client_id = g.client_id
+    user.client_id = g.client_id
     user.cash_box_id = cash_box_id
     user.creator_id = creator_id
     user.save_db()
