@@ -6,22 +6,22 @@ from sqlalchemy import or_, and_
 from typing import List
 
 
-def create(ticket, name, password, first_name, last_name):
+def create(ticket, name, password):
     # CREATE AND RETURN NEW USER
     new_user = User.query.filter_by(ticket=ticket).first()
     new_user.name = name
     new_user.password_hash = generate_password_hash(password)
-    new_user.first_name = first_name
-    new_user.last_name = last_name
     new_user.ticket = None
     new_user.update_db()
     return new_user
 
 
-def create_ticket(creator_id: int = None, cash_box_id: int = None):
+def create_ticket(creator_id: int = None, first_name: str = None, last_name: str = None, cash_box_id: int = None, client_id: int = None):
     # CREATE NEW USER AND TICKET
     user = User(ticket=generate_ticket_code())
-    user.client_id = g.client_id
+    user.client_id = client_id if client_id else g.client_id
+    user.first_name = first_name
+    user.last_name = last_name
     user.cash_box_id = cash_box_id
     user.creator_id = creator_id
     user.save_db()

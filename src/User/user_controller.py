@@ -11,8 +11,11 @@ from src.Client import client_middleware
 @expects_json(user_validator.user_schema)
 def create_user():
     req = request.get_json()
-    res = user_service.create_user(ticket=req['ticket'], user_name=req['name'], password=req['password'],
-                                   first_name=req["first_name"], last_name=req["last_name"])
+    res = user_service.create_user(
+        ticket=req['ticket'],
+        user_name=req['name'],
+        password=req['password']
+    )
     return res
 
 
@@ -20,10 +23,14 @@ def create_user():
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("user_edit")
 @client_middleware.check_client(required=False)
+@expects_json(user_validator.user_ticket_schema)
 def create_user_ticket():
+    req: dict = request.get_json()
     res = user_service.create_user_ticket(creator_id=g.user_id,
                                           client_id=g.client_id,
-                                          cash_box_id=int(request.args.get('cash_box_id')))
+                                          first_name=req['first_name'],
+                                          last_name=req['last_name'],
+                                          cash_box_id=req['cash_box_id'])
     return res
 
 

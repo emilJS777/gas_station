@@ -28,11 +28,7 @@ def update(cash_box_id: int, user_id: int) -> CashBoxUser:
 
 # GET BY CASH BOX ID
 def get_by_cash_box_id(cash_box_id: int) -> CashBoxUser:
-    if g.client_id:
-        cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id, client_id=g.client_id).first()
-    else:
-        cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id).first()
-
+    cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id, client_id=g.client_id).first()
     return cas_box_user
 
 

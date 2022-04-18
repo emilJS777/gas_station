@@ -55,3 +55,7 @@ def get_by_creator_id_name_exclude_id(client_id, creator_id, name):
     # GET CLIENT BY CREATOR ID, NAME, AND EXCLUDE CLIENT ID
     client = Client.query.filter(Client.id != client_id, creator_id == creator_id, Client.name == name).first()
     return client
+
+
+def get_first() -> Client:
+    return Client.query.first()

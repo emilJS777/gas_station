@@ -6,7 +6,7 @@ from flask import g
 
 
 # CREATE NEW USER
-def create_user(ticket, user_name, password, first_name, last_name):
+def create_user(ticket: str, user_name: str, password: str):
     # IF TICKET NOT FOUND RETURN NOT FOUND
     if not user_service_db.get_by_ticket(ticket=ticket):
         return response(False, {'msg': 'ticket not found'}, 404)
@@ -16,19 +16,25 @@ def create_user(ticket, user_name, password, first_name, last_name):
         return response(False, {'msg': 'User name is taken'}, 409)
 
     # ELSE USER BY THIS NAME SAVE
-    new_user = user_service_db.create(ticket=ticket, name=user_name, password=password,
-                                      first_name=first_name, last_name=last_name)
+    new_user = user_service_db.create(
+        ticket=ticket,
+        name=user_name,
+        password=password,
+    )
     return response(True, {'msg': 'new User by id {} successfully created'.format(new_user.id)}, 200)
 
 
 # CREATE USER TICKET
-def create_user_ticket(creator_id, client_id, cash_box_id: int):
+def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, cash_box_id: int):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box not found'}, 404)
 
     # CREATE USER AND VERIFY IF CREATOR TIED TO CLIENT means to bind the new User too
-    user = user_service_db.create_ticket(creator_id=creator_id, cash_box_id=cash_box_id)
+    user = user_service_db.create_ticket(creator_id=creator_id,
+                                         first_name=first_name,
+                                         last_name=last_name,
+                                         cash_box_id=cash_box_id)
 
     # IF CLIENT ID EXIST BIND NEW USER AND CLIENT ID
     if client_id:

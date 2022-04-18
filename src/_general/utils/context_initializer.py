@@ -11,6 +11,8 @@ from src.DeviceInfo.device_info_model import DeviceInfo
 from src.DeviceError import DeviceErrorServiceDb
 from datetime import datetime, timedelta
 from sqlalchemy import create_engine
+from src.Client import client_service_db
+from src.ClientUser import client_user_service_db
 
 from sqlalchemy import text, select
 from src import app
@@ -74,7 +76,8 @@ class Initializer:
         self.init_permission()
         self.init_role()
         self.init_role_permission()
-        self.init_user()
+        client: client_service_db.Client = self.init_client()
+        self.init_user(client=client)
 
     def init_permission(self):
         for permission in self.permissions:
@@ -97,12 +100,24 @@ class Initializer:
                 role_permission_service_db.create_bind(role_id=role_db.id, permission_id=permission_db.id)
                 logger.info(f"Role {role_db.name} and permission {permission_db.name} bind")
 
-    def init_user(self):
+    def init_client(self):
+        if not client_service_db.get_first():
+            return client_service_db.create(
+                client_name="admin",
+                client_description="admin",
+                creator_id=None
+            )
+        return client_service_db.get_first()
+
+    def init_user(self, client):
         if not user_service_db.get_first_by_creator_id(creator_id=None):
-            user: user_service_db.User = user_service_db.create_ticket()
+            user: user_service_db.User = user_service_db.create_ticket(client_id=client.id)
             logger.info(f"first admin ticket {user.ticket}")
 
             user_role_service_db.create_bind(user_id=user.id, role_id=role_service_db.get_role_by_name(name=self.role).id)
+
+
+
 
 
 

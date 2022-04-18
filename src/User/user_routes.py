@@ -11,7 +11,7 @@ app.add_url_rule("/api/user/<int:user_id>", view_func=user_controller.user_get_b
 app.add_url_rule("/api/user", view_func=user_controller.create_user, methods=["POST"])
 
 # CREATE USER TICKET
-app.add_url_rule("/api/user/ticket", view_func=user_controller.create_user_ticket, methods=["GET"])
+app.add_url_rule("/api/user/ticket", view_func=user_controller.create_user_ticket, methods=["POST"])
 
 # PUT USER
 app.add_url_rule("/api/user", view_func=user_controller.user_update, methods=["PUT"])
