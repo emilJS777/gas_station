@@ -111,7 +111,7 @@ class Initializer:
 
     def init_user(self, client):
         if not user_service_db.get_first_by_creator_id(creator_id=None):
-            user: user_service_db.User = user_service_db.create_ticket(client_id=client.id)
+            user: user_service_db.User = user_service_db.create_ticket(client_id=client.id, first_name="Admin", last_name="Admin")
             logger.info(f"first admin ticket {user.ticket}")
 
             user_role_service_db.create_bind(user_id=user.id, role_id=role_service_db.get_role_by_name(name=self.role).id)
