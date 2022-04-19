@@ -18,10 +18,10 @@ def check_authorize(f):
 
         # FIND USER AUTH FROM DB & CHECK IS A ACCESS_TOKEN. IF TOKENS MATCH, ASSIGN g.user_id user_id
         user_auth: Auth = auth_service_db.get_by_user_id(user_id=get_jwt_identity())
+
         if user_auth.access_token == request.headers['authorization'].split(' ')[1]:
-            
             # CHECK USER ON DB
-            if user_service_db.get_by_id(user_id=get_jwt_identity()):
+            if user_service_db.User.query.filter_by(id=get_jwt_identity()).first():
                 g.user_id = get_jwt_identity()
                 return f(*args, **kwargs)
 

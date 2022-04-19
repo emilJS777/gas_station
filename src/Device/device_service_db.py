@@ -2,6 +2,7 @@ from . device_model import Device
 from flask import g
 from typing import List
 from datetime import datetime
+from src.Client import client_service_db
 
 
 def create_device(key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int) -> Device:
@@ -36,9 +37,7 @@ def delete_device(device_id: int):
 
 
 def get_device_by_id(device_id: int) -> Device:
-    device: Device = Device.query.filter_by(id=device_id, client_id=g.client_id).first() \
-        if g.client_id else \
-        Device.query.filter_by(id=device_id).first()
+    device: Device = Device.query.filter_by(id=device_id, client_id=g.client_id).first()
     return device
 
 
@@ -53,9 +52,8 @@ def get_by_key_exclude_id(device_id, key):
 
 
 def get_device_ids():
-    devices: List[Device] = Device.query.filter_by(client_id=g.client_id).all()\
-        if g.client_id else \
-        Device.query.all()
+    devices: List[Device] = Device.query.filter_by(client_id=g.client_id).all()
+
     devices_ids: List[int] = []
 
     for device in devices:

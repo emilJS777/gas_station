@@ -52,11 +52,12 @@ def get_by_name(name):
 
 
 def get_by_id(user_id):
-    if g.client_id:
-        user = User.query.filter_by(id=user_id, client_id=g.client_id).first()
-    else:
-        user = User.query.filter_by(id=user_id).first()
+    user = User.query.filter_by(id=user_id, client_id=g.client_id).first()
+    return user
 
+
+def get_by_id_cash_box_id(user_id: int, cash_box_id: int) -> User:
+    user = User.query.filter_by(id=user_id, cash_box_id=cash_box_id, client_id=g.client_id)
     return user
 
 
@@ -93,6 +94,17 @@ def get_first_by_creator_id(creator_id):
 #         arr.append({'id': User.id, 'name': User.name})
 #
 #     return arr
+
+def get_all_by_cash_box_id(cash_box_id: int) -> List[dict]:
+    arr: List[dict] = []
+    # GET ALL USER BY CLIENT ID
+    # ITERATE OVER ONE AT A TIME AND INSERT THE USER OBJECT INTO THE ARRAY
+    users: List[User] = User.query.filter_by(cash_box_id=cash_box_id, client_id=g.client_id).all()
+
+    for user in users:
+        arr.append({'id': user.id, 'name': user.name})
+
+    return arr
 
 
 def get_all() -> List[dict]:

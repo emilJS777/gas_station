@@ -21,14 +21,35 @@ def delete(cash_box_id: int) -> CashBoxUser:
 def update(cash_box_id: int, user_id: int) -> CashBoxUser:
     cash_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id).first()
     cash_box_user.user_id = user_id
+    cash_box_user.next_user_id = None
     cash_box_user.last_update = datetime.utcnow()
     cash_box_user.update_db()
     return cash_box_user
 
 
+# REQUEST FOR UPDATE
+def request_update(user_id: int, next_user_id: int, cash_box_id: int) -> CashBoxUser:
+    cash_box_user: CashBoxUser = CashBoxUser.query.filter_by(
+        cash_box_id=cash_box_id,
+        user_id=user_id,
+        client_id=g.client_id).first()
+    cash_box_user.next_user_id = next_user_id
+    cash_box_user.update_db()
+    return cash_box_user
+
+
+# GET BY NEXT USER ID
+def get_by_next_user_id(next_user_id: int, cash_box_id: int) -> CashBoxUser:
+    cash_box_user: CashBoxUser = CashBoxUser.query.filter_by(
+        next_user_id=next_user_id,
+        cash_box_id=cash_box_id).first()
+    return cash_box_user
+
+
 # GET BY CASH BOX ID
-def get_by_cash_box_id(cash_box_id: int) -> CashBoxUser:
-    cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id, client_id=g.client_id).first()
+def get_by_cash_box_id(cash_box_id: int, client_id: int = None) -> CashBoxUser:
+    client_id = client_id or g.client_id
+    cas_box_user: CashBoxUser = CashBoxUser.query.filter_by(cash_box_id=cash_box_id, client_id=client_id).first()
     return cas_box_user
 
 

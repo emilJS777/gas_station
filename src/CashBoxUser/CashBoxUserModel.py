@@ -5,7 +5,9 @@ from datetime import datetime
 class CashBoxUser(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cash_box_id = db.Column(db.Integer, nullable=False)
+
     user_id = db.Column(db.Integer, nullable=True)
+    next_user_id = db.Column(db.Integer, nullable=True)
 
     last_update = db.Column(db.DateTime, default=datetime.utcnow())
     client_id = db.Column(db.Integer, nullable=False)

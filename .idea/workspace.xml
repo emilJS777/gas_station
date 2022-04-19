@@ -6,7 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Auth/auth_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/auth_middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Auth/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/auth_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxMiddleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxServiceDb.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxServiceDb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxValidator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserRepository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserRoutes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBoxUser/CashBoxUserService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/client_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/client_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/client_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/client_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/client_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_service_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Device/device_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device/device_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Device/device_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device/device_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Device/device_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device/device_service_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Device/device_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device/device_validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Station/DeviceStationController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Station/DeviceStationService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Station/DeviceStationValidator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Station/DeviceStationValidator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/user_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_service_db.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +153,9 @@
       <workItem from="1650021224397" duration="5000" />
       <workItem from="1650092777066" duration="3927000" />
       <workItem from="1650284805940" duration="1227000" />
-      <workItem from="1650286834641" duration="52000" />
+      <workItem from="1650286834641" duration="89000" />
+      <workItem from="1650299549297" duration="2727000" />
+      <workItem from="1650349247227" duration="9957000" />
     </task>
     <task id="LOCAL-00001" summary="changes">
       <created>1647005471695</created>
@@ -425,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650285975048</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="changes">
+      <created>1650286892427</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1650286892427</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,6 +480,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/gas_station$app.coverage" NAME="app Coverage Results" MODIFIED="1650285671446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gas_station$app.coverage" NAME="app Coverage Results" MODIFIED="1650360087990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

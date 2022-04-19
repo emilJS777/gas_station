@@ -40,10 +40,7 @@ def get_by_id(cash_box_id: int) -> CashBox:
     # else:
     #     cash_box: CashBox = CashBox.query.filter_by(id=cash_box_id).first()
 
-    cash_box: CashBox = \
-        CashBox.query.filter_by(id=cash_box_id, client_id=g.client_id).first() \
-        if g.client_id else \
-        CashBox.query.filter_by(id=cash_box_id).first()
+    cash_box: CashBox = CashBox.query.filter_by(id=cash_box_id, client_id=g.client_id).first()
 
     return cash_box
 

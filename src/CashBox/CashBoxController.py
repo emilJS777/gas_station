@@ -1,5 +1,5 @@
 from . import CashBoxService, CashBoxValidator
-from flask import request
+from flask import request, g
 from src.Auth import auth_middleware
 from src.Permission import permission_middleware
 from src.Client import client_middleware
@@ -14,7 +14,7 @@ from flask_expects_json import expects_json
 def create() -> dict:
     req: dict = request.get_json()
     res: dict = CashBoxService.create(
-        client_id=req['client_id'],
+        client_id=g.client_id,
         name=req['name'],
         description=req['description']
     )
@@ -25,7 +25,7 @@ def create() -> dict:
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("cash_box_edit")
 @client_middleware.check_client(required=False)
-@expects_json(CashBoxValidator.cash_box_update_schema)
+@expects_json(CashBoxValidator.cash_box_create_schema)
 def update(cash_box_id: int) -> dict:
     req: dict = request.get_json()
     res = CashBoxService.update(

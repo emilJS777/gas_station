@@ -8,6 +8,7 @@ from src._response import response
 from flask_jwt_extended import get_jwt_identity
 from src.CashBoxUser import CashBoxUserRepository
 from typing import List
+from src.CashBoxUser import CashBoxUserRepository
 
 
 def login(user_name, password):
@@ -20,7 +21,12 @@ def login(user_name, password):
 
     # ID USER IS CASHIER SET DATA
     if user.cash_box_id:
-        CashBoxUserRepository.update(cash_box_id=user.cash_box_id, user_id=user.id)
+        cash_box_user = CashBoxUserRepository.get_by_cash_box_id(cash_box_id=user.cash_box_id, client_id=user.client_id)
+
+        if cash_box_user.user_id == user.id or not cash_box_user.user_id or cash_box_user.next_user_id == user.id:
+            CashBoxUserRepository.update(cash_box_id=user.cash_box_id, user_id=user.id)
+        else:
+            return response(False, {'msg': 'this is not your shift'}, 403)
 
     # UPDATE AUTH PAIR TOKENS AND RETURN
     new_auth = auth_service_db.update_pair_tokens(user_id=user.id)

@@ -1,6 +1,6 @@
 from . import DeviceStationService
 from . import DeviceStationValidator
-from flask import request
+from flask import request, g
 from src.Auth import auth_middleware
 from src.Permission import permission_middleware
 from flask_expects_json import expects_json
@@ -20,7 +20,7 @@ def create_device_station() -> dict:
         name=req['name'],
         description=req['description'],
         cash_box_id=req['cash_box_id'],
-        client_id=req['client_id']
+        client_id=g.client_id
     )
     return res
 
@@ -29,7 +29,7 @@ def create_device_station() -> dict:
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("station_edit")
 @client_middleware.check_client(required=False)
-@expects_json(DeviceStationValidator.device_update_schema)
+@expects_json(DeviceStationValidator.device_create_schema)
 def update_device_station(device_id: int) -> dict:
     req: dict = request.get_json()
     res: dict = DeviceStationService.update(

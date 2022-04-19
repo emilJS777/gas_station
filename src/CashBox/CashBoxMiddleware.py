@@ -12,7 +12,7 @@ def check_cash_box(required: bool):
         def decorated_function(*args, **kwargs):
             g.cash_box_id = None
             # GET CASH BOX ID FROM G USER ID
-            cash_box_id: int = user_service_db.get_by_id(user_id=g.user_id).cash_box_id
+            cash_box_id: int = user_service_db.User.query.filter_by(id=g.user_id).first().cash_box_id
 
             # VERIFY IF CHECK CLIEnt ARG REQUIRED IS TRUE
             if required and not cash_box_id:

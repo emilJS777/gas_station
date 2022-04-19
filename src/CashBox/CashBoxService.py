@@ -7,19 +7,16 @@ from typing import List
 
 # CREATE
 def create(client_id: int, name: str, description: str) -> dict:
-    client = client_service_db.get_by_id(client_id)
-    if not client:
-        return response(False, {'msg': 'client not found'}, 404)
 
     cash_box: CashBoxServiceDb.CashBox = CashBoxServiceDb.create(
-        client_id=client.id,
+        client_id=client_id,
         name=name,
         description=description
     )
 
     CashBoxUserRepository.create(
         cash_box_id=cash_box.id,
-        client_id=client.id
+        client_id=client_id
     )
 
     return response(True, {'msg': 'cash box successfully created'}, 200)

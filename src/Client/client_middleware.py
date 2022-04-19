@@ -13,7 +13,7 @@ def check_client(required: bool):
         def decorated_function(*args, **kwargs):
             g.client_id = None
             # GET CLIENT ID FROM G USER ID
-            client_id: int = user_service_db.get_by_id(user_id=g.user_id).client_id
+            client_id: int = user_service_db.User.query.filter_by(id=g.user_id).first().client_id
 
             # VERIFY IF CHECK CLIEnt ARG REQUIRED IS TRUE AND CLIENT ID NOT FOUND RETURN FORBIDDEN
             if required and not client_id or client_id and not client_service_db.get_by_id(client_id=client_id):

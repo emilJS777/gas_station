@@ -10,10 +10,10 @@ def create(key: id, name: str, description: str, cash_box_id: int, client_id: in
     # GET BY KEY IF VERIFY RETURN CONFLICT
     if DeviceStationRepository.get_by_key(key):
         return response(False, {'msg': 'device by this key exist'}, 409)
-
-    # GET CLIENT AND VERIFY IF NOT FOUND RETURN NOT FOUND
-    if not client_service_db.get_by_id(client_id):
-        return response(False, {'msg': 'client not found'}, 404)
+    #
+    # # GET CLIENT AND VERIFY IF NOT FOUND RETURN NOT FOUND
+    # if not client_service_db.get_by_id(client_id):
+    #     return response(False, {'msg': 'client not found'}, 404)
 
     # GET CASH BOX AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if not CashBoxServiceDb.get_by_id(cash_box_id):

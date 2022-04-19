@@ -5,10 +5,9 @@ device_create_schema = {
         "key": {"type": "string", "minLength": 2, "maxLength": 120},
         "name": {"type": "string", "minLength": 2, "maxLength": 30},
         "description": {"type": "string", "minLength": 2, "maxLength": 120},
-        "error_after_minutes": {"type": "number"},
-        "client_id": {"type": "number"},
+        "error_after_minutes": {"type": "number"}
       },
-    "required": ["key", "name", "error_after_minutes", "client_id"]
+    "required": ["key", "name", "error_after_minutes"]
 }
 
 # DEVICE UPDATE SCHEMA
