@@ -11,7 +11,7 @@ from src.Client import client_middleware
 @permission_middleware.check_permission("device_edit")
 @expects_json(device_validator.device_create_schema)
 def create_device() -> dict:
-    req: dict = request.get_json()
+    req = request.get_json()
     res: dict = device_service.create_device(
         key=req['key'],
         name=req['name'],
