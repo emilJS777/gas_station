@@ -6,7 +6,7 @@ class Device(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     key = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(30), nullable=False)
-    description = db.Column(db.String(120), nullable=True)
+    description = db.Column(db.String(120))
     parent_key = db.Column(db.String(120))
     error_after_minutes = db.Column(db.Integer, default=10)
     last_update = db.Column(db.DateTime, default=datetime.utcnow())

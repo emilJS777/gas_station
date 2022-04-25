@@ -8,16 +8,24 @@ from typing import List
 
 
 # CREATE DEVICE
-def create_device(key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int) -> dict:
+def create_device(key: str,
+                  name: str,
+                  description: str,
+                  error_after_minutes: int,
+                  parent_key: str or None,
+                  client_id: int) -> dict:
     # # GET CLIENT AND CASH BOX IF NOT FOUND RETURN NOT FOUND
     # if not client_service_db.get_by_id(client_id=client_id):
     #     return response(False, {'msg': 'client not found'}, 404)
+    print("start service")
 
     if device_service_db.get_device_by_key(key=key):
         return response(False, {'msg': 'Device by this key exist'}, 409)
 
+    print("then get device by key 409")
+
     # CREATE DEVICE AND DEVICE INFO IF DEVICE INFO BY THIS KEY NOT FOUND
-    device = device_service_db.create_device(
+    device_service_db.create_device(
         key=key,
         name=name,
         description=description,
@@ -25,9 +33,17 @@ def create_device(key: str, name: str, description: str, error_after_minutes: in
         parent_key=parent_key,
         client_id=client_id
     )
+
+    print("then create device")
+
     device_info_service_db.create(device_key=key)
+
+    print("then create device info")
+
     device_set_service_db.create(device_key=key)
-    return response(True, {"msg": "device surccessfully created"}, 200)
+
+    print("then device set")
+    return response(True, {"msg": "device successfully created"}, 200)
 
 
 # UPDATE DEVICE
