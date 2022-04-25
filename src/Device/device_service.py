@@ -15,14 +15,9 @@ def create_device(key: str,
                   parent_key: str or None,
                   client_id: int) -> dict:
     # # GET CLIENT AND CASH BOX IF NOT FOUND RETURN NOT FOUND
-    # if not client_service_db.get_by_id(client_id=client_id):
-    #     return response(False, {'msg': 'client not found'}, 404)
-    print("start service")
 
     if device_service_db.get_device_by_key(key=key):
         return response(False, {'msg': 'Device by this key exist'}, 409)
-
-    print("then get device by key 409")
 
     # CREATE DEVICE AND DEVICE INFO IF DEVICE INFO BY THIS KEY NOT FOUND
     device_service_db.create_device(
@@ -34,15 +29,8 @@ def create_device(key: str,
         client_id=client_id
     )
 
-    print("then create device")
-
     device_info_service_db.create(device_key=key)
-
-    print("then create device info")
-
     device_set_service_db.create(device_key=key)
-
-    print("then device set")
     return response(True, {"msg": "device successfully created"}, 200)
 
 
