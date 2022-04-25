@@ -27,10 +27,7 @@ def create_device(key: str, name: str, description: str, error_after_minutes: in
     )
     device_info_service_db.create(device_key=device.key)
     device_set_service_db.create(device_key=device.key)
-    return response(True, {'id': device.id,
-                           'key': device.key,
-                           'name': device.name,
-                           'client_id': device.client_id}, 200)
+    return response(True, {"msg": "device surccessfully created"}, 200)
 
 
 # UPDATE DEVICE
