@@ -21,7 +21,6 @@ def check_permission(allowed_permission: str):
                     permission: Permission = permission_service_db.get_by_id(permission_id=permission_id)
 
                     if allowed_permission == permission.name:
-                        print("allow permission")
                         return f(*args, **kwargs)
 
             return response(False, {'msg': 'forbidden'}, 403)

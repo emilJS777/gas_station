@@ -14,7 +14,7 @@ def create_device() -> dict:
     print("device controller create")
     req = request.get_json()
     res: dict = device_service.create_device(
-        key=req['key'],
+        key="req['key']",
         name=req['name'],
         description=req['description'],
         error_after_minutes=req['error_after_minutes'],

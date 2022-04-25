@@ -23,7 +23,6 @@ def check_client(required: bool):
             else:
                 g.client_id = client_id or None
 
-            print(g.client_id)
             return f(*args, **kwargs)
 
         return decorated_function
