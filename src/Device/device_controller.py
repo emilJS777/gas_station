@@ -12,7 +12,7 @@ from src.Client import client_middleware
 @expects_json(device_validator.device_create_schema)
 def create_device() -> dict:
     req = request.get_json()
-    print("asdads")
+    print(request.json)
     res: dict = device_service.create_device(
         key=req['key'],
         name=req['name'],
