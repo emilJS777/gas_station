@@ -13,7 +13,9 @@ from src.Client import client_middleware
 def create_device() -> dict:
     print("device controller create")
     req: dict = request.get_json()
-    print(req['name'])
+    print(req.get('name'))
+    print(req.get('key'))
+
     res: dict = device_service.create_device(
         key=req['key'],
         name=req['name'],
