@@ -12,6 +12,7 @@ def check_authorize(f):
     @wraps(f)
     @jwt_required()
     def decorated_function(*args, **kwargs):
+        print("Asdads")
         g.cash_box_id = None
         g.client_id = None
         g.user_id = None
