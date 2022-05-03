@@ -3,6 +3,8 @@ from src.CashBoxUser import CashBoxUserRepository
 from src.Station import DeviceStationRepository
 from src._response import response
 from typing import List
+from . import StationDataSocket
+from flask_socketio import send, emit
 
 
 # CREATE
@@ -10,6 +12,9 @@ def create(station_key: str, weight: float, pressure: float, temperature: float,
     station: DeviceStationRepository.Station = DeviceStationRepository.get_by_key(station_key)
     if not station:
         return response(False, {'msg': 'device by this key not found'}, 404)
+
+    # SEND SOCKET STATION DATA
+    StationDataSocket.send_data({'station_id': station.id, 'weight': weight, 'pressure': pressure, 'temperature': temperature, 'price': price})
 
     cashier_id: int = CashBoxUserRepository.get_by_cash_box_id_exclude_client(
         cash_box_id=station.cash_box_id

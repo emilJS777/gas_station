@@ -1,4 +1,4 @@
-from src import app
+from src import app, socketio
 from src._general.utils import context_initializer
 import threading
 
@@ -6,4 +6,4 @@ import threading
 context_initializer.Initializer()
 threading.Thread(target=context_initializer.DeviceErrorThread).start()
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    socketio.run(app, debug=True, port=5001)

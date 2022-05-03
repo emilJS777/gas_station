@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 from datetime import datetime
 import logging
 from flask_cors import CORS
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 api = Api(app)
@@ -32,3 +33,5 @@ CORS(app, supports_credentials=True)
 # LOGGING
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(f"{datetime.utcnow()}")
+
+socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
