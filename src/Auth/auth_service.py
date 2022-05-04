@@ -57,4 +57,8 @@ def get_profile() -> dict:
         role = role_service_db.get_role_by_id(role_id)
         roles.append({'name': role.name})
 
-    return response(True, {'name': user.name, 'first_name': user.first_name, 'last_name': user.last_name, 'roles': roles}, 200)
+    return response(True, {'name': user.name,
+                           'first_name': user.first_name,
+                           'last_name': user.last_name,
+                           'cash_box_id': user.cash_box_id,
+                           'roles': roles}, 200)
