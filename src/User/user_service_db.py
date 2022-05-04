@@ -99,10 +99,12 @@ def get_all_by_cash_box_id(cash_box_id: int) -> List[dict]:
     arr: List[dict] = []
     # GET ALL USER BY CLIENT ID
     # ITERATE OVER ONE AT A TIME AND INSERT THE USER OBJECT INTO THE ARRAY
-    users: List[User] = User.query.filter_by(cash_box_id=cash_box_id, client_id=g.client_id).all()
+    users: List[User] = User.query.filter(User.cash_box_id == cash_box_id,
+                                          User.id != g.user_id,
+                                          User.client_id == g.client_id).all()
 
     for user in users:
-        arr.append({'id': user.id, 'name': user.name})
+        arr.append({'id': user.id, 'name': user.name, 'first_name': user.first_name, 'last_name': user.last_name})
 
     return arr
 
