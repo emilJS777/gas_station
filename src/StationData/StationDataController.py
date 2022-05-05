@@ -34,7 +34,9 @@ def station_data_get_by_id(device_station_data_id: int) -> dict:
 @client_middleware.check_client(required=False)
 @CashBoxMiddleware.check_cash_box(required=False)
 def station_data_get_all_ids() -> dict:
-    res: dict = StationDataService.get_all_ids()
+    date = request.args.get('date')
+    print(date)
+    res: dict = StationDataService.get_all_ids(date)
     return res
 
 

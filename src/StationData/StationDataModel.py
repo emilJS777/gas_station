@@ -1,11 +1,13 @@
 from src import db
 from datetime import datetime
+from datetime import date
+from sqlalchemy.sql import func
 
 
 class StationData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     station_key = db.Column(db.String(120), nullable=False)
-    creation_date = db.Column(db.DateTime, default=datetime.utcnow())
+    creation_date = db.Column(db.Date(), default=func.now())
 
     weight = db.Column(db.Numeric(8, 2), nullable=True)
     pressure = db.Column(db.Numeric(8, 2), nullable=True)

@@ -54,8 +54,8 @@ def get_by_id(station_data_id: int) -> dict:
 
 
 # GET ALL IDS
-def get_all_ids() -> dict:
-    station_data_ids: List[int] = StationDataRepository.get_all_ids()
+def get_all_ids(date) -> dict:
+    station_data_ids: List[int] = StationDataRepository.get_all_ids(date)
     return response(True, station_data_ids, 200)
 
 
