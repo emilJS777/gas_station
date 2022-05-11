@@ -23,7 +23,7 @@ def delete_bind():
 
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("role_get")
-def get_permission_ids_by_role_id(role_id: int):
-    res = role_permission_service.get_permission_ids_by_role_id(role_id=role_id)
+def get_permissions_by_role_id(role_id: int):
+    res = role_permission_service.get_permissions_by_role_id(role_id=role_id)
     return res
 

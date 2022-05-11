@@ -57,7 +57,13 @@ def user_get_by_id(user_id):
         return response(False, {'msg': 'User by this id not found'}, 404)
 
     # ELSE RETURN THIS USER AND STATUS OK
-    return response(True, {'name': user.name, 'first_name': user.first_name, 'last_name': user.last_name}, 200)
+    return response(True, {'id': user.id,
+                           'name': user.name,
+                           'first_name': user.first_name,
+                           'last_name': user.last_name,
+                           'cash_box_id': user.cash_box_id,
+                           'ticket': user.ticket,
+                           'creation_date': user.creation_date}, 200)
 
 
 # GET ALL USER

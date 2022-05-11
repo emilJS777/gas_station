@@ -60,8 +60,9 @@ def get_all_ids(date) -> dict:
 
 
 # GET ALL IDS BY CASH BOX ID
-def get_all_ids_by_cash_box_id(cash_box_id: int) -> dict:
+def get_all_ids_by_cash_box_id(cash_box_id: int, date) -> dict:
     station_data_ids: List[int] = StationDataRepository.get_all_ids_by_cash_box_id(
-        cash_box_id=cash_box_id
+        cash_box_id=cash_box_id,
+        date=date
     )
     return response(True, station_data_ids, 200)

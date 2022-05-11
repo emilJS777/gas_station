@@ -79,7 +79,13 @@ def get_all_ids() -> List[int]:
 
 # GET ALL IDS BY CASH BOX ID
 def get_all_ids_by_cash_box_id(cash_box_id: int) -> List[int]:
-    devices: List[Station] = Station.query.filter_by(cash_box_id=cash_box_id).all()
+    if g.cash_box_id:
+        devices: List[Station] = Station.query.filter_by(cash_box_id=g.cash_box_id).all()
+    elif g.client_id:
+        devices: List[Station] = Station.query.filter_by(client_id=g.client_id, cash_box_id=cash_box_id).all()
+    else:
+        devices: List[Station] = Station.query.all()
+
     device_ids: List[int] = []
 
     for device in devices:

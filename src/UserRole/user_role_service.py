@@ -3,6 +3,7 @@ from src.User import user_service_db
 from src.Role import role_service_db
 from src._response import response
 from typing import List
+from flask import g
 
 
 def create_bind(user_id: int, role_id: int):
@@ -14,6 +15,9 @@ def create_bind(user_id: int, role_id: int):
 
 
 def delete_bind(user_id: int, role_id: int):
+    if g.user_id == user_id:
+        return response(False, {'msg': 'you cant change your role'}, 403)
+
     if not user_role_service_db.get_by_user_id_role_id(user_id=user_id, role_id=role_id):
         return response(False, {'msg': 'User or Role not found'}, 404)
 

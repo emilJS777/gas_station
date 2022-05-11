@@ -35,16 +35,16 @@ def station_data_get_by_id(device_station_data_id: int) -> dict:
 @CashBoxMiddleware.check_cash_box(required=False)
 def station_data_get_all_ids() -> dict:
     date = request.args.get('date')
-    print(date)
-    res: dict = StationDataService.get_all_ids(date)
+    res: dict = StationDataService.get_all_ids(date=date)
     return res
 
 
 # GET ALL IDS BY CASH BOX ID
 @auth_middleware.check_authorize
 @client_middleware.check_client(required=False)
-def get_all_ids_by_cash_box_id(cash_box_id: int) -> dict:
+def get_all_ids_by_cash_box_id() -> dict:
     res: dict = StationDataService.get_all_ids_by_cash_box_id(
-        cash_box_id=cash_box_id
+        cash_box_id=int(request.args.get('cash_box_id')),
+        date=request.args.get('date')
     )
     return res

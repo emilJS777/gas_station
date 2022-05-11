@@ -1,4 +1,4 @@
-from . import CashBoxService, CashBoxValidator
+from . import CashBoxService, CashBoxValidator, CashBoxMiddleware
 from flask import request, g
 from src.Auth import auth_middleware
 from src.Permission import permission_middleware
@@ -61,6 +61,7 @@ def get_by_id(cash_box_id: int) -> dict:
 # GET ALL IDS
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("cash_box_get")
+@CashBoxMiddleware.check_cash_box(required=False)
 @client_middleware.check_client(required=False)
 def get_all_ids() -> dict:
     res = CashBoxService.get_all_ids()

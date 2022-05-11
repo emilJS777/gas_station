@@ -5,6 +5,7 @@ from flask_expects_json import expects_json
 from src.User import user_validator
 from src.Permission import permission_middleware
 from src.Client import client_middleware
+from src.CashBox import CashBoxMiddleware
 
 
 # CREATE NEW USER OR REGISTRATION
@@ -56,6 +57,7 @@ def user_get_by_id(user_id):
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("user_get")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 def user_get():
     res = user_service.user_get_all()
     return res

@@ -67,5 +67,5 @@ def device_station_get_by_id(device_id: int) -> dict:
 @client_middleware.check_client(required=False)
 @CashBoxMiddleware.check_cash_box(required=False)
 def device_station_get_all_ids() -> dict:
-    res: dict = DeviceStationService.get_all_ids()
+    res: dict = DeviceStationService.get_all_ids(cash_box_id=int(request.args.get('cash_box_id')))
     return res

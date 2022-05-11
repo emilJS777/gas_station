@@ -63,13 +63,13 @@ class DeviceErrorThread:
 
 # INITIALIZER
 class Initializer:
-    permissions: List = [{'name': 'client_get', 'title': 'get clients'}, {'name': 'client_edit', 'title': 'redactor Client'},
-                         {'name': 'user_get', 'title': 'get User'}, {'name': 'user_edit', 'title': 'redactor User'},
-                         {'name': 'firm_get', 'title': 'get Firm'}, {'name': 'firm_edit', 'title': 'redactor Firm'},
-                         {'name': 'role_get', 'title': 'get roles'}, {'name': 'role_edit', 'title': 'redactor Role'},
-                         {'name': 'device_get', 'title': 'get devices'}, {'name': 'device_edit', 'title': 'redactor Device'},
-                         {'name': 'cash_box_get', 'title': 'cash boxes get'}, {'name': 'cash_box_edit', 'title': 'cash boxes edit'},
-                         {'name': 'station_get', 'title': 'stations get'}, {'name': 'station_edit', 'title': 'edit stations'}]
+    permissions: List = [{'name': 'client_get', 'title': 'ստանալ հաճախորդներ'}, {'name': 'client_edit', 'title': 'խմբագրել հաճախորդներին'},
+                         {'name': 'user_get', 'title': 'ստանալ օգտվողներին'}, {'name': 'user_edit', 'title': 'խմբագրել օգտվողներին'},
+                         # {'name': 'firm_get', 'title': 'get Firm'}, {'name': 'firm_edit', 'title': 'redactor Firm'},
+                         {'name': 'role_get', 'title': 'ստանալ դերեր'}, {'name': 'role_edit', 'title': 'խմբագրել դերերը'},
+                         {'name': 'device_get', 'title': 'ստանալ սարքեր'}, {'name': 'device_edit', 'title': 'խմբագրել սարքերը'},
+                         {'name': 'cash_box_get', 'title': 'ստանալ դրամարկղերը'}, {'name': 'cash_box_edit', 'title': 'խմբագրել դրամարկղերը'},
+                         {'name': 'station_get', 'title': 'ստանալ կայանի սարքեր'}, {'name': 'station_edit', 'title': 'խմբագրել կայանի սարքերը'}]
     role: str = "admin"
 
     def __init__(self):

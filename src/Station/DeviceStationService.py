@@ -65,7 +65,7 @@ def delete(device_id: int) -> dict:
 
 # GET BY ID
 def get_by_id(device_id: int) -> dict:
-    device: DeviceStationRepository.DeviceStation = DeviceStationRepository.get_by_id(device_id)
+    device: DeviceStationRepository.Station = DeviceStationRepository.get_by_id(device_id)
     if not device:
         return response(False, {'msg': 'device not found'}, 404)
 
@@ -78,6 +78,6 @@ def get_by_id(device_id: int) -> dict:
 
 
 # GET ALL IDS
-def get_all_ids() -> dict:
-    device_ids: List[int] = DeviceStationRepository.get_all_ids()
+def get_all_ids(cash_box_id: int) -> dict:
+    device_ids: List[int] = DeviceStationRepository.get_all_ids_by_cash_box_id(cash_box_id=cash_box_id)
     return response(True, device_ids, 200)

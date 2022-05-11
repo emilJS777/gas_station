@@ -2,6 +2,7 @@ from . import CashBoxServiceDb
 from src.CashBoxUser import CashBoxUserRepository
 from src.Client import client_service_db
 from src._response import response
+from flask import g
 from typing import List
 
 
@@ -59,7 +60,11 @@ def get_by_id(cash_box_id: int) -> dict:
 
 # GET ALL IDS
 def get_all_ids() -> dict:
-    cash_box_ids: List[int] = CashBoxServiceDb.get_all_ids()
-    return response(True, cash_box_ids, 200)
+    if g.cash_box_id:
+        return response(True, [g.cash_box_id], 200)
+
+    else:
+        cash_box_ids: List[int] = CashBoxServiceDb.get_all_ids()
+        return response(True, cash_box_ids, 200)
 
 

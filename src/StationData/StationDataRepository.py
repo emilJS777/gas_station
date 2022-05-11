@@ -53,12 +53,13 @@ def get_all_ids(date) -> List[int]:
 
 
 # GET ALL IDS BY CASH BOX ID
-def get_all_ids_by_cash_box_id(cash_box_id: int) -> List[int]:
+def get_all_ids_by_cash_box_id(cash_box_id: int, date) -> List[int]:
     if g.client_id:
         stations_data: List[StationData] = StationData.query.filter_by(cash_box_id=cash_box_id,
+                                                                       creation_date=date,
                                                                        client_id=g.client_id).all()
     else:
-        stations_data: List[StationData] = StationData.query.filter_by(cash_box_id=cash_box_id).all()
+        stations_data: List[StationData] = StationData.query.filter_by(cash_box_id=cash_box_id, creation_date=date,).all()
 
     station_data_ids: List[int] = []
     for station_data in stations_data:

@@ -47,7 +47,7 @@ def permission_get_all(user_id):
     for role_id in user_role_service_db.get_role_ids_by_user_id(user_id=user_id):
         for permission_id in role_permission_service_db.get_permission_ids_by_role_id(role_id=role_id):
             permission: permission_service_db.Permission = permission_service_db.get_by_id(permission_id=permission_id)
-            permission_list.append({'id': permission.id, 'name': permission.name})
+            permission_list.append({'id': permission.id, 'name': permission.name, 'title': permission.title})
 
     return response(True, permission_list, 200)
 
