@@ -5,36 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
-      <change afterPath="$PROJECT_DIR$/src/CashBoxData/CashBoxDataController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CashBoxData/CashBoxDataModel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CashBoxData/CashBoxDataRepository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CashBoxData/CashBoxDataRoutes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CashBoxData/CashBoxDataService.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Expense/ExpenseController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Expense/ExpenseModel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Expense/ExpenseRoutes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Expense/ExpenseService.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Expense/ExpenseServiceDb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Expense/ExpenseValidator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Auth/auth_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/auth_middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Auth/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/auth_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CashBox/CashBoxServiceDb.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashBox/CashBoxServiceDb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Role/role_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Role/role_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Role/role_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Role/role_service_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StationData/StationDataRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/StationData/StationDataRepository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_service_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/_general/utils/context_initializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,14 +154,7 @@
       <workItem from="1652338422501" duration="8449000" />
       <workItem from="1652358543423" duration="1796000" />
       <workItem from="1652428586933" duration="18656000" />
-      <workItem from="1652706607585" duration="3515000" />
-    </task>
-    <task id="LOCAL-00030" summary="changes">
-      <created>1649851694660</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1649851694660</updated>
+      <workItem from="1652706607585" duration="3639000" />
     </task>
     <task id="LOCAL-00031" summary="changes">
       <created>1649852010096</created>
@@ -527,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652279697959</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="changes">
+      <created>1652786269044</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1652786269045</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
