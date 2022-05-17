@@ -19,4 +19,7 @@ from .CashBox import CashBoxRoutes
 from .Station import DeviceStationRoutes
 from .StationData import StationDataRoutes
 from .CashBoxUser import CashBoxUserRoutes
+from .Expense import ExpenseRoutes
+from .CashBoxData import CashBoxDataRoutes
+
 

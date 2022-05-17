@@ -24,6 +24,7 @@ def create_user():
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("user_edit")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 @expects_json(user_validator.user_ticket_schema)
 def create_user_ticket():
     req: dict = request.get_json()
@@ -31,7 +32,8 @@ def create_user_ticket():
                                           client_id=g.client_id,
                                           first_name=req['first_name'],
                                           last_name=req['last_name'],
-                                          cash_box_id=req['cash_box_id'])
+                                          cash_box_id=g.cash_box_id or req['cash_box_id'],
+                                          cashier=req['cashier'])
     return res
 
 
@@ -65,11 +67,17 @@ def user_get():
 
 # UPDATE USER BY ID
 @auth_middleware.check_authorize
-@expects_json(user_validator.user_schema)
-def user_update():
+@permission_middleware.check_permission("user_get")
+@client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
+@expects_json(user_validator.user_ticket_schema)
+def user_update(user_id: int):
     req = request.get_json()
-    res = user_service.user_update(user_id=g.user_id, user_name=req['name'],
-                                   first_name=req["first_name"], last_name=req["last_name"])
+    res = user_service.user_update(user_id=user_id,
+                                   first_name=req['first_name'],
+                                   last_name=req['last_name'],
+                                   cash_box_id=g.cash_box_id or req['cash_box_id'],
+                                   cashier=req['cashier'])
     return res
 
 

@@ -6,6 +6,7 @@ from typing import List
 # CREATE ROLE
 def create_role(name) -> Role:
     role: Role = Role(name)
+    role.creator_id = g.user_id
     role.save_db()
     return role
 
@@ -32,7 +33,7 @@ def get_role_by_name(name: str) -> Role:
 
 # GET ROLES
 def get_roles() -> List:
-    roles: List[Role] = Role.query.all()
+    roles: List[Role] = Role.query.filter_by(creator_id=g.user_id).all()
     roles_list: List[dict] = []
     for role in roles:
         roles_list.append({'id': role.id, 'name': role.name})

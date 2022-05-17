@@ -64,9 +64,9 @@ def get_all_ids() -> List[int]:
     #     cash_boxes: List[CashBox] = CashBox.query.all()
 
     cash_boxes: List[CashBox] = \
-        CashBox.query.filter_by(client_id=g.client_id).all() \
-        if g.client_id else \
-        CashBox.query.all()
+        CashBox.query.filter_by(client_id=g.client_id, id=g.cash_box_id).all() \
+        if g.cash_box_id else \
+        CashBox.query.filter_by(client_id=g.client_id).all()
 
     cash_box_ids: List[int] = []
     for cash_box in cash_boxes:

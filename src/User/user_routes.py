@@ -14,7 +14,7 @@ app.add_url_rule("/api/user", view_func=user_controller.create_user, methods=["P
 app.add_url_rule("/api/user/ticket", view_func=user_controller.create_user_ticket, methods=["POST"])
 
 # PUT USER
-app.add_url_rule("/api/user", view_func=user_controller.user_update, methods=["PUT"])
+app.add_url_rule("/api/user/<int:user_id>", view_func=user_controller.user_update, methods=["PUT"])
 
 # DELETE USER
 app.add_url_rule("/api/user/<int:user_id>", view_func=user_controller.user_delete, methods=["DELETE"])

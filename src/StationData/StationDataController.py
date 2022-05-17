@@ -41,7 +41,9 @@ def station_data_get_all_ids() -> dict:
 
 # GET ALL IDS BY CASH BOX ID
 @auth_middleware.check_authorize
+# @permission_middleware.check_permission("station_get")
 @client_middleware.check_client(required=False)
+@CashBoxMiddleware.check_cash_box(required=False)
 def get_all_ids_by_cash_box_id() -> dict:
     res: dict = StationDataService.get_all_ids_by_cash_box_id(
         cash_box_id=int(request.args.get('cash_box_id')),

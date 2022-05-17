@@ -12,6 +12,7 @@ def check_authorize(f):
     @wraps(f)
     @jwt_required()
     def decorated_function(*args, **kwargs):
+        g.cashier = None
         g.cash_box_id = None
         g.client_id = None
         g.user_id = None
@@ -21,8 +22,10 @@ def check_authorize(f):
 
         if user_auth.access_token == request.headers['authorization'].split(' ')[1]:
             # CHECK USER ON DB
-            if user_service_db.User.query.filter_by(id=get_jwt_identity()).first():
+            user: user_service_db.User = user_service_db.User.query.filter_by(id=get_jwt_identity()).first()
+            if user:
                 g.user_id = get_jwt_identity()
+                g.cashier = user.cashier
                 return f(*args, **kwargs)
 
         # IF THEY DON`T MATCH SEND A RESPONSE INVALID TOKEN UNAUTHORIZED

@@ -20,7 +20,7 @@ def login(user_name, password):
         return response(False, {'msg': 'invalid User name and/or password'}, 401)
 
     # ID USER IS CASHIER SET DATA
-    if user.cash_box_id:
+    if user.cash_box_id and user.cashier:
         cash_box_user = CashBoxUserRepository.get_by_cash_box_id(cash_box_id=user.cash_box_id, client_id=user.client_id)
 
         if cash_box_user.user_id == user.id or not cash_box_user.user_id or cash_box_user.next_user_id == user.id:
@@ -61,4 +61,5 @@ def get_profile() -> dict:
                            'first_name': user.first_name,
                            'last_name': user.last_name,
                            'cash_box_id': user.cash_box_id,
+                           'cashier': user.cashier,
                            'roles': roles}, 200)

@@ -15,7 +15,7 @@ class StationData(db.Model):
     price = db.Column(db.Numeric(8, 2), nullable=True)
 
     cash_box_id = db.Column(db.Integer, nullable=False)
-    cashier_id = db.Column(db.Integer, nullable=False)
+    cashier_id = db.Column(db.Integer, nullable=True)
     client_id = db.Column(db.Integer, nullable=False)
 
     # CONSTRUCTOR

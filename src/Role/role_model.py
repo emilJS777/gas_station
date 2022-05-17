@@ -5,7 +5,7 @@ from src import db
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=True)
-
+    creator_id = db.Column(db.Integer)
     client_id = db.Column(db.Integer)
 
     # CONSTRUCTOR

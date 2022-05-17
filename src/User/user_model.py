@@ -15,6 +15,7 @@ class User(db.Model):
     creator_id = db.Column(db.Integer)
     client_id = db.Column(db.Integer)
     cash_box_id = db.Column(db.Integer)
+    cashier = db.Column(db.Boolean)
 
     # CONSTRUCTOR
     def __init__(self, ticket):

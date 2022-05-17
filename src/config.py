@@ -21,7 +21,7 @@ migrate = Migrate(app, db)
 
 # CONNECT JWT CONFIG
 app.config["JWT_SECRET_KEY"] = "H^&67KCsn@77G"
-app.config["JWT_ACCESS_EXP"] = 60
+app.config["JWT_ACCESS_EXP"] = 60*24
 app.config["JWT_REFRESH_EXP"] = 3000
 jwt = JWTManager(app)
 

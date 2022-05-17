@@ -16,7 +16,8 @@ def create(ticket, name, password):
     return new_user
 
 
-def create_ticket(creator_id: int = None, first_name: str = None, last_name: str = None, cash_box_id: int = None, client_id: int = None):
+def create_ticket(creator_id: int = None, first_name: str = None, last_name: str = None, cash_box_id: int = None,
+                  cashier: bool = False, client_id: int = None):
     # CREATE NEW USER AND TICKET
     user = User(ticket=generate_ticket_code())
     user.client_id = client_id if client_id else g.client_id
@@ -24,16 +25,18 @@ def create_ticket(creator_id: int = None, first_name: str = None, last_name: str
     user.last_name = last_name
     user.cash_box_id = cash_box_id
     user.creator_id = creator_id
+    user.cashier = cashier
     user.save_db()
     return user
 
 
-def update(user_id, user_name, first_name, last_name):
+def update(user_id, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
     # GET USER BY ID AND CREAtOR ID & UPDATE NAME
     user = User.query.filter_by(id=user_id).first()
-    user.name = user_name
     user.first_name = first_name
     user.last_name = last_name
+    user.cash_box_id = cash_box_id
+    user.cashier = cashier
     user.update_db()
     return user
 
@@ -104,7 +107,11 @@ def get_all_by_cash_box_id(cash_box_id: int) -> List[dict]:
                                           User.client_id == g.client_id).all()
 
     for user in users:
-        arr.append({'id': user.id, 'name': user.name, 'first_name': user.first_name, 'last_name': user.last_name})
+        arr.append({'id': user.id,
+                    'name': user.name,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                    'cashier': user.cashier})
 
     return arr
 
@@ -125,6 +132,7 @@ def get_all() -> List[dict]:
                     'last_name': user.last_name,
                     'ticket': user.ticket,
                     'cash_box_id': user.cash_box_id,
+                    'cashier': user.cashier,
                     'creation_date': user.creation_date})
 
     return arr

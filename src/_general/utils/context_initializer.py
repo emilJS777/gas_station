@@ -69,7 +69,9 @@ class Initializer:
                          {'name': 'role_get', 'title': 'ստանալ դերեր'}, {'name': 'role_edit', 'title': 'խմբագրել դերերը'},
                          {'name': 'device_get', 'title': 'ստանալ սարքեր'}, {'name': 'device_edit', 'title': 'խմբագրել սարքերը'},
                          {'name': 'cash_box_get', 'title': 'ստանալ դրամարկղերը'}, {'name': 'cash_box_edit', 'title': 'խմբագրել դրամարկղերը'},
-                         {'name': 'station_get', 'title': 'ստանալ կայանի սարքեր'}, {'name': 'station_edit', 'title': 'խմբագրել կայանի սարքերը'}]
+                         {'name': 'station_get', 'title': 'ստանալ կայանի սարքեր'}, {'name': 'station_edit', 'title': 'խմբագրել կայանի սարքերը'},
+                         {'name': 'expense_get', 'title': 'ստանալ ծախսերը'}, {'name': 'expense_edit', 'title': 'խմբագրել ծախսերը'},
+                         {'name': 'cash_box_data_get', 'title': 'ստանալ դրամարկղի տվյալները'}, {'name': 'cash_box_data_edit', 'title': 'խմբագրել դրամարկղի տվյալները'}]
     role: str = "admin"
 
     def __init__(self):

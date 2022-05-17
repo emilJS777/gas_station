@@ -25,7 +25,7 @@ def create_user(ticket: str, user_name: str, password: str):
 
 
 # CREATE USER TICKET
-def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, cash_box_id: int):
+def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box not found'}, 404)
@@ -34,7 +34,8 @@ def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, c
     user = user_service_db.create_ticket(creator_id=creator_id,
                                          first_name=first_name,
                                          last_name=last_name,
-                                         cash_box_id=cash_box_id)
+                                         cash_box_id=cash_box_id,
+                                         cashier=cashier)
 
     # IF CLIENT ID EXIST BIND NEW USER AND CLIENT ID
     if client_id:
@@ -62,6 +63,7 @@ def user_get_by_id(user_id):
                            'first_name': user.first_name,
                            'last_name': user.last_name,
                            'cash_box_id': user.cash_box_id,
+                           'cashier': user.cashier,
                            'ticket': user.ticket,
                            'creation_date': user.creation_date}, 200)
 
@@ -73,19 +75,22 @@ def user_get_all():
 
 
 # UPDATE USER
-def user_update(user_id, user_name, first_name, last_name):
+def user_update(user_id: int, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
+    # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
+    if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
+        return response(False, {'msg': 'cash box not found'}, 404)
+
     # GET USER BY ID AND VERIFY DOES IT EXIST. IF NO RETURN NOT FOUND
     user = user_service_db.get_by_id(user_id=user_id)
     if not user:
         return response(False, {'msg': 'User by this id not found'}, 404)
 
-    # IF USER BY ThiS NAME FOUND RETURN CONFLICT
-    if user_service_db.get_by_name(name=user_name):
-        return response(False, {'msg': 'User name is taken'}, 409)
-
     # ELSE CHANGE AND UPDATE DB AND RETURN RESPONSE OK
-    user_service_db.update(user_id=user_id, user_name=user_name,
-                           first_name=first_name, last_name=last_name)
+    user_service_db.update(user_id=user_id,
+                           first_name=first_name,
+                           last_name=last_name,
+                           cash_box_id=cash_box_id,
+                           cashier=cashier)
     return response(True, {'msg': 'User successfully update'}, 200)
 
 
