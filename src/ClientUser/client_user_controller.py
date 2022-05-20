@@ -9,8 +9,8 @@ from flask_expects_json import expects_json
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("user_get")
 @permission_middleware.check_permission("client_get")
-def get_user_ids_by_client_id(client_id):
-    res = client_user_service.get_user_ids_by_client_id(client_id=client_id)
+def get_users_by_client_id(client_id):
+    res = client_user_service.get_users_by_client_id(client_id=client_id)
     return res
 
 

@@ -29,7 +29,7 @@ def user_role_unbind():
 @permission_middleware.check_permission("user_get")
 @permission_middleware.check_permission("role_get")
 @client_middleware.check_client(required=True)
-def get_role_ids_by_user_id(user_id: int):
-    res = user_role_service.get_role_ids_by_user_id(user_id=user_id)
+def get_roles_by_user_id(user_id: int):
+    res = user_role_service.get_roles_by_user_id(user_id=user_id)
     return res
 

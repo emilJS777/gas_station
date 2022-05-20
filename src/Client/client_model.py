@@ -1,3 +1,4 @@
+from sqlalchemy import func
 from src import db
 
 
@@ -6,6 +7,7 @@ class Client(db.Model):
     name = db.Column(db.String(30), nullable=False)
     description = db.Column(db.String(120), nullable=False)
 
+    creation_date = db.Column(db.Date(), default=func.now())
     creator_id = db.Column(db.Integer, nullable=True)
     parent_id = db.Column(db.Integer, nullable=True)
 

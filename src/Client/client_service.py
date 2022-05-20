@@ -27,14 +27,14 @@ def client_get_by_id(client_id):
         return response(False, {'msg': 'Client by this id not found'}, 404)
 
     # ELSE RETURN THIS CLIENT AND STATUS OK
-    return response(True, {'name': client.name, 'description': client.description}, 200)
+    return response(True, {'id': client.id, 'name': client.name, 'description': client.description, 'creation_date': client.creation_date}, 200)
 
 
 # GET ALL CLIENT
 def client_get_all():
     # GET ALL CLIENT IDS BY CREATOR ID
-    client_ids = client_service_db.get_all_ids()
-    return response(True, client_ids, 200)
+    client_list = client_service_db.get_all()
+    return response(True, client_list, 200)
 
 
 # UPDATE CLIENT

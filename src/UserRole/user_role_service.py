@@ -25,6 +25,11 @@ def delete_bind(user_id: int, role_id: int):
     return response(True, {'msg': 'User Role bind successfully deleted'}, 200)
 
 
-def get_role_ids_by_user_id(user_id: int):
-    role_ids: List[int] = user_role_service_db.get_role_ids_by_user_id(user_id=user_id)
-    return response(True, role_ids, 200)
+def get_roles_by_user_id(user_id: int):
+    role_list: List[dict] = []
+
+    for role_id in user_role_service_db.get_role_ids_by_user_id(user_id=user_id):
+        role: role_service_db.Role = role_service_db.get_role_by_id(role_id)
+        role_list.append({'id': role.id, 'name': role.name})
+
+    return response(True, role_list, 200)

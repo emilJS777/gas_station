@@ -8,12 +8,21 @@ def delete_bind(client_id, user_id):
     user.update_db()
 
 
-def get_user_ids_by_client_id_creator_id(client_id, creator_id):
+def get_users_by_client_id_creator_id(client_id, creator_id):
     # GET ALL USERS WHICH CREATE USER IN A CYCLE TO ID AND RETURN
-    arr_user_ids = []
+    arr_user_list = []
     for user in User.query.filter_by(client_id=client_id, creator_id=creator_id).all():
-        arr_user_ids.append(user.id)
-    return arr_user_ids
+        arr_user_list.append({
+            'id': user.id,
+            'name': user.name,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'ticket': user.ticket,
+            'cash_box_id': user.cash_box_id,
+            'cashier': user.cashier,
+            'creation_date': user.creation_date
+        })
+    return arr_user_list
 
 
 def get_by_user_id_client_id(user_id, client_id):

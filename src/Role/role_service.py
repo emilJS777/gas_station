@@ -21,7 +21,7 @@ def update_role(role_id, name):
 
     # ELSE UPDATE ROLE AND RETURN OK
     role = role_service_db.update_role(role_id=role_id, name=name)
-    return response(True, {'id': role.id, 'name': role.name}, 200)
+    return response(True, {'msg': 'role successfully updated'}, 200)
 
 
 # GET ROLE BY ID

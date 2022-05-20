@@ -44,12 +44,15 @@ def get_by_id_creator_id(client_id, creator_id):
     return client
 
 
-def get_all_ids():
+def get_all():
     # GET ALL CLIENT, ITERATE OVER ONE AT A TIME AND INSERT THE CLIENT OBJECT INTO THE ARRAY
-    client_ids = []
+    clients = []
     for client in Client.query.filter_by(parent_id=g.client_id).all():
-        client_ids.append(client.id)
-    return client_ids
+        clients.append({'id': client.id,
+                        'name': client.name,
+                        'description': client.description,
+                        'creation_date': client.creation_date})
+    return clients
 
 
 def get_by_name_exclude_id(client_id, name):
