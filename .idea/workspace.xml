@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/client_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/client_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/client_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/client_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/client_service_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientUser/client_user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientUser/client_user_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientUser/client_user_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientUser/client_user_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientUser/client_user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientUser/client_user_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientUser/client_user_service_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientUser/client_user_service_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Role/role_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Role/role_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserRole/user_role_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRole/user_role_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserRole/user_role_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRole/user_role_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserRole/user_role_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRole/user_role_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,13 +158,7 @@
       <workItem from="1652902111726" duration="607000" />
       <workItem from="1652938994589" duration="2327000" />
       <workItem from="1652952719131" duration="73000" />
-    </task>
-    <task id="LOCAL-00033" summary="changes">
-      <created>1649852647533</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1649852647533</updated>
+      <workItem from="1653045480534" duration="87000" />
     </task>
     <task id="LOCAL-00034" summary="changes">
       <created>1649853067960</created>
@@ -514,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652786438657</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="changes">
+      <created>1653045485176</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1653045485176</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
