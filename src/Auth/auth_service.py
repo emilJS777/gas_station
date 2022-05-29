@@ -9,6 +9,8 @@ from flask_jwt_extended import get_jwt_identity
 from src.CashBoxUser import CashBoxUserRepository
 from typing import List
 from src.CashBoxUser import CashBoxUserRepository
+from ..Permission import permission_service_db
+from ..RolePermission import role_permission_service_db
 
 
 def login(user_name, password):
@@ -53,6 +55,12 @@ def get_profile() -> dict:
     role_ids: List[int] = user_role_service_db.get_role_ids_by_user_id(user_id=g.user_id)
     roles: List[dict] = []
 
+    permission_list: List[dict] = []
+    for role_id in role_ids:
+        for permission_id in role_permission_service_db.get_permission_ids_by_role_id(role_id=role_id):
+            permission: permission_service_db.Permission = permission_service_db.get_by_id(permission_id=permission_id)
+            permission_list.append({'id': permission.id, 'name': permission.name, 'title': permission.title})
+
     for role_id in role_ids:
         role = role_service_db.get_role_by_id(role_id)
         roles.append({'name': role.name})
@@ -63,4 +71,5 @@ def get_profile() -> dict:
                            'last_name': user.last_name,
                            'cash_box_id': user.cash_box_id,
                            'cashier': user.cashier,
+                           'permissions': permission_list,
                            'roles': roles}, 200)

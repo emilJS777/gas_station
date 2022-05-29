@@ -1,3 +1,6 @@
+import sqlalchemy
+from sqlalchemy import func, extract
+
 from .StationDataModel import StationData
 from typing import List
 from flask import g
@@ -59,6 +62,7 @@ def get_all_ids(date) -> List[int]:
 
 # GET ALL IDS BY CASH BOX ID
 def get_all_ids_by_cash_box_id(cash_box_id: int, date) -> List[int]:
+
     if g.cashier:
         stations_data: List[StationData] = StationData.query.filter_by(cash_box_id=g.cash_box_id,
                                                                        creation_date=date,
