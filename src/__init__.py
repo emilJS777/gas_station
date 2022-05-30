@@ -23,5 +23,5 @@ from .Expense import ExpenseRoutes
 from .CashBoxData import CashBoxDataRoutes
 
 from .UserImage import UserImageRoutes
-
+from .ClientDevice import ClientDeviceRoutes
 

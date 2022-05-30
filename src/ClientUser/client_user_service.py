@@ -5,11 +5,11 @@ from src._response import response
 from flask import g
 
 
-# GET USER IDS BY CLIENT ID
-def get_users_by_client_id(client_id):
-    # GET ALL USERS WHICH CREATE USER
-    users = client_user_service_db.get_users_by_client_id_creator_id(client_id=client_id, creator_id=g.user_id)
-    return response(True, users, 200)
+# # GET USER IDS BY CLIENT ID
+# def get_users_by_client_id(client_id: int, page: int, per_page: int):
+#     # GET ALL USERS WHICH CREATE USER
+#     users = client_user_service_db.get_users_by_client_id_creator_id(client_id=client_id, creator_id=g.user_id)
+#     return response(True, users, 200)
 
 
 # BIND CLIENT USER

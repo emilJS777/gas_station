@@ -4,6 +4,7 @@ from .user_helper import generate_ticket_code
 from flask import g
 from sqlalchemy import or_, and_
 from typing import List
+from src._general.parents import get_page_items
 
 
 def create(ticket, name, password):
@@ -116,23 +117,15 @@ def get_all_by_cash_box_id(cash_box_id: int) -> List[dict]:
     return arr
 
 
-def get_all() -> List[dict]:
+def get_all(page: int, per_page: int, client_id: int) -> List[dict]:
     arr: List[dict] = []
     # GET ALL USER BY CLIENT ID
     # ITERATE OVER ONE AT A TIME AND INSERT THE USER OBJECT INTO THE ARRAY
     if g.cash_box_id:
-        users: List[User] = User.query.filter_by(client_id=g.client_id, cash_box_id=g.cash_box_id).all()
+        users = User.query.filter_by(client_id=g.client_id, cash_box_id=g.cash_box_id)\
+            .paginate(page=page, per_page=per_page)
     else:
-        users: List[User] = User.query.filter_by(client_id=g.client_id).all()
+        users = User.query.filter_by(client_id=client_id)\
+            .paginate(page=page, per_page=per_page)
 
-    for user in users:
-        arr.append({'id': user.id,
-                    'name': user.name,
-                    'first_name': user.first_name,
-                    'last_name': user.last_name,
-                    'ticket': user.ticket,
-                    'cash_box_id': user.cash_box_id,
-                    'cashier': user.cashier,
-                    'creation_date': user.creation_date})
-
-    return arr
+    return get_page_items(users)

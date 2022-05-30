@@ -5,13 +5,17 @@ from src.Permission import permission_middleware
 from flask_expects_json import expects_json
 
 
-# GET USER IDS BY CLIENT ID
-@auth_middleware.check_authorize
-@permission_middleware.check_permission("user_get")
-@permission_middleware.check_permission("client_get")
-def get_users_by_client_id(client_id):
-    res = client_user_service.get_users_by_client_id(client_id=client_id)
-    return res
+# # GET USER IDS BY CLIENT ID
+# @auth_middleware.check_authorize
+# @permission_middleware.check_permission("user_get")
+# @permission_middleware.check_permission("client_get")
+# def get_users_by_client_id():
+#     res = client_user_service.get_users_by_client_id(
+#         client_id=int(request.args.get('client_id') or None),
+#         page=int(request.args.get('page') or None),
+#         per_page=int(request.args.get('per_page') or None)
+#     )
+#     return res
 
 
 # BIND LINK CLIENT AND USER BY ID

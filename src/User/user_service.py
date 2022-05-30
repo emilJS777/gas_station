@@ -69,8 +69,8 @@ def user_get_by_id(user_id):
 
 
 # GET ALL USER
-def user_get_all():
-    users = user_service_db.get_all()
+def user_get_all(page: int, per_page: int, client_id: int):
+    users = user_service_db.get_all(page=page, per_page=per_page, client_id=client_id)
     return response(True, users, 200)
 
 

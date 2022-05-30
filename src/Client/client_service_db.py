@@ -1,5 +1,6 @@
 from .client_model import Client
 from flask import g
+from src._general.parents import get_page_items
 
 
 def create(client_name: str, client_description: str, creator_id: int or None, parent_id: int or None = None):
@@ -44,15 +45,10 @@ def get_by_id_creator_id(client_id, creator_id):
     return client
 
 
-def get_all():
+def get_all(page: int, per_page: int):
     # GET ALL CLIENT, ITERATE OVER ONE AT A TIME AND INSERT THE CLIENT OBJECT INTO THE ARRAY
-    clients = []
-    for client in Client.query.filter_by(parent_id=g.client_id).all():
-        clients.append({'id': client.id,
-                        'name': client.name,
-                        'description': client.description,
-                        'creation_date': client.creation_date})
-    return clients
+    clients = Client.query.filter_by(parent_id=g.client_id).paginate(page=page, per_page=per_page)
+    return get_page_items(clients)
 
 
 def get_by_name_exclude_id(client_id, name):

@@ -61,7 +61,11 @@ def user_get_by_id(user_id):
 @client_middleware.check_client(required=False)
 @CashBoxMiddleware.check_cash_box(required=False)
 def user_get():
-    res = user_service.user_get_all()
+    res = user_service.user_get_all(
+        page=int(request.args.get('page') or 0),
+        per_page=int(request.args.get('per_page') or 0),
+        client_id=int(request.args.get('client_id') or g.client_id)
+    )
     return res
 
 

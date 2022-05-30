@@ -9,7 +9,7 @@ from src.Permission import permission_middleware
 @permission_middleware.check_permission("role_edit")
 def create_bind():
     req = request.get_json()
-    res = role_permission_service.create_bind(role_id=req['role_id'], permission_id=req['permission_id'])
+    res = role_permission_service.create_bind(role_id=req['role_id'], permission_ids=req['permission_ids'])
     return res
 
 
@@ -17,7 +17,7 @@ def create_bind():
 @permission_middleware.check_permission("role_edit")
 def delete_bind():
     req = request.get_json()
-    res = role_permission_service.delete_bind(role_id=req['role_id'], permission_id=req['permission_id'])
+    res = role_permission_service.delete_bind(role_id=req['role_id'], permission_ids=req['permission_ids'])
     return res
 
 

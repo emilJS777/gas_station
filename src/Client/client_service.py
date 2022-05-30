@@ -31,9 +31,12 @@ def client_get_by_id(client_id):
 
 
 # GET ALL CLIENT
-def client_get_all():
+def client_get_all(page: int, per_page: int):
     # GET ALL CLIENT IDS BY CREATOR ID
-    client_list = client_service_db.get_all()
+    client_list = client_service_db.get_all(
+        page=page,
+        per_page=per_page
+    )
     return response(True, client_list, 200)
 
 

@@ -3,6 +3,7 @@ from flask import g
 from typing import List
 from datetime import datetime
 from src.Client import client_service_db
+from src._general.parents import get_page_items
 
 
 def create_device(key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int) -> Device:
@@ -51,13 +52,7 @@ def get_by_key_exclude_id(device_id, key):
     return device
 
 
-def get_device_ids():
-    devices: List[Device] = Device.query.filter_by(client_id=g.client_id).all()
-
-    devices_ids: List[int] = []
-
-    for device in devices:
-        devices_ids.append(device.id)
-
-    return devices_ids
+def get_devices(page: int, per_page: int):
+    devices = Device.query.filter_by(client_id=g.client_id).paginate(page=page, per_page=per_page)
+    return get_page_items(devices)
 

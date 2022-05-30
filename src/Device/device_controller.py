@@ -50,8 +50,11 @@ def delete_device(device_id: int) -> dict:
 @auth_middleware.check_authorize
 @permission_middleware.check_permission("device_get")
 @client_middleware.check_client(required=True)
-def get_device_ids() -> dict:
-    res: dict = device_service.get_device_ids()
+def get_devices() -> dict:
+    res: dict = device_service.get_devices(
+        page=int(request.args.get('page') or 0),
+        per_page=int(request.args.get('per_page') or 0)
+    )
     return res
 
 

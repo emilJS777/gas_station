@@ -53,7 +53,10 @@ def client_get_by_id(client_id):
 @client_middleware.check_client(required=True)
 @permission_middleware.check_permission("client_get")
 def client_get():
-    res = client_service.client_get_all()
+    res = client_service.client_get_all(
+        page=int(request.args.get('page') or 0),
+        per_page=int(request.args.get('per_page') or 0)
+    )
     return res
 
 

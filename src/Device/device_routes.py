@@ -6,7 +6,7 @@ from . import device_controller
 app.add_url_rule("/api/device/<int:device_id>", view_func=device_controller.get_device_by_id, methods=["GET"])
 
 # GET DEVICE IDS
-app.add_url_rule("/api/device", view_func=device_controller.get_device_ids, methods=["GET"])
+app.add_url_rule("/api/device", view_func=device_controller.get_devices, methods=["GET"])
 
 # CREATE DEVICE
 app.add_url_rule("/api/device", view_func=device_controller.create_device, methods=["POST"])

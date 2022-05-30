@@ -66,9 +66,9 @@ def delete_device(device_id) -> dict:
 
 
 # GET DEVICE IDS
-def get_device_ids() -> dict:
-    device_ids: List[int] = device_service_db.get_device_ids()
-    return response(True, device_ids, 200)
+def get_devices(page: int, per_page: int) -> dict:
+    device_list: dict = device_service_db.get_devices(page=page, per_page=per_page)
+    return response(True, device_list, 200)
 
 
 # GET DEVICE BY ID
