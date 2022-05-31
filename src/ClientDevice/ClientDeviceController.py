@@ -13,7 +13,7 @@ def client_device_bind():
     req = request.get_json()
     res = ClientDeviceService.create_bind(
         client_id=req['client_id'],
-        device_id=req['device_id']
+        device_ids=req['device_ids']
     )
     return res
 
@@ -31,12 +31,12 @@ def client_device_unbind():
     return res
 
 
-@auth_middleware.check_authorize
-@client_middleware.check_client(required=True)
-@permission_middleware.check_permission('device_get')
-@permission_middleware.check_permission('client_get')
-def get_devices_by_client_id():
-    res = ClientDeviceService.get_devices_by_client_id(
-        client_id=int(request.args.get('client_id') or 0)
-    )
-    return res
+# @auth_middleware.check_authorize
+# @client_middleware.check_client(required=True)
+# @permission_middleware.check_permission('device_get')
+# @permission_middleware.check_permission('client_get')
+# def get_devices_by_client_id():
+#     res = ClientDeviceService.get_devices_by_client_id(
+#         client_id=int(request.args.get('client_id') or 0)
+#     )
+#     return res

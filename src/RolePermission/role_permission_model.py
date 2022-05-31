@@ -3,13 +3,8 @@ from src import db
 
 class RolePermission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    role_id = db.Column(db.Integer, nullable=False)
-    permission_id = db.Column(db.Integer, nullable=False)
-
-    # CONSTRUCTOR
-    def __init__(self, role_id: int, permission_id: int):
-        self.role_id = role_id
-        self. permission_id = permission_id
+    role_id = db.Column(db.Integer,  db.ForeignKey('role.id'))
+    permission_id = db.Column(db.Integer,  db.ForeignKey('permission.id'))
 
     # SAVE DB SELF
     def save_db(self):

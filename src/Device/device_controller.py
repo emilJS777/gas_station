@@ -53,7 +53,8 @@ def delete_device(device_id: int) -> dict:
 def get_devices() -> dict:
     res: dict = device_service.get_devices(
         page=int(request.args.get('page') or 0),
-        per_page=int(request.args.get('per_page') or 0)
+        per_page=int(request.args.get('per_page') or 0),
+        client_id=int(request.args.get('client_id') or 0)
     )
     return res
 

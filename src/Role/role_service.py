@@ -1,6 +1,6 @@
 from . import role_service_db
 from src._response import response
-
+from src.RolePermission import role_permission_service_db
 
 # CREATE ROLE
 def create_role(name: str):
@@ -46,6 +46,8 @@ def delete_role(role_id):
     # GET ROLE BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if not role_service_db.get_role_by_id(role_id=role_id):
         return response(False, {'msg': 'Role by this id not found'}, 404)
+
+    role_permission_service_db.delete_all_by_role_id(role_id)
 
     # ELSE DELETE ROLE AND RETURN OK
     role_service_db.delete_role(role_id=role_id)

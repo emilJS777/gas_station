@@ -2,6 +2,7 @@
 from . import client_service_db
 from src._response import response
 from flask import g
+from src.ClientDevice import ClientDeviceRepository
 
 
 # CREATE NEW CLIENT
@@ -61,6 +62,7 @@ def client_delete(client_id):
     if not client_service_db.get_by_id(client_id=client_id):
         return response(False, {"msg": "Client by this id not found"}, 404)
 
+    ClientDeviceRepository.delete_all_by_client_id(client_id)
     # REMOVE THIS CLIENT FROM DB
     client_service_db.delete(client_id=client_id)
     return response(True, {'msg': "this Client successfully deleted"}, 200)

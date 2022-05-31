@@ -5,6 +5,7 @@ from src.Client import client_service_db
 from src.CashBox import CashBoxServiceDb
 from src._response import response
 from typing import List
+from src.ClientDevice import ClientDeviceRepository
 
 
 # CREATE DEVICE
@@ -59,6 +60,8 @@ def delete_device(device_id) -> dict:
     if not device_service_db.get_device_by_id(device_id=device_id):
         return response(False, {'msg': 'Device not found'}, 404)
 
+    ClientDeviceRepository.delete_all_by_device_id(device_id)
+
     device = device_service_db.delete_device(device_id=device_id)
     device_info_service_db.delete(device_key=device.key)
     device_set_service_db.delete(device_key=device.key)
@@ -66,8 +69,8 @@ def delete_device(device_id) -> dict:
 
 
 # GET DEVICE IDS
-def get_devices(page: int, per_page: int) -> dict:
-    device_list: dict = device_service_db.get_devices(page=page, per_page=per_page)
+def get_devices(page: int, per_page: int, client_id: int) -> dict:
+    device_list: dict = device_service_db.get_devices(page=page, per_page=per_page, client_id=client_id)
     return response(True, device_list, 200)
 
 

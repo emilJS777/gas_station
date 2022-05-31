@@ -1,4 +1,7 @@
 from datetime import datetime
+
+from sqlalchemy.orm import relationship
+
 from src import db
 
 
@@ -7,6 +10,8 @@ class Role(db.Model):
     name = db.Column(db.String(20), nullable=True)
     creator_id = db.Column(db.Integer)
     client_id = db.Column(db.Integer)
+
+    permissions = relationship("Permission", secondary="role_permission", backref=db.backref('role'))
 
     # CONSTRUCTOR
     def __init__(self, name: str):

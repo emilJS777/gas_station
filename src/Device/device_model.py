@@ -1,5 +1,7 @@
+from sqlalchemy.orm import relationship
 from src import db
 from datetime import datetime
+from sqlalchemy.ext.declarative import declarative_base
 
 
 class Device(db.Model):
@@ -12,6 +14,8 @@ class Device(db.Model):
     last_update = db.Column(db.DateTime, default=datetime.utcnow())
 
     client_id = db.Column(db.Integer, nullable=False)
+
+    clients = relationship("Client", secondary="client_device", backref=db.backref('device'))
 
     # CONSTRUCTOR
     def __init__(self, key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int):
@@ -36,3 +40,4 @@ class Device(db.Model):
     @staticmethod
     def update_db():
         db.session.commit()
+

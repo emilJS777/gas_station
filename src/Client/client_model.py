@@ -1,4 +1,5 @@
 from sqlalchemy import func
+from sqlalchemy.orm import relationship
 from src import db
 
 
@@ -10,6 +11,8 @@ class Client(db.Model):
     creation_date = db.Column(db.Date(), default=func.now())
     creator_id = db.Column(db.Integer, nullable=True)
     parent_id = db.Column(db.Integer, nullable=True)
+
+    devices = relationship("Device", secondary="client_device", backref=db.backref('client'))
 
     # CONSTRUCTOR
     def __init__(self, name: str, description: str, creator_id: int, parent_id: int):

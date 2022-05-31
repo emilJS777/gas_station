@@ -13,12 +13,12 @@ def create_bind():
     return res
 
 
-@auth_middleware.check_authorize
-@permission_middleware.check_permission("role_edit")
-def delete_bind():
-    req = request.get_json()
-    res = role_permission_service.delete_bind(role_id=req['role_id'], permission_ids=req['permission_ids'])
-    return res
+# @auth_middleware.check_authorize
+# @permission_middleware.check_permission("role_edit")
+# def delete_bind():
+#     req = request.get_json()
+#     res = role_permission_service.delete_bind(role_id=req['role_id'], permission_ids=req['permission_ids'])
+#     return res
 
 
 @auth_middleware.check_authorize

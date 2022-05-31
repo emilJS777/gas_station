@@ -1,3 +1,5 @@
+from sqlalchemy.orm import relationship
+
 from src import db
 
 
@@ -5,6 +7,7 @@ class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique=True, nullable=False)
     title = db.Column(db.String(50), unique=True, nullable=False)
+    roles = relationship("Role", secondary="role_permission", backref=db.backref('permission'))
 
     # CONSTRUCTOR
     def __init__(self, name, title):

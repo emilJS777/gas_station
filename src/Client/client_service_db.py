@@ -30,6 +30,7 @@ def delete(client_id):
 def get_by_id(client_id):
     # GET CLIENT BY ID AND return
     client = Client.query.filter_by(id=client_id, parent_id=g.client_id).first()
+    print(client.devices)
     return client
 
 

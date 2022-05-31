@@ -94,12 +94,13 @@ class Initializer:
 
     def init_role_permission(self):
         role_db: role_service_db.Role = role_service_db.get_role_by_name(name=self.role)
+        permission_ids = []
 
         for permission in self.permissions:
             permission_db: permission_service_db.Permission = permission_service_db.get_by_name(permission_name=permission['name'])
-
+            permission_ids.append(permission_db.id)
             if not role_permission_service_db.get_by_role_id_permission_id(role_id=role_db.id, permission_id=permission_db.id):
-                role_permission_service_db.create_bind(role_id=role_db.id, permission_id=permission_db.id)
+                role_permission_service_db.create_bind(role_id=role_db.id, permission_ids=permission_ids)
                 logger.info(f"Role {role_db.name} and permission {permission_db.name} bind")
 
     def init_client(self):

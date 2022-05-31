@@ -3,8 +3,8 @@ from src import db
 
 class ClientDevice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    client_id = db.Column(db.Integer, nullable=False)
-    device_id = db.Column(db.Integer, nullable=False)
+    client_id = db.Column(db.Integer, db.ForeignKey('client.id'))
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
 
     # SAVE DB SELF
     def save_db(self):
