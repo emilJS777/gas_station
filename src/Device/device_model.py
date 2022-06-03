@@ -15,15 +15,17 @@ class Device(db.Model):
 
     client_id = db.Column(db.Integer, nullable=False)
 
+    pid_device = db.Column(db.ForeignKey('device.id'))
+
+    parent_devices = relationship("Device", remote_side=[pid_device])
     clients = relationship("Client", secondary="client_device", backref=db.backref('device'))
 
     # CONSTRUCTOR
-    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, parent_key: str or None, client_id: int):
+    def __init__(self, key: str, name: str, description: str, error_after_minutes: int, client_id: int):
         self.key = key
         self.name = name
         self.description = description
         self.error_after_minutes = error_after_minutes
-        self.parent_key = parent_key
         self.client_id = client_id
 
     # SAVE DB SELF
