@@ -26,3 +26,13 @@ def get_role_ids_by_user_id(user_id: int):
 def get_by_user_id_role_id(user_id: int, role_id: int) -> UserRole:
     user_role: UserRole = UserRole.query.filter_by(user_id=user_id, role_id=role_id).first()
     return user_role
+
+
+def get_user_ids_by_role_id(role_id: int) -> List:
+    user_roles: List[UserRole] = UserRole.query.filter_by(role_id=role_id).all()
+    user_ids: List[int] = []
+    for user_role in user_roles:
+        user_ids.append(user_role.user_id)
+
+    return user_ids
+
