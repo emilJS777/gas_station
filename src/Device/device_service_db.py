@@ -30,8 +30,7 @@ def create_device(key: str, name: str, description: str, error_after_minutes: in
     return device
 
 
-def update_device(device_id: int, key: str, name: str, description: str, error_after_minutes: int, parent_ids,
-                  client_ids: list[int]) -> Device:
+def update_device(device_id: int, key: str, name: str, description: str, error_after_minutes: int, parent_ids, client_ids) -> Device:
     device: Device = Device.query.filter_by(id=device_id).first()
     device.key = key
     device.name = name
