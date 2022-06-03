@@ -16,7 +16,7 @@ def create_device(key: str,
                   error_after_minutes: int,
                   parent_ids,
                   client_id: int,
-                  client_ids: list[int]) -> dict:
+                  client_ids) -> dict:
     # # GET CLIENT AND CASH BOX IF NOT FOUND RETURN NOT FOUND
 
     if device_service_db.get_device_by_key(key=key):
@@ -40,7 +40,7 @@ def create_device(key: str,
 
 # UPDATE DEVICE
 def update_device(device_id: int, key: str, name: str, description: str, error_after_minutes: int, parent_ids,
-                  client_ids: list[int]) -> dict:
+                  client_ids) -> dict:
 
     # old_key: str = device_service_db.get_device_by_id(device_id=device_id).key
     # if not old_key:
