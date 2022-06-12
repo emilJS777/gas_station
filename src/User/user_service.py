@@ -25,7 +25,6 @@ def create_user(ticket: str, user_name: str, password: str):
     new_user = user_service_db.create(
         ticket=ticket,
         name=user_name,
-        # email_address=email_address,
         password=password,
     )
     return response(True, {'msg': 'new User by id {} successfully created'.format(new_user.id)}, 200)
