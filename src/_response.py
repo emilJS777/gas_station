@@ -13,6 +13,6 @@ def response(success, obj, status_code):
 def bad_request(error):
     if isinstance(error.description, ValidationError):
         original_error = error.description
-        return make_response(jsonify(success=False, obj={'msg': original_error.message}), 400)
+        return make_response(jsonify(success=False, obj={'msg': original_error.message}), 200)
     # handle other "Bad Request"-errors
-    return make_response(jsonify(success=False, obj={'msg': error}), 400)
+    return make_response(jsonify(success=False, obj={'msg': error}), 200)
