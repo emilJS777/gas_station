@@ -56,9 +56,9 @@ def get_by_name(name):
     return user
 
 
-def get_by_email_address(email_address):
-    user = User.query.filter_by(email_address=email_address).first()
-    return user
+# def get_by_email_address(email_address):
+#     user = User.query.filter_by(email_address=email_address).first()
+#     return user
 
 
 def get_by_id(user_id: int):
