@@ -7,10 +7,11 @@ from typing import List
 from src._general.parents import get_page_items
 
 
-def create(ticket, name, password):
+def create(ticket, name, password, email_address):
     # CREATE AND RETURN NEW USER
     new_user = User.query.filter_by(ticket=ticket).first()
     new_user.name = name
+    new_user.email_address = email_address
     new_user.password_hash = generate_password_hash(password)
     new_user.ticket = None
     new_user.update_db()
@@ -52,6 +53,11 @@ def delete(user_id):
 def get_by_name(name):
     # GET USER BY NAME AND RETURN
     user = User.query.filter_by(name=name).first()
+    return user
+
+
+def get_by_email_address(email_address):
+    user = User.query.filter_by(email_address=email_address).first()
     return user
 
 
@@ -117,8 +123,7 @@ def get_all_by_cash_box_id(cash_box_id: int) -> List[dict]:
     return arr
 
 
-def get_all(page: int, per_page: int, client_id: int) -> List[dict]:
-    arr: List[dict] = []
+def get_all(page: int, per_page: int, client_id: int) -> dict:
     # GET ALL USER BY CLIENT ID
     # ITERATE OVER ONE AT A TIME AND INSERT THE USER OBJECT INTO THE ARRAY
     if g.cash_box_id:
