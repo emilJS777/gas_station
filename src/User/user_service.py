@@ -77,10 +77,11 @@ def user_get_by_id(user_id):
 # GET ALL USER
 def user_get_all(page: int, per_page: int, client_id: int):
     users: dict = user_service_db.get_all(page=page, per_page=per_page, client_id=client_id)
-    for user in users['items']:
-        user['roles'] = []
-        for role_id in user_role_service_db.get_role_ids_by_user_id(user.id):
-            user.roles.append(role_service_db.get_role_by_id(role_id).name)
+    for user, index in users['items']:
+        print(user, index)
+        # user['roles'] = []
+        # for role_id in user_role_service_db.get_role_ids_by_user_id(user.id):
+        #     user.roles.append(role_service_db.get_role_by_id(role_id).name)
 
     return response(True, users, 200)
 
