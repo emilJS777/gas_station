@@ -7,11 +7,11 @@ from typing import List
 from src._general.parents import get_page_items
 
 
-def create(ticket, name, password, email_address):
+def create(ticket, name, password):
     # CREATE AND RETURN NEW USER
     new_user = User.query.filter_by(ticket=ticket).first()
     new_user.name = name
-    new_user.email_address = email_address
+    # new_user.email_address = email_address
     new_user.password_hash = generate_password_hash(password)
     new_user.ticket = None
     new_user.update_db()

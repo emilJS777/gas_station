@@ -8,14 +8,14 @@ from flask import g
 
 
 # CREATE NEW USER
-def create_user(ticket: str, user_name: str, password: str, email_address: str):
+def create_user(ticket: str, user_name: str, password: str):
     # IF TICKET NOT FOUND RETURN NOT FOUND
     if not user_service_db.get_by_ticket(ticket=ticket):
         return response(False, {'msg': 'ticket not found'}, 200)
 
-    # IF EMAIL EXIST RETURN CONFLICT
-    if user_service_db.get_by_email_address(email_address):
-        return response(False, {'email address exist'}, 200)
+    # # IF EMAIL EXIST RETURN CONFLICT
+    # if user_service_db.get_by_email_address(email_address):
+    #     return response(False, {'email address exist'}, 200)
 
     # IF FIND THIS USERNAME RETURN RESPONSE CONFLICT
     if user_service_db.get_by_name(name=user_name):
@@ -25,7 +25,7 @@ def create_user(ticket: str, user_name: str, password: str, email_address: str):
     new_user = user_service_db.create(
         ticket=ticket,
         name=user_name,
-        email_address=email_address,
+        # email_address=email_address,
         password=password,
     )
     return response(True, {'msg': 'new User by id {} successfully created'.format(new_user.id)}, 200)
