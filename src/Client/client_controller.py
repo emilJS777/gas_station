@@ -13,7 +13,7 @@ from src.Client import client_middleware
 @expects_json(client_validator.client_schema)
 def client_post():
     req = request.get_json()
-    res = client_service.client_create(client_name=req['name'], client_description=req["description"])
+    res = client_service.client_create(client_name=req['name'], client_description=req["description"], device_ids=req['device_ids'])
     return res
 
 
@@ -26,7 +26,8 @@ def client_update(client_id):
     req = request.get_json()
     res = client_service.client_update(client_id=client_id,
                                        client_name=req['name'],
-                                       client_description=req["description"])
+                                       client_description=req["description"],
+                                       device_ids=req['device_ids'])
     return res
 
 

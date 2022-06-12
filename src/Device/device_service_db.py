@@ -71,11 +71,11 @@ def get_by_key_exclude_id(device_id, key):
 
 
 def get_devices(page: int, per_page: int, client_id: int):
-    # if client_id > 0:
-    #     devices = Device.query.join(Device.clients).filter(Client.id.in_([g.client_id, ])) \
-    #         .paginate(page=page, per_page=per_page)
-    # else:
-    devices = Device.query.join(Device.clients).filter(Client.id.in_([g.client_id]))\
+    if client_id > 0:
+        devices = Device.query.join(Device.clients).filter(Client.id.in_([client_id])) \
+            .paginate(page=page, per_page=per_page)
+    else:
+        devices = Device.query.join(Device.clients).filter(Client.id.in_([g.client_id]))\
             .paginate(page=page, per_page=per_page)
 
     return get_page_items(devices)

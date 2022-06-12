@@ -6,7 +6,7 @@ from src.ClientDevice import ClientDeviceRepository
 
 
 # CREATE NEW CLIENT
-def client_create(client_name, client_description):
+def client_create(client_name, client_description, device_ids: list[int]):
     # IF FIND THIS CLIENT NAME RETURN RESPONSE CONFLICT
     if client_service_db.get_by_name(client_name=client_name):
         return response(False, {'msg': 'Client name is taken'}, 200)
@@ -17,6 +17,10 @@ def client_create(client_name, client_description):
                                           creator_id=g.user_id,
                                           parent_id=g.client_id
                                           )
+    ClientDeviceRepository.create_bind(
+        client_id=new_client.id,
+        device_ids=device_ids
+    )
     return response(True, {'msg': 'new Client by id {} successfully created'.format(new_client.id)}, 200)
 
 
@@ -42,7 +46,7 @@ def client_get_all(page: int, per_page: int):
 
 
 # UPDATE CLIENT
-def client_update(client_id, client_name, client_description):
+def client_update(client_id, client_name, client_description, device_ids: list[int]):
     # GET CLIENT BY ID AND VERIFY DOES IT EXIST. IF NO RETURN NOT FOUND
     if not client_service_db.get_by_id_creator_id(client_id=client_id, creator_id=g.user_id):
         return response(False, {'msg': 'Client by this id not found'}, 200)
@@ -53,6 +57,7 @@ def client_update(client_id, client_name, client_description):
 
     # ELSE CHANGE AND UPDATE DB, AND RETURN RESPONSE OK
     client_service_db.update(client_id=client_id, client_name=client_name, client_description=client_description)
+    ClientDeviceRepository.create_bind(client_id=client_id, device_ids=device_ids)
     return response(True, {'msg': 'Client successfully update'}, 200)
 
 
