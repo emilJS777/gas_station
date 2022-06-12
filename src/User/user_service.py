@@ -9,11 +9,11 @@ from flask import g
 def create_user(ticket: str, user_name: str, password: str):
     # IF TICKET NOT FOUND RETURN NOT FOUND
     if not user_service_db.get_by_ticket(ticket=ticket):
-        return response(False, {'msg': 'ticket not found'}, 404)
+        return response(False, {'msg': 'ticket not found'}, 200)
 
     # IF FIND THIS USERNAME RETURN RESPONSE CONFLICT
     if user_service_db.get_by_name(name=user_name):
-        return response(False, {'msg': 'User name is taken'}, 409)
+        return response(False, {'msg': 'User name is taken'}, 200)
 
     # ELSE USER BY THIS NAME SAVE
     new_user = user_service_db.create(
@@ -28,7 +28,7 @@ def create_user(ticket: str, user_name: str, password: str):
 def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
-        return response(False, {'msg': 'cash box not found'}, 404)
+        return response(False, {'msg': 'cash box not found'}, 200)
 
     # CREATE USER AND VERIFY IF CREATOR TIED TO CLIENT means to bind the new User too
     user = user_service_db.create_ticket(creator_id=creator_id,
@@ -55,7 +55,7 @@ def user_get_by_id(user_id):
 
     # IF USER NOT FOUND RETURN NOT FOUND
     if not user:
-        return response(False, {'msg': 'User by this id not found'}, 404)
+        return response(False, {'msg': 'User by this id not found'}, 200)
 
     # ELSE RETURN THIS USER AND STATUS OK
     return response(True, {'id': user.id,
@@ -78,12 +78,12 @@ def user_get_all(page: int, per_page: int, client_id: int):
 def user_update(user_id: int, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
-        return response(False, {'msg': 'cash box not found'}, 404)
+        return response(False, {'msg': 'cash box not found'}, 200)
 
     # GET USER BY ID AND VERIFY DOES IT EXIST. IF NO RETURN NOT FOUND
     user = user_service_db.get_by_id(user_id=user_id)
     if not user:
-        return response(False, {'msg': 'User by this id not found'}, 404)
+        return response(False, {'msg': 'User by this id not found'}, 200)
 
     # ELSE CHANGE AND UPDATE DB AND RETURN RESPONSE OK
     user_service_db.update(user_id=user_id,
@@ -99,7 +99,7 @@ def user_delete(user_id):
     # IF CLIENT EXIST FIND USER BY ID AND THIS CLIENT ID
     # GET AND VERIFY IF CLiENT AND USER BY ID NOT FOUND RETURN NOT FOUND
     if not user_service_db.get_by_id(user_id=user_id):
-        return response(False, {'msg': 'User not found'}, 404)
+        return response(False, {'msg': 'User not found'}, 200)
 
     # REMOVE THIS USER FROM DB AND THIS USER AND PERMISSION BIND
     user_service_db.delete(user_id=user_id)

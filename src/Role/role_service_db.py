@@ -31,6 +31,12 @@ def get_role_by_name(name: str) -> Role:
     return role
 
 
+# EXCLUDE ID GET BY NAME
+def get_role_by_name_exclude_id(name: str, role_id: int) -> Role:
+    role: Role = Role.query.filter(Role.name == name, Role.id != role_id).first()
+    return role
+
+
 # GET ROLES
 def get_roles() -> List:
     roles: List[Role] = Role.query.filter_by(creator_id=g.user_id).all()

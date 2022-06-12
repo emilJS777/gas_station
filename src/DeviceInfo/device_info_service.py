@@ -7,7 +7,7 @@ import json
 # UPDATE
 def update(device_key: str, device_info_body) -> dict:
     if not device_info_service_db.get_device_info_by_key(device_key=device_key):
-        return response(False, {'msg': 'Device info not found'}, 404)
+        return response(False, {'msg': 'Device info not found'}, 200)
 
     device_info_service_db.update(device_key, json.loads(device_info_body))
     return response(True, {'msg': 'Device info successfully updated'}, 200)
@@ -17,7 +17,7 @@ def update(device_key: str, device_info_body) -> dict:
 def get_device_info(device_key: str) -> dict:
     device_info: device_info_service_db.DeviceInfo = device_info_service_db.get_device_info_by_key(device_key)
     if not device_info:
-        return response(False, {'msg': 'Device info not found'}, 404)
+        return response(False, {'msg': 'Device info not found'}, 200)
 
     return response(True, {'id': device_info.device_key,
                            'last_update': device_info.last_update,

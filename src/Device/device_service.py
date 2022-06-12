@@ -20,7 +20,7 @@ def create_device(key: str,
     # # GET CLIENT AND CASH BOX IF NOT FOUND RETURN NOT FOUND
 
     if device_service_db.get_device_by_key(key=key):
-        return response(False, {'msg': 'Device by this key exist'}, 409)
+        return response(False, {'msg': 'Device by this key exist'}, 200)
 
     # CREATE DEVICE AND DEVICE INFO IF DEVICE INFO BY THIS KEY NOT FOUND
     device_service_db.create_device(
@@ -47,7 +47,7 @@ def update_device(device_id: int, key: str, name: str, description: str, error_a
     #     return response(False, {'msg': 'Device not found'}, 404)
 
     if device_service_db.get_by_key_exclude_id(device_id=device_id, key=key):
-        return response(False, {'msg': 'Device by this key exist'}, 409)
+        return response(False, {'msg': 'Device by this key exist'}, 200)
 
     device = device_service_db.update_device(device_id=device_id, key=key, name=name,
                                              description=description, error_after_minutes=error_after_minutes,
@@ -64,7 +64,7 @@ def update_device(device_id: int, key: str, name: str, description: str, error_a
 # DELETE DEVICE
 def delete_device(device_id) -> dict:
     if not device_service_db.get_device_by_id(device_id=device_id):
-        return response(False, {'msg': 'Device not found'}, 404)
+        return response(False, {'msg': 'Device not found'}, 200)
 
     ClientDeviceRepository.delete_all_by_device_id(device_id)
 
@@ -84,7 +84,7 @@ def get_devices(page: int, per_page: int, client_id: int) -> dict:
 def get_device_by_id(device_id: int) -> dict:
     device: device_service_db.Device = device_service_db.get_device_by_id(device_id=device_id)
     if not device:
-        return response(False, {'msg': 'Device not found'}, 404)
+        return response(False, {'msg': 'Device not found'}, 200)
 
     return response(True, {'id': device.id, 'key': device.key,
                            'name': device.name,

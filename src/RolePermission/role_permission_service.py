@@ -9,7 +9,7 @@ from flask import g
 # CREATE BIND
 def create_bind(role_id: int, permission_ids: list):
     if not role_service_db.get_role_by_id(role_id=role_id):
-        return response(False, {'msg': 'Role or Permission not found'}, 404)
+        return response(False, {'msg': 'Role or Permission not found'}, 200)
 
     # ELSE CREATE NEW ROLE PERMISSION BIND AND RETURN OK
     role_permission_service_db.create_bind(role_id=role_id, permission_ids=permission_ids)

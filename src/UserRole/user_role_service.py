@@ -8,7 +8,7 @@ from flask import g
 
 def create_bind(user_id: int, role_id: int):
     if not user_service_db.get_by_id(user_id=user_id) or not role_service_db.get_role_by_id(role_id=role_id):
-        return response(False, {'msg': 'User or Role not found'}, 404)
+        return response(False, {'msg': 'User or Role not found'}, 200)
 
     user_role_service_db.create_bind(user_id=user_id, role_id=role_id)
     return response(True, {'msg': 'User Role successfully bind'}, 200)
@@ -16,10 +16,10 @@ def create_bind(user_id: int, role_id: int):
 
 def delete_bind(user_id: int, role_id: int):
     if g.user_id == user_id:
-        return response(False, {'msg': 'you cant change your role'}, 403)
+        return response(False, {'msg': 'you cant change your role'}, 200)
 
     if not user_role_service_db.get_by_user_id_role_id(user_id=user_id, role_id=role_id):
-        return response(False, {'msg': 'User or Role not found'}, 404)
+        return response(False, {'msg': 'User or Role not found'}, 200)
 
     user_role_service_db.delete_bind(user_id=user_id, role_id=role_id)
     return response(True, {'msg': 'User Role bind successfully deleted'}, 200)
