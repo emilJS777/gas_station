@@ -17,7 +17,7 @@ def login(user_name, password):
     # FIND THE USER BY NAME AND CHECK IF THE PASSWORD
     # IS INCORRECT OR THE USER IS NOT FOUND
     # RETURN RESPONSE UNAUTHORIZED
-    user = user_service_db.get_by_name(name=user_name)
+    user = user_service_db.get_by_name(name=user_name) or user_service_db.get_by_email_address(user_name)
     if not user or not check_password_hash(user.password_hash, password):
         return response(False, {'msg': 'invalid User name and/or password'}, 401)
 
@@ -66,6 +66,7 @@ def get_profile() -> dict:
         roles.append({'name': role.name})
 
     return response(True, {'id': user.id,
+                           'email_address': user.email_address,
                            'name': user.name,
                            'first_name': user.first_name,
                            'last_name': user.last_name,
@@ -73,3 +74,13 @@ def get_profile() -> dict:
                            'cashier': user.cashier,
                            'permissions': permission_list,
                            'roles': roles}, 200)
+
+
+# RESSET PASSWORD
+def resset_password(ticket_code: str, new_password: str) -> dict:
+    user = user_service_db.get_by_ticket(ticket_code)
+    if not user:
+        return response(False, {'msg': 'ticket not found'}, 200)
+
+    user_service_db.update_password(user.id, new_password)
+    return response(True, {'msg': 'password successfully updated'}, 200)

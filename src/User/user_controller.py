@@ -15,6 +15,7 @@ def create_user():
     res = user_service.create_user(
         ticket=req['ticket'],
         user_name=req['name'],
+        email_address=req['email_address'],
         password=req['password']
     )
     return res

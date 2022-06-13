@@ -2,11 +2,20 @@ from . import auth_service, auth_middleware
 from flask import request
 from flask_jwt_extended import jwt_required
 from src.Client import client_middleware
+from flask_expects_json import expects_json
+from .auth_validator import resset_password_schema
 
 
 def login():
     req = request.get_json()
     res = auth_service.login(user_name=req['user_name'], password=req['password'])
+    return res
+
+
+@expects_json(resset_password_schema)
+def resset_password():
+    req = request.get_json()
+    res = auth_service.resset_password(ticket_code=req['ticket_code'], new_password=req['new_password'])
     return res
 
 

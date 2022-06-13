@@ -8,14 +8,14 @@ from flask import g
 
 
 # CREATE NEW USER
-def create_user(ticket: str, user_name: str, password: str):
+def create_user(ticket: str, user_name: str, email_address: str, password: str):
     # IF TICKET NOT FOUND RETURN NOT FOUND
     if not user_service_db.get_by_ticket(ticket=ticket):
         return response(False, {'msg': 'ticket not found'}, 200)
 
-    # # IF EMAIL EXIST RETURN CONFLICT
-    # if user_service_db.get_by_email_address(email_address):
-    #     return response(False, {'email address exist'}, 200)
+    # IF EMAIL EXIST RETURN CONFLICT
+    if user_service_db.get_by_email_address(email_address):
+        return response(False, {"msg": 'email address exist'}, 200)
 
     # IF FIND THIS USERNAME RETURN RESPONSE CONFLICT
     if user_service_db.get_by_name(name=user_name):
@@ -25,6 +25,7 @@ def create_user(ticket: str, user_name: str, password: str):
     new_user = user_service_db.create(
         ticket=ticket,
         name=user_name,
+        email_address=email_address,
         password=password,
     )
     return response(True, {'msg': 'new User by id {} successfully created'.format(new_user.id)}, 200)
@@ -77,10 +78,11 @@ def user_get_by_id(user_id):
 # GET ALL USER
 def user_get_all(page: int, per_page: int, client_id: int):
     users: dict = user_service_db.get_all(page=page, per_page=per_page, client_id=client_id)
-    # for user, index in enumerate(users['items']):
-    #     user.roles = []
-    #     for role_id in user_role_service_db.get_role_ids_by_user_id(user_id=user['id']):
-    #         user.roles.append(role_service_db.get_role_by_id(role_id).name)
+
+    for user in users['items']:
+        user['roles'] = []
+        for role_id in user_role_service_db.get_role_ids_by_user_id(user_id=user['id']):
+            user['roles'].append({'name': role_service_db.get_role_by_id(role_id).name})
 
     return response(True, users, 200)
 

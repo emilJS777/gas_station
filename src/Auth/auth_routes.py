@@ -9,3 +9,6 @@ app.add_url_rule("/api/refresh", view_func=auth_controller.refresh_token, method
 
 # GET PROFILE
 app.add_url_rule("/api/profile", view_func=auth_controller.get_profile, methods=["GET"])
+
+# UPDATE PASSWORD
+app.add_url_rule("/api/resset_password", view_func=auth_controller.refresh_token, methods=["PUT"])

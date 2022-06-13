@@ -7,10 +7,11 @@ from typing import List
 from src._general.parents import get_page_items
 
 
-def create(ticket, name, password):
+def create(ticket, name, email_address, password):
     # CREATE AND RETURN NEW USER
     new_user = User.query.filter_by(ticket=ticket).first()
     new_user.name = name
+    new_user.email_address = email_address
     new_user.password_hash = generate_password_hash(password)
     new_user.ticket = None
     new_user.update_db()
@@ -55,9 +56,9 @@ def get_by_name(name):
     return user
 
 
-# def get_by_email_address(email_address):
-#     user = User.query.filter_by(email_address=email_address).first()
-#     return user
+def get_by_email_address(email_address: str):
+    user = User.query.filter_by(email_address=email_address).first()
+    return user
 
 
 def get_by_id(user_id: int):
@@ -86,6 +87,13 @@ def get_by_id_creator_id(user_id, creator_id):
 #     # GET AND RETURN USER BY FIRM ID
 #     User = User.query.filter_by(id=user_id, client_id=client_id).first()
 #     return User
+
+
+def update_password(user_id: int, new_password: str):
+    user = User.query.filter_by(id=user_id).first()
+    user.password_hash = generate_password_hash(new_password)
+    user.ticket = None
+    user.update_db()
 
 
 def get_first_by_creator_id(creator_id):
