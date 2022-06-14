@@ -8,14 +8,11 @@ from flask import g
 
 
 # CREATE NEW USER
-def create_user(ticket: str, user_name: str, email_address: str, password: str):
+def create_user(ticket: str, user_name: str, password: str):
     # IF TICKET NOT FOUND RETURN NOT FOUND
-    if not user_service_db.get_by_ticket(ticket=ticket):
+    user = user_service_db.get_by_ticket(ticket=ticket)
+    if not user or user.name:
         return response(False, {'msg': 'ticket not found'}, 200)
-
-    # IF EMAIL EXIST RETURN CONFLICT
-    if user_service_db.get_by_email_address(email_address):
-        return response(False, {"msg": 'email address exist'}, 200)
 
     # IF FIND THIS USERNAME RETURN RESPONSE CONFLICT
     if user_service_db.get_by_name(name=user_name):
@@ -25,22 +22,26 @@ def create_user(ticket: str, user_name: str, email_address: str, password: str):
     new_user = user_service_db.create(
         ticket=ticket,
         name=user_name,
-        email_address=email_address,
         password=password,
     )
     return response(True, {'msg': 'new User by id {} successfully created'.format(new_user.id)}, 200)
 
 
 # CREATE USER TICKET
-def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
+def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box not found'}, 200)
+
+    # IF EMAIL EXIST RETURN CONFLICT
+    if user_service_db.get_by_email_address(email_address):
+        return response(False, {"msg": 'email address exist'}, 200)
 
     # CREATE USER AND VERIFY IF CREATOR TIED TO CLIENT means to bind the new User too
     user = user_service_db.create_ticket(creator_id=creator_id,
                                          first_name=first_name,
                                          last_name=last_name,
+                                         email_address=email_address,
                                          cash_box_id=cash_box_id,
                                          cashier=cashier)
 
@@ -88,10 +89,14 @@ def user_get_all(page: int, per_page: int, client_id: int):
 
 
 # UPDATE USER
-def user_update(user_id: int, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
+def user_update(user_id: int, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box not found'}, 200)
+
+    # IF EMAIL EXIST RETURN CONFLICT
+    if user_service_db.get_by_email_address_exclude_id(user_id, email_address):
+        return response(False, {"msg": 'email address exist'}, 200)
 
     # GET USER BY ID AND VERIFY DOES IT EXIST. IF NO RETURN NOT FOUND
     user = user_service_db.get_by_id(user_id=user_id)
@@ -102,6 +107,7 @@ def user_update(user_id: int, first_name: str, last_name: str, cash_box_id: int,
     user_service_db.update(user_id=user_id,
                            first_name=first_name,
                            last_name=last_name,
+                           email_address=email_address,
                            cash_box_id=cash_box_id,
                            cashier=cashier)
     return response(True, {'msg': 'User successfully update'}, 200)

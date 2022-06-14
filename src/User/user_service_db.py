@@ -7,24 +7,29 @@ from typing import List
 from src._general.parents import get_page_items
 
 
-def create(ticket, name, email_address, password):
+def create(ticket, name, password):
     # CREATE AND RETURN NEW USER
     new_user = User.query.filter_by(ticket=ticket).first()
     new_user.name = name
-    new_user.email_address = email_address
     new_user.password_hash = generate_password_hash(password)
     new_user.ticket = None
     new_user.update_db()
     return new_user
 
 
-def create_ticket(creator_id: int = None, first_name: str = None, last_name: str = None, cash_box_id: int = None,
-                  cashier: bool = False, client_id: int = None):
+def create_ticket(creator_id: int = None,
+                  first_name: str = None,
+                  last_name: str = None,
+                  email_address: str = None,
+                  cash_box_id: int = None,
+                  cashier: bool = False,
+                  client_id: int = None):
     # CREATE NEW USER AND TICKET
     user = User(ticket=generate_ticket_code())
     user.client_id = client_id if client_id else g.client_id
     user.first_name = first_name
     user.last_name = last_name
+    user.email_address = email_address
     user.cash_box_id = cash_box_id
     user.creator_id = creator_id
     user.cashier = cashier
@@ -32,11 +37,12 @@ def create_ticket(creator_id: int = None, first_name: str = None, last_name: str
     return user
 
 
-def update(user_id, first_name: str, last_name: str, cash_box_id: int, cashier: bool):
+def update(user_id, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET USER BY ID AND CREAtOR ID & UPDATE NAME
     user = User.query.filter_by(id=user_id).first()
     user.first_name = first_name
     user.last_name = last_name
+    user.email_address = email_address
     user.cash_box_id = cash_box_id
     user.cashier = cashier
     user.update_db()
@@ -58,6 +64,11 @@ def get_by_name(name):
 
 def get_by_email_address(email_address: str):
     user = User.query.filter_by(email_address=email_address).first()
+    return user
+
+
+def get_by_email_address_exclude_id(user_id: int, email_address: str):
+    user = User.query.filter(User.id != user_id, User.email_address == email_address).first()
     return user
 
 

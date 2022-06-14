@@ -15,8 +15,7 @@ def create_user():
     res = user_service.create_user(
         ticket=req['ticket'],
         user_name=req['name'],
-        email_address=req['email_address'],
-        password=req['password']
+        password=req['password'],
     )
     return res
 
@@ -33,6 +32,7 @@ def create_user_ticket():
                                           client_id=g.client_id,
                                           first_name=req['first_name'],
                                           last_name=req['last_name'],
+                                          email_address=req['email_address'],
                                           cash_box_id=g.cash_box_id or req['cash_box_id'],
                                           cashier=req['cashier'])
     return res
@@ -81,6 +81,7 @@ def user_update(user_id: int):
     res = user_service.user_update(user_id=user_id,
                                    first_name=req['first_name'],
                                    last_name=req['last_name'],
+                                   email_address=req['email_address'],
                                    cash_box_id=g.cash_box_id or req['cash_box_id'],
                                    cashier=req['cashier'])
     return res
