@@ -9,7 +9,7 @@ def update(device_key: str, device_info_body) -> dict:
     if not device_info_service_db.get_device_info_by_key(device_key=device_key):
         return response(False, {'msg': 'Device info not found'}, 200)
 
-    device_info_service_db.update(device_key, json.loads(device_info_body))
+    device_info_service_db.update(device_key, device_info_body)
     return response(True, {'msg': 'Device info successfully updated'}, 200)
 
 
@@ -21,7 +21,6 @@ def get_device_info(device_key: str) -> dict:
 
     return response(True, {'id': device_info.device_key,
                            'last_update': device_info.last_update,
-
                            'flowauto': device_info.flow_auto,
                            'dp_pastaci': device_info.dp_pastaci,
                            'dp_drac': device_info.dp_drac,
@@ -38,7 +37,7 @@ def get_device_info(device_key: str) -> dict:
                            'today': device_info.today,
                            'yesterday': device_info.yesterday,
                            'signal': device_info.signal,
-                           'onoff': device_info.onoff
-                           # 'monthly': device_info.monthly
+                           'onoff': device_info.onoff,
+                           'monthly': device_info.monthly
                            }, 200)
 #

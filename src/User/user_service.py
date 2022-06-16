@@ -68,6 +68,7 @@ def user_get_by_id(user_id):
     # ELSE RETURN THIS USER AND STATUS OK
     return response(True, {'id': user.id,
                            'name': user.name,
+                           'email_address': user.email_address,
                            'first_name': user.first_name,
                            'last_name': user.last_name,
                            'cash_box_id': user.cash_box_id,
