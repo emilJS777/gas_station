@@ -1,4 +1,4 @@
-from .config import app, db, logger, socketio
+from .config import app, db, logger, socketio, mail
 
 # ROUTES
 from .Auth import auth_routes

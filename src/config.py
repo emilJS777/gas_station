@@ -7,6 +7,7 @@ from datetime import datetime
 import logging
 from flask_cors import CORS
 from flask_socketio import SocketIO
+from flask_mail import Mail
 
 app = Flask(__name__)
 api = Api(app)
@@ -38,3 +39,13 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(f"{datetime.utcnow()}")
 
 socketio = SocketIO(app, logger=True, engineio_logger=True, cors_allowed_origins="*")
+
+# MAIL CONFIG
+app.config['MAIL_SERVER'] = 'smtp.mail.ru'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'test-test-9292@mail.ru'
+app.config['MAIL_PASSWORD'] = 'i5H8SqqL9fHmLxyLsKBU'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
+

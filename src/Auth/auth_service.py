@@ -11,6 +11,7 @@ from typing import List
 from src.CashBoxUser import CashBoxUserRepository
 from ..Permission import permission_service_db
 from ..RolePermission import role_permission_service_db
+from .auth_helper import send_ticket_code_to_email
 
 
 def login(user_name, password):
@@ -84,3 +85,18 @@ def resset_password(ticket_code: str, new_password: str) -> dict:
 
     user_service_db.update_password(user.id, new_password)
     return response(True, {'msg': 'password successfully updated'}, 200)
+
+
+# REQUEST RESSET PASSWORD
+def request_resset_password(email_address: str) -> dict:
+    user = user_service_db.get_by_email_address(email_address)
+    if not user:
+        return response(False, {'msg': 'email address not found'}, 200)
+
+    ticket = user_service_db.set_user_ticket(user.id)
+    send_ticket_code_to_email(
+        email_address=email_address,
+        ticket_code=ticket,
+        message="use this password reset code"
+    )
+    return response(True, {'msg': f'password change ticket code sent by email {email_address}'}, 200)

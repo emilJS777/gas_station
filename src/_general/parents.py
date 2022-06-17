@@ -11,6 +11,7 @@ def get_dict_items(obj):
 
     return dict_item
 
+
 # PAGE ITEMS
 def get_array_items(array):
     items: list = []

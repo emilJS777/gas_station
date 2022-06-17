@@ -3,7 +3,7 @@ from flask import request
 from flask_jwt_extended import jwt_required
 from src.Client import client_middleware
 from flask_expects_json import expects_json
-from .auth_validator import resset_password_schema
+from .auth_validator import resset_password_schema, request_resset_password_schema
 
 
 def login():
@@ -13,9 +13,16 @@ def login():
 
 
 @expects_json(resset_password_schema)
-def resset_password():
+def resset_password() -> dict:
     req = request.get_json()
     res = auth_service.resset_password(ticket_code=req['ticket_code'], new_password=req['new_password'])
+    return res
+
+
+@expects_json(request_resset_password_schema)
+def request_resset_password() -> dict:
+    req = request.get_json()
+    res = auth_service.request_resset_password(req['email_address'])
     return res
 
 

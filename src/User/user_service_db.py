@@ -37,6 +37,14 @@ def create_ticket(creator_id: int = None,
     return user
 
 
+def set_user_ticket(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    ticket = generate_ticket_code()
+    user.ticket = ticket
+    user.update_db()
+    return ticket
+
+
 def update(user_id, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET USER BY ID AND CREAtOR ID & UPDATE NAME
     user = User.query.filter_by(id=user_id).first()
