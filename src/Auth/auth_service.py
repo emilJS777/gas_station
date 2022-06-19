@@ -12,6 +12,7 @@ from src.CashBoxUser import CashBoxUserRepository
 from ..Permission import permission_service_db
 from ..RolePermission import role_permission_service_db
 from .auth_helper import send_ticket_code_to_email
+from flask import g
 
 
 def login(user_name, password):
@@ -20,7 +21,7 @@ def login(user_name, password):
     # RETURN RESPONSE UNAUTHORIZED
     user = user_service_db.get_by_name(name=user_name) or user_service_db.get_by_email_address(user_name)
     if not user or not check_password_hash(user.password_hash, password):
-        return response(False, {'msg': 'invalid User name and/or password'}, 401)
+        return response(False, {'msg': 'invalid User name and/or password'}, 200)
 
     # ID USER IS CASHIER SET DATA
     if user.cash_box_id and user.cashier:
@@ -80,6 +81,7 @@ def get_profile() -> dict:
 # RESSET PASSWORD
 def resset_password(ticket_code: str, new_password: str) -> dict:
     user = user_service_db.get_by_ticket(ticket_code)
+
     if not user:
         return response(False, {'msg': 'ticket not found'}, 200)
 

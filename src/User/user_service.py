@@ -5,6 +5,7 @@ from src._response import response
 from src.Role import role_service_db
 from src.UserRole import user_role_service_db
 from flask import g
+from flask_bcrypt import check_password_hash, generate_password_hash
 
 
 # CREATE NEW USER
@@ -124,3 +125,21 @@ def user_delete(user_id):
     # REMOVE THIS USER FROM DB AND THIS USER AND PERMISSION BIND
     user_service_db.delete(user_id=user_id)
     return response(True, {'msg': "this User successfully deleted"}, 200)
+
+
+# UPDATE USER AUTH. user_name, password
+def user_update_auth(user_name: str or None, new_password: str or None, password: str) -> dict:
+    user: user_service_db.User = user_service_db.get_by_id(g.user_id)
+
+    if not check_password_hash(user.password_hash, password):
+        return response(False, {'msg': 'invalid password'}, 200)
+
+    if new_password:
+        user.password_hash = generate_password_hash(new_password)
+
+    if user_name:
+        user.name = user_name
+
+    user.update_db()
+    return response(True, {'msg': 'user auth data successfully updated'}, 200)
+

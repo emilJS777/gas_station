@@ -2,10 +2,11 @@
 resset_password_schema = {
     "type": "object",
     "properties": {
-        "password": {"type": "string", "minLength": 6, "maxLength": 32},
-        "ticket_code": {"type": "string", "minLength": 30, "maxLength": 50},
+        "new_password": {"type": "string", "minLength": 6, "maxLength": 32},
+        "ticket_code": {"type": "string", "minLength": 10, "maxLength": 50},
+        "old_password": {"type": "string", "minLength": 6, "maxLength": 50},
       },
-    "required": ["new_password", "ticket_code"]
+    "required": ["new_password"]
 }
 
 request_resset_password_schema = {

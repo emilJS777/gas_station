@@ -23,3 +23,14 @@ user_ticket_schema = {
     "required": ["first_name", "last_name", "email_address"]
 }
 
+
+# USER AUTH
+user_update_auth_schema = {
+    "type": "object",
+    "properties": {
+        "user_name": {"type": "string", "minLength": 6, "maxLength": 18},
+        "password": {"type": "string", "minLength": 6, "maxLength": 32},
+        "new_password": {"type": "string", "minLength": 6, "maxLength": 32, "required": False}
+    },
+    "required": ["password"]
+}

@@ -87,3 +87,17 @@ def user_update(user_id: int):
     return res
 
 
+# UPDATE AUTH, user_name, password
+@auth_middleware.check_authorize
+@client_middleware.check_client(required=True)
+@expects_json(user_validator.user_update_auth_schema)
+def user_update_auth():
+    req = request.get_json()
+    res = user_service.user_update_auth(
+        user_name=req.get('user_name'),
+        new_password=req.get('new_password'),
+        password=req.get('password')
+    )
+    return res
+
+
