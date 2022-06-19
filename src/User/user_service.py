@@ -128,7 +128,7 @@ def user_delete(user_id):
 
 
 # UPDATE USER AUTH. user_name, password
-def user_update_auth(user_name: str or None, new_password: str or None, password: str) -> dict:
+def user_update_auth(new_user_name: str or None, new_password: str or None, password: str) -> dict:
     user: user_service_db.User = user_service_db.get_by_id(g.user_id)
 
     if not check_password_hash(user.password_hash, password):
@@ -137,8 +137,8 @@ def user_update_auth(user_name: str or None, new_password: str or None, password
     if new_password:
         user.password_hash = generate_password_hash(new_password)
 
-    if user_name:
-        user.name = user_name
+    if new_user_name:
+        user.name = new_user_name
 
     user.update_db()
     return response(True, {'msg': 'user auth data successfully updated'}, 200)

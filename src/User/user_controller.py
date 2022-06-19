@@ -94,8 +94,8 @@ def user_update(user_id: int):
 def user_update_auth():
     req = request.get_json()
     res = user_service.user_update_auth(
-        user_name=req.get('user_name'),
-        new_password=req.get('new_password'),
+        new_user_name=req.get('new_user_name') or None,
+        new_password=req.get('new_password') or None,
         password=req.get('password')
     )
     return res

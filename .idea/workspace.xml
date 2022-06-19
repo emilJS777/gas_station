@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="asdasdf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Auth/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/auth_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Auth/auth_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/auth_validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/user_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/user_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/user_validator.py" afterDir="false" />
     </list>
@@ -176,13 +173,6 @@
       <workItem from="1653983564588" duration="640000" />
       <workItem from="1653984302884" duration="8849000" />
       <workItem from="1654243517407" duration="1951000" />
-    </task>
-    <task id="LOCAL-00077" summary="changes">
-      <created>1652279656965</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1652279656965</updated>
     </task>
     <task id="LOCAL-00078" summary="changes">
       <created>1652279697959</created>
@@ -520,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655465360304</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="asdasdf">
+      <created>1655651965793</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1655651965793</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

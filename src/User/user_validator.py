@@ -28,9 +28,9 @@ user_ticket_schema = {
 user_update_auth_schema = {
     "type": "object",
     "properties": {
-        "user_name": {"type": "string", "minLength": 6, "maxLength": 18},
+        "new_user_name": {"type": "string", "minLength": 6, "maxLength": 18},
         "password": {"type": "string", "minLength": 6, "maxLength": 32},
-        "new_password": {"type": "string", "minLength": 6, "maxLength": 32, "required": False}
+        "new_password": {"type": "string", "minLength": 6, "maxLength": 32}
     },
-    "required": ["password"]
+    "required": ["new_user_name", "new_password", "password"]
 }
