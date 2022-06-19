@@ -18,6 +18,7 @@ def create(ticket, name, password):
 
 
 def create_ticket(creator_id: int = None,
+                  role_id: int = None,
                   first_name: str = None,
                   last_name: str = None,
                   email_address: str = None,
@@ -29,6 +30,7 @@ def create_ticket(creator_id: int = None,
     user.client_id = client_id if client_id else g.client_id
     user.first_name = first_name
     user.last_name = last_name
+    user.role_id = role_id
     user.email_address = email_address
     user.cash_box_id = cash_box_id
     user.creator_id = creator_id
@@ -45,11 +47,12 @@ def set_user_ticket(user_id):
     return ticket
 
 
-def update(user_id, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
+def update(user_id, role_id: int, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET USER BY ID AND CREAtOR ID & UPDATE NAME
     user = User.query.filter_by(id=user_id).first()
     user.first_name = first_name
     user.last_name = last_name
+    user.role_id = role_id
     user.email_address = email_address
     user.cash_box_id = cash_box_id
     user.cashier = cashier

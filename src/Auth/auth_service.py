@@ -54,18 +54,12 @@ def refresh_token():
 def get_profile() -> dict:
     user: user_service_db.User = user_service_db.get_by_id(user_id=g.user_id)
 
-    role_ids: List[int] = user_role_service_db.get_role_ids_by_user_id(user_id=g.user_id)
-    roles: List[dict] = []
-
     permission_list: List[dict] = []
-    for role_id in role_ids:
-        for permission_id in role_permission_service_db.get_permission_ids_by_role_id(role_id=role_id):
-            permission: permission_service_db.Permission = permission_service_db.get_by_id(permission_id=permission_id)
-            permission_list.append({'id': permission.id, 'name': permission.name, 'title': permission.title})
+    for permission_id in role_permission_service_db.get_permission_ids_by_role_id(role_id=g.role_id):
+        permission: permission_service_db.Permission = permission_service_db.get_by_id(permission_id=permission_id)
+        permission_list.append({'id': permission.id, 'name': permission.name, 'title': permission.title})
 
-    for role_id in role_ids:
-        role = role_service_db.get_role_by_id(role_id)
-        roles.append({'name': role.name})
+    role = role_service_db.get_role_by_id(g.role_id)
 
     return response(True, {'id': user.id,
                            'email_address': user.email_address,
@@ -75,7 +69,7 @@ def get_profile() -> dict:
                            'cash_box_id': user.cash_box_id,
                            'cashier': user.cashier,
                            'permissions': permission_list,
-                           'roles': roles}, 200)
+                           'role': role.name}, 200)
 
 
 # RESSET PASSWORD

@@ -29,7 +29,7 @@ def create_user(ticket: str, user_name: str, password: str):
 
 
 # CREATE USER TICKET
-def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
+def create_user_ticket(creator_id, client_id, role_id: int, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box not found'}, 200)
@@ -38,8 +38,13 @@ def create_user_ticket(creator_id, client_id, first_name: str, last_name: str, e
     if user_service_db.get_by_email_address(email_address):
         return response(False, {"msg": 'email address exist'}, 200)
 
+    # CHECK ROLE
+    if not role_service_db.get_role_by_id(role_id):
+        return response(False, {'msg': 'role not found'}, 200)
+
     # CREATE USER AND VERIFY IF CREATOR TIED TO CLIENT means to bind the new User too
     user = user_service_db.create_ticket(creator_id=creator_id,
+                                         role_id=role_id,
                                          first_name=first_name,
                                          last_name=last_name,
                                          email_address=email_address,
@@ -75,6 +80,7 @@ def user_get_by_id(user_id):
                            'cash_box_id': user.cash_box_id,
                            'cashier': user.cashier,
                            'ticket': user.ticket,
+                           'role_id': user.role_id,
                            'creation_date': user.creation_date}, 200)
 
 
@@ -82,16 +88,11 @@ def user_get_by_id(user_id):
 def user_get_all(page: int, per_page: int, client_id: int):
     users: dict = user_service_db.get_all(page=page, per_page=per_page, client_id=client_id)
 
-    for user in users['items']:
-        user['roles'] = []
-        for role_id in user_role_service_db.get_role_ids_by_user_id(user_id=user['id']):
-            user['roles'].append({'name': role_service_db.get_role_by_id(role_id).name})
-
     return response(True, users, 200)
 
 
 # UPDATE USER
-def user_update(user_id: int, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
+def user_update(user_id: int, role_id: int, first_name: str, last_name: str, email_address: str, cash_box_id: int, cashier: bool):
     # GET CASH BOX BY ID AND VERIFY IF NOT FOUND RETURN NOT FOUND
     if cash_box_id and not CashBoxServiceDb.get_by_id(cash_box_id):
         return response(False, {'msg': 'cash box not found'}, 200)
@@ -105,9 +106,14 @@ def user_update(user_id: int, first_name: str, last_name: str, email_address: st
     if not user:
         return response(False, {'msg': 'User by this id not found'}, 200)
 
+    # CHECK ROLE
+    if not role_service_db.get_role_by_id(role_id):
+        return response(False, {'msg': 'role not found'}, 200)
+
     # ELSE CHANGE AND UPDATE DB AND RETURN RESPONSE OK
     user_service_db.update(user_id=user_id,
                            first_name=first_name,
+                           role_id=role_id,
                            last_name=last_name,
                            email_address=email_address,
                            cash_box_id=cash_box_id,

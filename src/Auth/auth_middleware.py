@@ -25,6 +25,7 @@ def check_authorize(f):
             user: user_service_db.User = user_service_db.User.query.filter_by(id=get_jwt_identity()).first()
             if user:
                 g.user_id = get_jwt_identity()
+                g.role_id = user.role_id
                 g.cashier = user.cashier
                 return f(*args, **kwargs)
 

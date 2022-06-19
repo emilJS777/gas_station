@@ -11,7 +11,7 @@ class User(db.Model):
     creation_date = db.Column(db.DateTime, default=datetime.utcnow())
     ticket = db.Column(db.String(50), nullable=True, unique=True)
     email_address = db.Column(db.String(80), nullable=True, unique=True)
-
+    role_id = db.Column(db.Integer, nullable=False)
     # NOT REQUIRE FIELDS
     creator_id = db.Column(db.Integer)
     client_id = db.Column(db.Integer)

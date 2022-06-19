@@ -32,6 +32,7 @@ def create_user_ticket():
                                           client_id=g.client_id,
                                           first_name=req['first_name'],
                                           last_name=req['last_name'],
+                                          role_id=req['role_id'],
                                           email_address=req['email_address'],
                                           cash_box_id=g.cash_box_id or req['cash_box_id'],
                                           cashier=req['cashier'])
@@ -81,6 +82,7 @@ def user_update(user_id: int):
     res = user_service.user_update(user_id=user_id,
                                    first_name=req['first_name'],
                                    last_name=req['last_name'],
+                                   role_id=req['role_id'],
                                    email_address=req['email_address'],
                                    cash_box_id=g.cash_box_id or req['cash_box_id'],
                                    cashier=req['cashier'])

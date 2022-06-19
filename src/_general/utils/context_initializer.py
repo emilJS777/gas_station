@@ -76,10 +76,10 @@ class Initializer:
 
     def __init__(self):
         self.init_permission()
-        self.init_role()
+        role = self.init_role()
         self.init_role_permission()
         client: client_service_db.Client = self.init_client()
-        self.init_user(client=client)
+        self.init_user(client=client, role_id=role.id)
 
     def init_permission(self):
         for permission in self.permissions:
@@ -88,9 +88,12 @@ class Initializer:
                 logger.info(f"permission {permission['title']} created")
 
     def init_role(self):
-        if not role_service_db.get_role_by_name(name=self.role):
-            role_service_db.create_role(name=self.role)
+        role = role_service_db.get_role_by_name(name=self.role)
+        if not role:
             logger.info(f"Role by name {self.role} created")
+            return role_service_db.create_role(name=self.role)
+        return role
+
 
     def init_role_permission(self):
         role_db: role_service_db.Role = role_service_db.get_role_by_name(name=self.role)
@@ -112,9 +115,9 @@ class Initializer:
             )
         return client_service_db.get_first()
 
-    def init_user(self, client):
+    def init_user(self, client, role_id: int):
         if not user_service_db.get_first_by_creator_id(creator_id=None):
-            user: user_service_db.User = user_service_db.create_ticket(client_id=client.id, first_name="Admin", last_name="Admin")
+            user: user_service_db.User = user_service_db.create_ticket(client_id=client.id, role_id=role_id, first_name="Admin", last_name="Admin")
             logger.info(f"first admin ticket {user.ticket}")
 
             user_role_service_db.create_bind(user_id=user.id, role_id=role_service_db.get_role_by_name(name=self.role).id)
