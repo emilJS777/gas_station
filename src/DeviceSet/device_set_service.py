@@ -19,7 +19,8 @@ def get_device_set(device_key: str):
 
     return make_response(jsonify({'id': device_set.device_key,
                                   'date': datetime.strftime(device_set.last_update, "%m/%d/%Y %H:%M:%S"),
-
+                                  'masterFlowAuto': device_set.master_flow_auto,
+                                  'fowAuto': device_set.flow_auto_set,
                                   'flowhanac': device_set.flow_hanac_set,
                                   'pressgorcakic': device_set.press_gorcakic_set,
                                   'kgorcakic': device_set.k_gorcakic_set,
