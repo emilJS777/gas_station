@@ -26,7 +26,6 @@ def get_device_set(device_key: str):
                                   'dpgorcakic': device_set.dp_gorcakic_set,
                                   'flowmax': device_set.flow_max_set,
                                   'flowproc': device_set.flow_proc_set,
-                                  'onoff': device_set.onoff,
                                   'flowAutoOnOff': device_set.flow_auto_on_off,
                                   # 'masterFlowAuto': device_set.master_flow_auto
                                  }), 200)

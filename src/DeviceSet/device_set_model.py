@@ -24,7 +24,7 @@ class DeviceSet(db.Model):
     flow_max_set = db.Column(db.Numeric(8, 1))
     flow_proc_set = db.Column(db.Numeric(8, 0))
 
-    onoff = db.Column(db.Boolean)
+    # onoff = db.Column(db.Boolean)
     flow_auto_on_off = db.Column(db.Numeric(8, 4))
     master_flow_auto = db.Column(db.Numeric(8, 4))
 

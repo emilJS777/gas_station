@@ -18,7 +18,6 @@ def update(device_set_body: dict) -> dict:
     device_set.dp_gorcakic_set = device_set_body['dp_gorcakic_set']
     device_set.flow_max_set = device_set_body['flow_max_set']
     device_set.flow_proc_set = device_set_body['flow_proc_set']
-    device_set.onoff = device_set_body['onoff'] == 'true'
     device_set.flow_auto_on_off = device_set_body['flow_auto_on_off']
     device_set.master_flow_auto = device_set_body['master_flow_auto']
 
