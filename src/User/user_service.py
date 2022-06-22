@@ -81,12 +81,16 @@ def user_get_by_id(user_id):
                            'cashier': user.cashier,
                            'ticket': user.ticket,
                            'role_id': user.role_id,
+                           'role_name': role_service_db.get_role_by_id(user.role_id).name,
                            'creation_date': user.creation_date}, 200)
 
 
 # GET ALL USER
 def user_get_all(page: int, per_page: int, client_id: int):
     users: dict = user_service_db.get_all(page=page, per_page=per_page, client_id=client_id)
+
+    for user in users['items']:
+        user['role_name'] = role_service_db.get_role_by_id(user['role_id']).name
 
     return response(True, users, 200)
 
