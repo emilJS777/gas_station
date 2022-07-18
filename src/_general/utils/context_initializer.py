@@ -21,13 +21,13 @@ from src import app
 # DEVICE ERROR TIMER
 class DeviceErrorThread:
     # SELECTS
-    get_devices = "SELECT `key`, `error_after_minutes` FROM `device`"
+    get_devices = "SELECT `key`, `id`, `error_after_minutes` FROM `device`"
     get_device_info = "SELECT last_update FROM device_info WHERE device_key = %s"
     get_device_error = "SELECT error_type, confirmed FROM device_error WHERE device_key = %s"
     # CHECK EXIST
     exist_device_error = "SELECT EXISTS(SELECT * FROM device_error WHERE device_key = %s)"
     # CREATE
-    create_device_error = "INSERT INTO device_error (device_key, last_update_info, creation_date, error_type, confirmed) VALUES (%s, %s, %s, %s, %s)"
+    create_device_error = "INSERT INTO device_error (device_key, device_id, last_update_info, creation_date, error_type, confirmed) VALUES (%s, %s, %s, %s, %s, %s)"
     # UPDATE
     update_device_error = "UPDATE device_error SET `creation_date` = %s, `error_type` = 1, `confirmed` = 1 WHERE device_key = %s"
 
@@ -47,7 +47,7 @@ class DeviceErrorThread:
                         for row in con.execute(self.exist_device_error, (device_key, )):
 
                             if not row[0]:
-                                con.execute(self.create_device_error, (device_key, device_info.last_update, datetime.utcnow(), 1, True))
+                                con.execute(self.create_device_error, (device_key, device.id, device_info.last_update, datetime.utcnow(), 1, True))
                                 print("error", device_key, 'saved')
 
                             else:

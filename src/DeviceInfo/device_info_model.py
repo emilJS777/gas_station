@@ -9,7 +9,7 @@ from datetime import datetime
 class DeviceInfo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     device_key = db.Column(db.String(120), nullable=False)
-    last_update = db.Column(db.DateTime, default=datetime.utcnow())
+    last_update = db.Column(db.DateTime(timezone=True), default=datetime.utcnow())
 
     flow_auto = db.Column(db.Numeric(8, 1))
     dp_pastaci = db.Column(db.Numeric(8, 1))

@@ -11,13 +11,16 @@ class Device(db.Model):
     description = db.Column(db.String(120))
     parent_key = db.Column(db.String(120))
     error_after_minutes = db.Column(db.Integer, default=10)
-    last_update = db.Column(db.DateTime, default=datetime.utcnow())
+    last_update = db.Column(db.DateTime(timezone=True), default=datetime.utcnow())
 
     client_id = db.Column(db.Integer, nullable=False)
 
     pid_device = db.Column(db.ForeignKey('device.id'))
 
     parent_devices = relationship("Device", remote_side=[pid_device])
+
+    device_error = relationship("DeviceError")
+
     clients = relationship("Client", secondary="client_device", backref=db.backref('device'))
 
     # CONSTRUCTOR

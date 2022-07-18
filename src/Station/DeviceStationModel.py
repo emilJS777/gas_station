@@ -7,7 +7,7 @@ class Station(db.Model):
     key = db.Column(db.String(120), nullable=False)
     name = db.Column(db.String(30), nullable=False)
     description = db.Column(db.String(120), nullable=False)
-    last_update = db.Column(db.DateTime, default=datetime.utcnow())
+    last_update = db.Column(db.DateTime(timezone=True), default=datetime.utcnow())
 
     cash_box_id = db.Column(db.Integer, nullable=False)
     client_id = db.Column(db.Integer, nullable=False)

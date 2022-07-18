@@ -3,7 +3,7 @@ from flask import g
 from typing import List
 from datetime import datetime
 from src.Client import client_service_db
-from src._general.parents import get_page_items
+from src._general.parents import get_page_items, get_dict_items, get_array_items
 from src.Client.client_model import Client
 from sqlalchemy import or_, and_
 
@@ -78,5 +78,8 @@ def get_devices(page: int, per_page: int, client_id: int):
         devices = Device.query.join(Device.clients).filter(Client.id.in_([g.client_id]))\
             .paginate(page=page, per_page=per_page)
 
+    for device in devices.items:
+        device.device_errors = get_array_items(device.device_error)
+        del device.device_error
     return get_page_items(devices)
 

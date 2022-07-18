@@ -43,4 +43,5 @@ def get_all() -> List[dict]:
         devices_error_list.append({'id': device_error.id, 'device_key': device_error.device_key,
                                    'creation_date': device_error.creation_date, 'error_type': device_error.error_type,
                                    'last_update_info': device_error.last_update_info})
+
     return devices_error_list

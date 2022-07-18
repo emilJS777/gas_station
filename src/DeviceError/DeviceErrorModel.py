@@ -1,14 +1,18 @@
 from src import db
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 class DeviceError(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     device_key = db.Column(db.String(120), unique=True)
-    creation_date = db.Column(db.DateTime, default=datetime.utcnow())
-    last_update_info = db.Column(db.DateTime, nullable=True)
+    creation_date = db.Column(db.DateTime(timezone=True), default=datetime.utcnow())
+    last_update_info = db.Column(db.DateTime(timezone=True), nullable=True)
     error_type = db.Column(db.Integer, nullable=False)
     confirmed = db.Column(db.Boolean, default=False)
+
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    device = relationship("Device")
 
     # CONSTRUCTOR
     def __init__(self, device_key: str, error_type: int, confirmed: bool):
