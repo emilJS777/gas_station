@@ -6,7 +6,7 @@ from typing import List
 # CREATE ROLE
 def create_role(name) -> Role:
     role: Role = Role(name)
-    role.creator_id = g.user_id
+    # role.creator_id = g.user_id
     role.save_db()
     return role
 
