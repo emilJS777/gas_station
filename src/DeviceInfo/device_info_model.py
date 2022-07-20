@@ -1,3 +1,5 @@
+from sqlalchemy.orm import relationship
+
 from src import db
 from datetime import datetime
 
@@ -32,6 +34,9 @@ class DeviceInfo(db.Model):
     today = db.Column(db.Numeric(8, 2))
     yesterday = db.Column(db.Numeric(8, 2))
     monthly = db.Column(db.Numeric(8, 4))
+
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    device = relationship("Device")
 
     # CONSTRUCTOR
     def __init__(self, device_key: str):

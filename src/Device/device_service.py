@@ -23,7 +23,7 @@ def create_device(key: str,
         return response(False, {'msg': 'Device by this key exist'}, 200)
 
     # CREATE DEVICE AND DEVICE INFO IF DEVICE INFO BY THIS KEY NOT FOUND
-    device_service_db.create_device(
+    device = device_service_db.create_device(
         key=key,
         name=name,
         description=description,
@@ -33,7 +33,7 @@ def create_device(key: str,
         client_ids=client_ids
     )
 
-    device_info_service_db.create(device_key=key)
+    device_info_service_db.create(device_key=key, device_id=device.id)
     device_set_service_db.create(device_key=key)
     return response(True, {"msg": "device successfully created"}, 200)
 

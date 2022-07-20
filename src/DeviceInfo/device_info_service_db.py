@@ -2,8 +2,9 @@ from .device_info_model import DeviceInfo
 from datetime import datetime
 
 
-def create(device_key: str) -> DeviceInfo:
+def create(device_key: str, device_id: int) -> DeviceInfo:
     device_info: DeviceInfo = DeviceInfo(device_key=device_key)
+    device_info.device_id = device_id
     device_info.save_db()
     return device_info
 

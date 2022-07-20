@@ -79,7 +79,10 @@ def get_devices(page: int, per_page: int, client_id: int):
             .paginate(page=page, per_page=per_page)
 
     for device in devices.items:
-        device.device_errors = get_array_items(device.device_error)
+        device.device_errors = get_dict_items(device.device_error[0])
+        device.device_infos = get_dict_items(device.device_info[0])
         del device.device_error
+        del device.device_info
+
     return get_page_items(devices)
 

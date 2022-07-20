@@ -20,6 +20,7 @@ class Device(db.Model):
     parent_devices = relationship("Device", remote_side=[pid_device])
 
     device_error = relationship("DeviceError")
+    device_info = relationship("DeviceInfo")
 
     clients = relationship("Client", secondary="client_device", backref=db.backref('device'))
 
