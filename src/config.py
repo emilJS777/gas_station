@@ -48,8 +48,3 @@ app.config['MAIL_PASSWORD'] = 'i5H8SqqL9fHmLxyLsKBU'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-
-
-@app.teardown_appcontext
-def teardown_db(exception):
-    g.app = app

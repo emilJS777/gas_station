@@ -12,6 +12,5 @@ class DeviceErrorSender:
             msg = Message('Hello', sender=app.config['MAIL_USERNAME'], recipients=[email_address])
             msg.body = f"device error by code {error_code}"
             mail.send(msg)
-            print(email_address)
 
 
