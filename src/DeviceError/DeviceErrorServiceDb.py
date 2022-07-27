@@ -4,9 +4,10 @@ from datetime import datetime
 
 
 # CREATE
-def create(device_key: str, error_type: int, confirmed=False) -> DeviceError:
+def create(device_key: str, error_type: int, device_id: int, confirmed=False) -> DeviceError:
     device_error: DeviceError = DeviceError(device_key=device_key, error_type=error_type, confirmed=confirmed)
     device_error.last_update_info = datetime.utcnow()
+    device_error.device_id=device_id
     device_error.save_db()
     return device_error
 

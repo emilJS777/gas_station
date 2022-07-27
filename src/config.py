@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, g
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -49,3 +49,7 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
+
+@app.teardown_appcontext
+def teardown_db(exception):
+    g.app = app

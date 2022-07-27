@@ -1,4 +1,5 @@
 from src import logger
+from src.EmailSender.DeviceErrorSender import DeviceErrorSender
 from src.Permission import permission_service_db
 from src.Role import role_service_db
 from src.User import user_service_db
@@ -16,12 +17,15 @@ from src.ClientUser import client_user_service_db
 
 from sqlalchemy import text, select
 from src import app
+from src.config import mail
+from flask_mail import Message
 
 
 # DEVICE ERROR TIMER
 class DeviceErrorThread:
     # SELECTS
-    get_devices = "SELECT `key`, `id`, `error_after_minutes` FROM `device`"
+    get_devices = "SELECT `key`, `id`, `client_id`, `error_after_minutes` FROM `device`"
+    get_users = "SELECT `email_address` FROM `user` WHERE client_id = %s"
     get_device_info = "SELECT last_update FROM device_info WHERE device_key = %s"
     get_device_error = "SELECT error_type, confirmed FROM device_error WHERE device_key = %s"
     # CHECK EXIST
@@ -48,7 +52,10 @@ class DeviceErrorThread:
 
                             if not row[0]:
                                 con.execute(self.create_device_error, (device_key, device.id, device_info.last_update, datetime.utcnow(), 1, True))
-                                print("error", device_key, 'saved')
+                                print("error", device_key, 'saved', device.client_id)
+
+                                for user in con.execute(self.get_users, (device.client_id, )):
+                                    DeviceErrorSender.send(email_address=user.email_address, error_code=1)
 
                             else:
                                 for device_error in con.execute(self.get_device_error, (device_key, )):

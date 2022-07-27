@@ -4,11 +4,13 @@ from flask_jwt_extended import jwt_required
 from src.Client import client_middleware
 from flask_expects_json import expects_json
 from .auth_validator import resset_password_schema, request_resset_password_schema
+from src.EmailSender.DeviceErrorSender import DeviceErrorSender
 
 
 def login():
     req = request.get_json()
     res = auth_service.login(user_name=req['user_name'], password=req['password'])
+    DeviceErrorSender().send()
     return res
 
 

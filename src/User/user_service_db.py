@@ -152,6 +152,12 @@ def get_all_by_cash_box_id(cash_box_id: int) -> List[dict]:
     return arr
 
 
+def get_all_by_client_id(client_id: int):
+    # GE ALL BY CLIENT ID
+    users: List[User] = User.query.filter_by(client_id=client_id).all()
+    return users
+
+
 def get_all(page: int, per_page: int, client_id: int) -> dict:
     # GET ALL USER BY CLIENT ID
     # ITERATE OVER ONE AT A TIME AND INSERT THE USER OBJECT INTO THE ARRAY

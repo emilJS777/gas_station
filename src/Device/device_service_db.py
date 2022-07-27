@@ -6,6 +6,7 @@ from src.Client import client_service_db
 from src._general.parents import get_page_items, get_dict_items, get_array_items
 from src.Client.client_model import Client
 from sqlalchemy import or_, and_
+from src.DeviceError.DeviceErrorModel import DeviceError
 
 
 def create_device(key: str, name: str, description: str, error_after_minutes: int,
@@ -71,18 +72,19 @@ def get_by_key_exclude_id(device_id, key):
 
 
 def get_devices(page: int, per_page: int, client_id: int):
-    if client_id > 0:
-        devices = Device.query.join(Device.clients).filter(Client.id.in_([client_id])) \
-            .paginate(page=page, per_page=per_page)
-    else:
-        devices = Device.query.join(Device.clients).filter(Client.id.in_([g.client_id]))\
-            .paginate(page=page, per_page=per_page)
+    devices = Device.query.join(Device.clients)\
+        .filter(Client.id.in_([client_id]) if client_id else Client.id.in_([g.client_id])) \
+        .paginate(page=page, per_page=per_page)
 
     for device in devices.items:
-        device.device_errors = get_dict_items(device.device_error[0])
         device.device_infos = get_dict_items(device.device_info[0])
-        del device.device_error
         del device.device_info
+
+        device.device_errors = {}
+        if len(device.device_error) > 0:
+            if device.device_error[0].confirmed:
+                device.device_errors = get_dict_items(device.device_error[0])
+        del device.device_error
 
     return get_page_items(devices)
 
