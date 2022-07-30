@@ -52,4 +52,4 @@ def check_device_null_error(device_key, req_params):
             )
             users = user_service_db.get_all_by_client_id(device.client_id)
             for user in users:
-                DeviceErrorSender().send(email_address=user.email_address, error_code=0)
+                DeviceErrorSender().send(email_address=user.email_address, device_key=device_key, error_code=0)

@@ -2,15 +2,18 @@ from src.config import mail
 from flask_mail import Message
 from src import app
 from flask import g
+import threading
+import smtplib, ssl
 
 
 class DeviceErrorSender:
 
     @staticmethod
-    def send(email_address: str or None, error_code: int):
+    def send(email_address: str or None, device_key: str, error_code: int):
         if email_address:
-            msg = Message('Hello', sender=app.config['MAIL_USERNAME'], recipients=[email_address])
-            msg.body = f"device error by code {error_code}"
-            mail.send(msg)
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(app.config['MAIL_SERVER'], app.config['MAIL_PORT'], context=context) as server:
+                server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+                server.sendmail(app.config['MAIL_USERNAME'], [email_address], f"<h1>Device by key {device_key} error {error_code}</h1>")
 
 

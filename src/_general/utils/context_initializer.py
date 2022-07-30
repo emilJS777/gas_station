@@ -1,3 +1,5 @@
+import asyncio
+
 from src import logger
 from src.EmailSender.DeviceErrorSender import DeviceErrorSender
 from src.Permission import permission_service_db
@@ -19,6 +21,9 @@ from sqlalchemy import text, select
 from src import app
 from src.config import mail
 from flask_mail import Message
+import threading
+import time
+import smtplib, ssl
 
 
 # DEVICE ERROR TIMER
@@ -35,34 +40,36 @@ class DeviceErrorThread:
     # UPDATE
     update_device_error = "UPDATE device_error SET `creation_date` = %s, `error_type` = 1, `confirmed` = 1 WHERE device_key = %s"
 
-    def __init__(self):
+    # def __init__(self):
+    #     asyncio.run(self.device_error_search())
+
+    @staticmethod
+    def device_error_search():
 
         while True:
             db = create_engine(app.config["SQLALCHEMY_DATABASE_URI"], echo=False)
             con = db.connect()
 
-            for device in con.execute(self.get_devices):
+            for device in con.execute(DeviceErrorThread.get_devices):
                 device_key: str = device.key
 
-                for device_info in con.execute(self.get_device_info, (device_key, )):
+                for device_info in con.execute(DeviceErrorThread.get_device_info, (device_key, )):
 
                     if datetime.utcnow() > device_info.last_update + timedelta(minutes=device.error_after_minutes):
 
-                        for row in con.execute(self.exist_device_error, (device_key, )):
+                        for row in con.execute(DeviceErrorThread.exist_device_error, (device_key, )):
 
                             if not row[0]:
-                                con.execute(self.create_device_error, (device_key, device.id, device_info.last_update, datetime.utcnow(), 1, True))
+                                con.execute(DeviceErrorThread.create_device_error, (device_key, device.id, device_info.last_update, datetime.utcnow(), 1, True))
                                 print("error", device_key, 'saved', device.client_id)
 
-                                for user in con.execute(self.get_users, (device.client_id, )):
-                                    DeviceErrorSender.send(email_address=user.email_address, error_code=1)
+                                for user in con.execute(DeviceErrorThread.get_users, (device.client_id, )):
+                                    DeviceErrorSender().send(email_address=user.email_address, device_key=device_key, error_code=1)
 
                             else:
-                                for device_error in con.execute(self.get_device_error, (device_key, )):
+                                for device_error in con.execute(DeviceErrorThread.get_device_error, (device_key, )):
                                     if device_error.error_type == 0:
-                                        con.execute(self.update_device_error, (datetime.utcnow(), device_key, ))
-
-
+                                        con.execute(DeviceErrorThread.update_device_error, (datetime.utcnow(), device_key, ))
 
             con.close()
             time.sleep(10)
@@ -100,7 +107,6 @@ class Initializer:
             logger.info(f"Role by name {self.role} created")
             return role_service_db.create_role(name=self.role)
         return role
-
 
     def init_role_permission(self):
         role_db: role_service_db.Role = role_service_db.get_role_by_name(name=self.role)
