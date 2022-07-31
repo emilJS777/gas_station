@@ -32,7 +32,7 @@ def update(device_key, device_info_body) -> DeviceInfo:
     device_info.press_gorcakic = device_info_body['pressgorcakic']
     device_info.today = device_info_body['today']
     device_info.yesterday = device_info_body['yesterday']
-    device_info.monthly = device_info_body['monthly']
+    # device_info.monthly = device_info_body['monthly']
 
     device_info.last_update = datetime.utcnow()
     device_info.update_db()
