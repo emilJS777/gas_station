@@ -19,15 +19,15 @@ def get_device_set(device_key: str):
 
     return make_response(jsonify({'id': device_set.device_key,
                                   'date': datetime.strftime(device_set.last_update, "%m/%d/%Y %H:%M:%S"),
-                                  'masterFlowAuto': device_set.master_flow_auto,
-                                  'fowAuto': device_set.flow_auto_set,
-                                  'flowhanac': device_set.flow_hanac_set,
-                                  'pressgorcakic': device_set.press_gorcakic_set,
-                                  'kgorcakic': device_set.k_gorcakic_set,
+                                  'masterFlowAuto': float(device_set.master_flow_auto),
+                                  'fowAuto': float(device_set.flow_auto_set),
+                                  'flowhanac': float(device_set.flow_hanac_set),
+                                  'pressgorcakic': float(device_set.press_gorcakic_set),
+                                  'kgorcakic': float(device_set.k_gorcakic_set),
                                   'dpgorcakic': float(device_set.dp_gorcakic_set),
-                                  'flowmax': device_set.flow_max_set,
-                                  'flowproc': device_set.flow_proc_set,
-                                  'flowAutoOnOff': device_set.flow_auto_on_off,
+                                  'flowmax': float(device_set.flow_max_set),
+                                  'flowproc': float(device_set.flow_proc_set),
+                                  'flowAutoOnOff': float(device_set.flow_auto_on_off),
                                   # 'masterFlowAuto': device_set.master_flow_auto
                                  }), 200)
     # return response(True, {'id': device_set.device_key,
