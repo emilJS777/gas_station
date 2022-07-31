@@ -24,7 +24,7 @@ def get_device_set(device_key: str):
                                   'flowhanac': device_set.flow_hanac_set,
                                   'pressgorcakic': device_set.press_gorcakic_set,
                                   'kgorcakic': device_set.k_gorcakic_set,
-                                  'dpgorcakic': device_set.dp_gorcakic_set,
+                                  'dpgorcakic': float(device_set.dp_gorcakic_set),
                                   'flowmax': device_set.flow_max_set,
                                   'flowproc': device_set.flow_proc_set,
                                   'flowAutoOnOff': device_set.flow_auto_on_off,
