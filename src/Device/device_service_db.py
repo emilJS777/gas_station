@@ -80,7 +80,7 @@ def get_devices(page: int, per_page: int, client_id: int):
         device.device_infos = get_dict_items(device.device_info[0])
         del device.device_info
 
-        device.device_errors = {}
+        device.device_errors = None
         if len(device.device_error) > 0:
             if device.device_error[0].confirmed:
                 device.device_errors = get_dict_items(device.device_error[0])
