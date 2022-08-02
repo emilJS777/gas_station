@@ -29,15 +29,15 @@ def get_device_info(device_key: str) -> dict:
                            'flow_sarqac': float(device_info.flow_sarqac),
                            'flowhanac': float(device_info.flow_hanac),
                            'kgorcakic': float(device_info.k_gorcakic),
-                           'self_on_off': float(device_info.self_on_off),
+                           'self_on_off': int(device_info.self_on_off),
                            'flowmax': float(device_info.flow_max),
-                           'flowproc': float(device_info.flow_proc),
+                           'flowproc': int(device_info.flow_proc),
                            'press_pastaci': float(device_info.press_pastaci),
                            'pressgorcakic': float(device_info.press_gorcakic),
                            'today': float(device_info.today),
                            'yesterday': float(device_info.yesterday),
-                           'signal': float(device_info.signal),
-                           'onoff': float(device_info.onoff),
-                           'monthly': float(device_info.monthly)
+                           'signal': int(device_info.signal),
+                           'onoff': int(device_info.onoff),
+                           'monthly': int(device_info.monthly)
                            }, 200)
 #
