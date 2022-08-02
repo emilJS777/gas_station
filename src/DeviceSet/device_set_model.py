@@ -16,7 +16,7 @@ from datetime import datetime
 class DeviceSet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     device_key = db.Column(db.String(120), nullable=False)
-    # last_update = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    last_update = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     flow_auto_set = db.Column(db.Numeric(8, 0))
     flow_hanac_set = db.Column(db.Numeric(8, 0))
