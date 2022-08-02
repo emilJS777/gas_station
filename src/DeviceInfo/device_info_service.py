@@ -38,6 +38,6 @@ def get_device_info(device_key: str) -> dict:
                            'yesterday': float(device_info.yesterday),
                            'signal': int(device_info.signal),
                            'onoff': int(device_info.onoff),
-                           'monthly': int(device_info.monthly)
+                           'monthly': float(device_info.monthly)
                            }, 200)
 #
