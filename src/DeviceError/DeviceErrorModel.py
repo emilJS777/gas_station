@@ -1,3 +1,5 @@
+from sqlalchemy import func
+
 from src import db
 from datetime import datetime
 from sqlalchemy.orm import relationship
@@ -6,7 +8,7 @@ from sqlalchemy.orm import relationship
 class DeviceError(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     device_key = db.Column(db.String(120), unique=True)
-    creation_date = db.Column(db.DateTime(timezone=True), default=datetime.utcnow())
+    # creation_date = db.Column(db.DateTime(timezone=True), server_default=func.now())
     last_update_info = db.Column(db.DateTime(timezone=True), nullable=True)
     error_type = db.Column(db.Integer, nullable=False)
     confirmed = db.Column(db.Boolean, default=False)

@@ -1,3 +1,4 @@
+from sqlalchemy import func
 from sqlalchemy.orm import relationship
 from src import db
 from datetime import datetime
@@ -11,7 +12,7 @@ class Device(db.Model):
     description = db.Column(db.String(120))
     parent_key = db.Column(db.String(120))
     error_after_minutes = db.Column(db.Integer, default=10)
-    last_update = db.Column(db.DateTime(timezone=True), default=datetime.utcnow())
+    # last_update = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     client_id = db.Column(db.Integer, nullable=False)
 
