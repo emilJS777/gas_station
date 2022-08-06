@@ -1,6 +1,7 @@
 from .device_info_model import DeviceInfo
 from datetime import datetime
 from sqlalchemy import func
+import time
 
 
 def create(device_key: str, device_id: int) -> DeviceInfo:
@@ -35,7 +36,8 @@ def update(device_key, device_info_body) -> DeviceInfo:
     device_info.yesterday = device_info_body['yesterday']
     # device_info.monthly = device_info_body['monthly']
 
-    device_info.last_update = datetime.utcnow()
+    # device_info.last_update = datetime.utcnow()
+    device_info.last_update = time.localtime()
     device_info.update_db()
     return device_info
 

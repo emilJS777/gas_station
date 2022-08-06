@@ -1,5 +1,6 @@
 from .device_set_model import DeviceSet
 from datetime import datetime
+import time
 
 
 def create(device_key: str) -> DeviceSet:
@@ -21,7 +22,8 @@ def update(device_set_body: dict) -> dict:
     device_set.flow_auto_on_off = device_set_body['flow_auto_on_off']
     device_set.master_flow_auto = device_set_body['master_flow_auto']
 
-    device_set.last_update = datetime.utcnow()
+    # device_set.last_update = datetime.utcnow()
+    device_set.last_update = time.localtime()
     device_set.update_db()
     return device_set
 
