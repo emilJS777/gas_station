@@ -7,8 +7,6 @@
     <list default="true" id="8e21be39-4da7-4895-a8bf-76b9ca2bcd8a" name="Changes" comment="asdasdf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Expense/ExpenseController.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Expense/ExpenseController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Expense/ExpenseService.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Expense/ExpenseService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Expense/ExpenseServiceDb.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Expense/ExpenseServiceDb.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,14 +171,7 @@
       <workItem from="1653983564588" duration="640000" />
       <workItem from="1653984302884" duration="8849000" />
       <workItem from="1654243517407" duration="1951000" />
-      <workItem from="1665846444801" duration="500000" />
-    </task>
-    <task id="LOCAL-00130" summary="asdasdf">
-      <created>1655659527903</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1655659527903</updated>
+      <workItem from="1665846444801" duration="887000" />
     </task>
     <task id="LOCAL-00131" summary="asdasdf">
       <created>1655659702494</created>
@@ -518,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659447917142</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="asdasdf">
+      <created>1665846963071</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1665846963072</updated>
+    </task>
+    <option name="localTasksCounter" value="180" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

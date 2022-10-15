@@ -40,7 +40,7 @@ def get_by_id_expense(expense_id) -> dict:
 @CashBoxMiddleware.check_cash_box(required=False)
 @permission_middleware.check_permission("expense_get")
 def get_all_expense() -> dict:
-    res: dict = ExpenseService.get_all(date=request.args.get('date'), cash_box_id=request.args.get('cash_box_id'))
+    res: dict = ExpenseService.get_all(date=request.args.get('date'), cash_box_id=int(request.args.get('cash_box_id')))
     return res
 
 
