@@ -50,4 +50,6 @@ def get_all(date, cash_box_id: int) -> List[dict]:
                              'creation_date': expense.creation_date,
                              'creator_id': expense.creator_id})
 
+    print(cash_box_id)
+
     return expense_list
