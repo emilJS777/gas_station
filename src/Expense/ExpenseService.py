@@ -31,6 +31,6 @@ def get_by_id(expense_id: int) -> dict:
 
 
 # GET ALL
-def get_all(date) -> dict:
-    expenses: List[dict] = ExpenseServiceDb.get_all(date=date)
+def get_all(date, cash_box_id) -> dict:
+    expenses: List[dict] = ExpenseServiceDb.get_all(date=date, cash_box_id=cash_box_id)
     return response(True, expenses, 200)

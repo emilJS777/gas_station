@@ -25,10 +25,11 @@ def get_by_id(expense_id: int) -> Expense:
 
 
 # GET ALL
-def get_all(date) -> List[dict]:
+def get_all(date, cash_box_id: int) -> List[dict]:
     if g.cashier:
         expenses: List[Expense] = Expense.query.filter_by(client_id=g.client_id,
                                                           creator_id=g.user_id,
+                                                          cash_box_id=g.cash_box_id,
                                                           creation_date=date).all()
     elif g.cash_box_id:
         expenses: List[Expense] = Expense.query.filter_by(client_id=g.client_id,
@@ -36,6 +37,7 @@ def get_all(date) -> List[dict]:
                                                           creation_date=date).all()
     else:
         expenses: List[Expense] = Expense.query.filter_by(client_id=g.client_id,
+                                                          cash_box_id=cash_box_id,
                                                           creation_date=date).all()
 
     expense_list: List[dict] = []
