@@ -10,7 +10,7 @@ def create(name: str, description: str, price: float, cash_box_id: int) -> Expen
         description=description,
         price=price,
 
-        cash_box_id=g.cash_box_id or cash_box_id,
+        cash_box_id=g.cash_box_id if g.cash_box_id else cash_box_id,
         client_id=g.client_id,
         creator_id=g.user_id
     )
